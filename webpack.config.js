@@ -19,17 +19,27 @@ const webpackConfig = (env = {}) => {
     entry: joinPaths(SRC_DIRNAME, 'index.jsx'),
     output: {
       path: resolvePath(__dirname, outputDirname(isDev)),
-      filename: 'planner.js'
+      filename: 'js/planner.js'
     },
     module: {
       rules: [
         {
           test: /\.html$/,
-          loader: 'html-loader',
-          options: {
-            attributes: false,
-            minimize: !isDev
-          }
+          use: [
+            {
+              loader: 'html-loader',
+              options: {
+                attributes: false,
+                minimize: !isDev
+              }
+            },
+            {
+              loader: 'file-loader',
+              options: {
+                name: '[name].html',
+              }
+            }
+          ]
         },
         {
           test: /\/.(js|jsx)$/,
@@ -75,7 +85,7 @@ const webpackConfig = (env = {}) => {
     },
     plugins: [
       new MiniCssExtractPlugin({
-        filename: 'planner.css'
+        filename: 'css/planner.css'
       })
     ]
   }
