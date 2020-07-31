@@ -6,6 +6,7 @@ const {join: joinPaths, resolve: resolvePath} = require('path');
 /** constants */
 const SRC_DIRNAME = joinPaths(__dirname, 'src');
 const currentMode = (isDev) => isDev ? 'development' : 'production';
+const outputDirname = (isDev) => isDev ? 'dist' : 'public';
 
 /** webpack plugins */
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -17,7 +18,7 @@ const webpackConfig = (env = {}) => {
     mode: currentMode(isDev),
     entry: joinPaths(SRC_DIRNAME, 'index.jsx'),
     output: {
-      path: resolvePath(__dirname, 'dist'),
+      path: resolvePath(__dirname, outputDirname(isDev)),
       filename: 'planner.js'
     },
     module: {
@@ -56,6 +57,14 @@ const webpackConfig = (env = {}) => {
               }
             }
           ]
+        },
+        {
+          test: /\.ttf$/,
+          loader: 'file-loader',
+          options: {
+            name: '[name].ttf',
+            outputPath: 'fonts'
+          }
         }
       ]
     },
