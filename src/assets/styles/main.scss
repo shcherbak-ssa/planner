@@ -6,5 +6,6 @@
 @import './reset.scss';
 
 body {
+  -x-size: 100vw 100vh;
   position: relative;
 }
