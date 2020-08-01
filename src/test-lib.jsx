@@ -13,4 +13,17 @@ import './assets/fonts';
 import TestContainer from './lib/test-container.jsx';
 
 /** init */
-render(<TestContainer />, 'test-lib');
+runTest();
+
+/** run test */
+async function runTest() {
+  const TestComponent = await import(`./lib/${TEST_COMPONENT}/index`);
+  const testProps = await import(`./lib/${TEST_COMPONENT}/test-props`);
+  const component = (
+    <TestContainer>
+      <TestComponent {...testProps}/>
+    </TestContainer>
+  );
+  
+  render(component, 'test-lib');
+}

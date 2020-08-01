@@ -1,6 +1,8 @@
 'use strict';
 
-/** node modules */
+/** imports */
+const webpack = require('webpack');
+const argv = require('optimist').argv;
 const {join: joinPaths, resolve: resolvePath} = require('path');
 
 /** constants */
@@ -16,6 +18,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpackConfig = (env = {}) => {
   const isDev = env.isDev || false;
   const {page} = env;
+  const testComponent = page === 'test-lib' ? argv.c : false;
   return {
     mode: currentMode(isDev),
     watch: isDev,
@@ -23,6 +26,7 @@ const webpackConfig = (env = {}) => {
     entry: joinPaths(SRC_DIRNAME, `${page}.jsx`),
     output: {
       path: resolvePath(__dirname, 'public'),
+      chunkFilename: 'js/[name].chunk.js',
       filename: `js/${page}.js`
     },
     module: {
@@ -46,11 +50,11 @@ const webpackConfig = (env = {}) => {
           ]
         },
         {
-          test: /\/.(js|jsx)$/,
+          test: /\.js|\.jsx$/,
           exclude: /node_modules/,
           loader: 'babel-loader',
           options: {
-            preset: ['@babel/env', '@babel/react']
+            presets: ['@babel/env', '@babel/react']
           }
         },
         {
@@ -99,6 +103,9 @@ const webpackConfig = (env = {}) => {
       }
     },
     plugins: [
+      new webpack.DefinePlugin({
+        TEST_COMPONENT: testComponent
+      }),
       new CleanWebpackPlugin(),
       new MiniCssExtractPlugin({
         filename: `css/${page}.css`
