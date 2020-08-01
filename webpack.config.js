@@ -6,7 +6,6 @@ const {join: joinPaths, resolve: resolvePath} = require('path');
 /** constants */
 const SRC_DIRNAME = joinPaths(__dirname, 'src');
 const currentMode = (isDev) => isDev ? 'development' : 'production';
-const outputDirname = (isDev) => isDev ? 'dist' : 'public';
 const currentDevtool = (isDev) => isDev ? 'eval-source-map' : false;
 
 /** webpack plugins */
@@ -22,7 +21,7 @@ const webpackConfig = (env = {}) => {
     devtool: currentDevtool(isDev),
     entry: joinPaths(SRC_DIRNAME, 'index.jsx'),
     output: {
-      path: resolvePath(__dirname, outputDirname(isDev)),
+      path: resolvePath(__dirname, 'public'),
       filename: 'js/planner.js'
     },
     module: {
