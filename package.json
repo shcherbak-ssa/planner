@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "server": "node server",
-    "dev-lib": "webpack --env.isDev --env.page=test",
+    "dev-lib": "webpack --env.isDev --env.page=test-lib",
     "dev-login": "webpack --env.isDev --env.page=login",
     "build-login": "webpack"
   },
