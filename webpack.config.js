@@ -93,7 +93,9 @@ const webpackConfig = (env = {}) => {
     },
     resolve: {
       alias: {
-        '@': SRC_DIRNAME
+        '@': SRC_DIRNAME,
+        '@lib': joinPaths(SRC_DIRNAME, 'lib'),
+        '@style-assets': joinPaths(SRC_DIRNAME, 'assets', 'styles', 'assets.scss')
       }
     },
     plugins: [
