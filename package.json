@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "static dist -H",
+    "server": "node server",
     "dev": "webpack --env.isDev",
     "build": "webpack"
   },
