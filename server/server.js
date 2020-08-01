@@ -2,23 +2,22 @@
 
 /** imports */
 const express = require('express');
-const {rootRouter} = require('./network');
+const {
+  rootRouter,
+  staticRouter
+} = require('./network');
 
 /** constants */
 const PORT = 8080;
 const HOSTNAME = 'localhost';
+const ROOT_REGEXP_PATH = /^\/$/;
 
 /** init */
 const planner = express();
 
-// init root router
-planner.use(/^\/$/, rootRouter);
-
-// @todo: need to remove
-planner.get('/static', (req, res) => {
-  console.log('static:', req.originalUrl);
-  res.end();
-})
+// init routers
+planner.use(ROOT_REGEXP_PATH, rootRouter);
+planner.use('/static', staticRouter);
 
 // run server
 planner.listen(PORT, HOSTNAME, () => {
