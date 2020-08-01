@@ -1,9 +1,9 @@
 'use strict';
 
 /** imports */
+const {join: joinPaths, resolve: resolvePath} = require('path');
 const webpack = require('webpack');
 const argv = require('optimist').argv;
-const {join: joinPaths, resolve: resolvePath} = require('path');
 
 /** constants */
 const SRC_DIRNAME = joinPaths(__dirname, 'src');
@@ -54,7 +54,10 @@ const webpackConfig = (env = {}) => {
           exclude: /node_modules/,
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/env', '@babel/react']
+            presets: ['@babel/env', '@babel/react'],
+            plugins: [
+              //'@babel/plugin-syntax-dynamic-import'
+            ]
           }
         },
         {
@@ -104,7 +107,7 @@ const webpackConfig = (env = {}) => {
     },
     plugins: [
       new webpack.DefinePlugin({
-        TEST_COMPONENT: testComponent
+        TEST_COMPONENT: JSON.stringify(testComponent)
       }),
       new CleanWebpackPlugin(),
       new MiniCssExtractPlugin({
