@@ -6,7 +6,7 @@
   "scripts": {
     "server": "node server",
     "server-test-lib": "node server --isTestLib",
-    "dev-lib": "webpack --env.isDev --env.page=test-lib --c=typography/heading4",
+    "dev-lib": "webpack --env.isDev --env.page=test-lib --c=typography/heading",
     "dev-login": "webpack --env.isDev --env.page=login",
     "build-login": "webpack"
   },
