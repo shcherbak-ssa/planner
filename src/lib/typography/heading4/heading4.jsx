@@ -2,6 +2,7 @@
 
 /** imports */
 import React from 'react';
+import './heading4.scss';
 
 /** Heading4 component */
 export default function Heading4(props) {

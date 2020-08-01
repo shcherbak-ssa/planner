@@ -1,6 +1,7 @@
 'use strict';
 
 /** imports */
+import '@babel/polyfill';
 import React from 'react';
 import render from './render';
 
@@ -17,11 +18,11 @@ runTest();
 
 /** run test */
 async function runTest() {
-  const TestComponent = await import(`./lib/${TEST_COMPONENT}/index`);
-  const testProps = await import(`./lib/${TEST_COMPONENT}/test-props`);
+  const TestComponent = (await import(`./lib/${TEST_COMPONENT}/index`)).default;
+  const testProps = (await import(`./lib/${TEST_COMPONENT}/test-props`)).default;
   const component = (
     <TestContainer>
-      <TestComponent {...testProps}/>
+      <TestComponent {...testProps} />
     </TestContainer>
   );
   
