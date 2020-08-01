@@ -15,14 +15,15 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 /** webpack config */
 const webpackConfig = (env = {}) => {
   const isDev = env.isDev || false;
+  const {page} = env;
   return {
     mode: currentMode(isDev),
     watch: isDev,
     devtool: currentDevtool(isDev),
-    entry: joinPaths(SRC_DIRNAME, 'index.jsx'),
+    entry: joinPaths(SRC_DIRNAME, `${page}.jsx`),
     output: {
       path: resolvePath(__dirname, 'public'),
-      filename: 'js/planner.js'
+      filename: `js/${page}.js`
     },
     module: {
       rules: [
@@ -39,7 +40,7 @@ const webpackConfig = (env = {}) => {
             {
               loader: 'file-loader',
               options: {
-                name: '[name].html',
+                name: 'view/[name].html',
               }
             }
           ]
@@ -98,7 +99,7 @@ const webpackConfig = (env = {}) => {
     plugins: [
       new CleanWebpackPlugin(),
       new MiniCssExtractPlugin({
-        filename: 'css/planner.css'
+        filename: `css/${page}.css`
       })
     ]
   }
