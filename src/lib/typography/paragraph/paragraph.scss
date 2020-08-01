@@ -1,0 +1,22 @@
+
+/** imports */
+@import '@style-assets';
+
+/** styles */
+[class*="paragraph"] {
+  color: $black;
+  font-family: 'roboto-regular', sans-serif;
+}
+
+// regular
+[class*="paragraph1"] {
+  -x-font-size: 20px/28px;
+}
+[class*="paragraph3"] {
+  -x-font-size: 13px/20px;
+}
+
+// bold
+.paragraph1-bold, .paragraph3-bold {
+  font-family: 'roboto-bold', sans-serif;
+}
