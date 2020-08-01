@@ -7,24 +7,19 @@ const {join: joinPaths, extname: getExtname, parse: parsePath} = require('path')
 /** constants */
 const SUCCESS_STATUS_CODE = 200;
 const ERROR_STATUS_CODE = 404;
-
 const PUBLIC_PATH = joinPaths(process.cwd(), 'public');
-const VIEW_FILES_PATH = joinPaths(PUBLIC_PATH, 'view');
-const CSS_FILES_PATH = joinPaths(PUBLIC_PATH, 'css');
-const JS_FILES_PATH = joinPaths(PUBLIC_PATH, 'js');
-const FONT_FILES_PATH = joinPaths(PUBLIC_PATH, 'fonts');
 
 /** static file sender */
 class StaticFileSender {
   constructor(res, filename) {
     this._res = res;
     this._filePath = this._getFilePath(filename);
+    console.log(this._filePath);
   }
 
   /** static methods */
   static create(req, res) {
-    const url = req.originalUrl;
-    const {base: filename} = parsePath(url);
+    const filename = req.originalUrl;
     return new StaticFileSender(res, filename);
   }
   static createForRoot(res, filename) {
@@ -44,17 +39,7 @@ class StaticFileSender {
 
   /** private methods */
   _getFilePath(filename) {
-    const fileExtname = getExtname(filename);
-    const fileDirname = this._getFileDirname(fileExtname);
-    return joinPaths(fileDirname, filename);
-  }
-  _getFileDirname(fileExtname) {
-    switch(fileExtname) {
-      case '.html': return VIEW_FILES_PATH;
-      case '.css': return CSS_FILES_PATH;
-      case '.js': return JS_FILES_PATH;
-      case '.ttf': return FONT_FILES_PATH;
-    }
+    return joinPaths(PUBLIC_PATH, filename);
   }
 }
 

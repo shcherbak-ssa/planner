@@ -11,8 +11,7 @@ const {
 const PORT = 8080;
 const HOSTNAME = 'localhost';
 const ROOT_REGEXP_PATH = /^\/$/;
-// for chunck (I know it is a bad solution)
-const STATIC_REGEXP_PATH = /^\/(static|js)/;
+const STATIC_REGEXP_PATH = /^\/(css|js|fonts|images)/;
 
 /** init */
 const planner = express();
