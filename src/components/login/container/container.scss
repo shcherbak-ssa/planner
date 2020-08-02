@@ -1,0 +1,12 @@
+
+/** imports */
+@import '@style-assets';
+
+/** styles */
+.container {
+  background: {
+    image: url('/images/login-bg.jpg');
+    size: cover;
+    repeat: no-repeat;
+  };
+}
