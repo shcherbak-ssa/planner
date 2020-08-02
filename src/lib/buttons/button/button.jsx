@@ -4,6 +4,9 @@
 import React from 'react';
 import './button.scss';
 
+// components
+import Typography from '../../typography';
+
 /** Button component */
 export default function Button(props) {
   const dataButtonColor = props.color || 'primary';
@@ -22,4 +25,5 @@ export default function Button(props) {
 function getButtonValue(props) {
   if (props.isCircle) return props.icon;
   
+  return <Typography.Paragraph />
 }
