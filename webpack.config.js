@@ -112,7 +112,7 @@ const webpackConfig = (env = {}) => {
     plugins: [
       new CleanWebpackPlugin(),
       new MiniCssExtractPlugin({
-        filename: `css/${page}.css`
+        filename: `css/planner.css`
       })
     ]
   }
