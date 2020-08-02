@@ -5,9 +5,13 @@
 /** reset */
 @import './reset.scss';
 
+/** assets */
+@import './assets.scss';
+
 body {
-  -x-size: 100vw 100vh;
+  color: $black;
   position: relative;
+  -x-size: 100vw 100vh;
 }
 
 /** classes */

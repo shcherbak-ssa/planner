@@ -36,6 +36,6 @@ function getButtonValue(props) {
   return value;
 }
 function getText(text) {
-  const paragraphProps = {type: 2, text, style: {color: 'inherit'}};
+  const paragraphProps = {type: 2, text};
   return <Typography.Paragraph {...paragraphProps}/>
 }
