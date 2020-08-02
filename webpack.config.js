@@ -95,6 +95,14 @@ const webpackConfig = (env = {}) => {
             name: '[name].ttf',
             outputPath: 'fonts'
           }
+        },
+        {
+          test: /\.(ico|jpg|png)$/,
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'images'
+          }
         }
       ]
     },

@@ -24,3 +24,12 @@ $error-shadow: 0 4px 4px rgba(255, 196, 196, 0.04), 0 4px 40px rgba(255, 196, 19
 // border-radius
 $main-border-radius: 4px;
 $circle-border-radius: 50%;
+
+// sizes
+$design-window-width: 1366;
+$design-window-padding: 51;
+
+/** functions */
+@function design-relative-padding() {
+  @return $design-window-padding / $design-window-width * 100%;
+}

@@ -10,7 +10,7 @@ import './assets/styles/main.scss';
 import './assets/fonts';
 
 // components
-import Container from './components/login/container.jsx';
+import Container from './components/login/container';
 
 /** init */
 render(<Container/>, 'login');
