@@ -30,12 +30,12 @@ function getButtonValue(props) {
 
   if (props.icon) {
     const {icon} = props;
-    props.iconLeft ? value.unshift(icon) : value.push(icon);
+    props.iconRight ? value.push(icon) : value.unshift(icon);
   }
 
   return value;
 }
 function getText(text) {
-  const paragraphProps = {type: 2, text};
+  const paragraphProps = {type: 2, text, style: {color: 'inherit'}};
   return <Typography.Paragraph {...paragraphProps}/>
 }

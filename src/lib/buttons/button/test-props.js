@@ -3,7 +3,8 @@
 /** test props */
 const testProps = {
   isCircle: false,
-  label: 'Label'
+  label: 'Label',
+  icon: '+'
 };
 
 /** exports */
