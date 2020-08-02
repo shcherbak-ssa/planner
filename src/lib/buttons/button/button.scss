@@ -6,6 +6,10 @@
 /** styles */
 .button {
   padding: 10px 20px;
+
+  .icon, .paragraph2 {
+    margin: 0 4px;
+  }
 }
 .button-circle {
   border-radius: $circle-border-radius;

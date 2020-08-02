@@ -11,7 +11,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 export default function Icon(props) {
   return (
     <div className="icon">
-      <FontAwesomeIcon icon={props.icon} size="2x" />
+      <FontAwesomeIcon icon={props.icon} size="sm" />
     </div>
   )
 }
