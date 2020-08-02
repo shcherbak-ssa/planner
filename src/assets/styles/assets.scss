@@ -6,14 +6,20 @@ $primary: #6E41E2;
 $primary-hover: #5835B0;
 $primary-active: #472C8A;
 
+$primary-red: #DB524E;
+$primary-red-girl: #F9E3E3;
+
 $white: #fff;
 
 $black: #111;
 $shadow: #333;
 
+$gray: rgba($black, 0.48);
+
 // shadow
 $default-shadow: 0 4px 4px rgba($shadow, 0.04), 0 4px 16px rgba($shadow, 0.08);
 $hover-shadow: 0 4px 4px rgba($shadow, 0.04), 0 4px 16px rgba($shadow, 0.16);
+$error-shadow: 0 4px 4px rgba(255, 196, 196, 0.04), 0 4px 40px rgba(255, 196, 196, 0.24);
 
 // border-radius
 $main-border-radius: 4px;

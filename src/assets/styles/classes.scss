@@ -28,6 +28,12 @@
   align-items: center;
 }
 
+/** position */
+[data-class~="ptc"] { // position-top-center
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 /** help */
 [data-class~="click"] {
   cursor: pointer;
