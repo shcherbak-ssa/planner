@@ -7,6 +7,15 @@
   border-radius: $main-border-radius;
 }
 
+/** box-shadow */
+[data-class~="bsh"] { // box-shadow
+  box-shadow: $default-shadow;
+
+  &:hover {
+    box-shadow: $hover-shadow;
+  }
+}
+
 /** box-sizing */
 [data-class~="bs"] {
   box-sizing: border-box;

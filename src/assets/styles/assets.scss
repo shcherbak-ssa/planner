@@ -9,6 +9,11 @@ $primary-active: #472C8A;
 $white: #fff;
 
 $black: #111;
+$shadow: #333;
+
+// shadow
+$default-shadow: 0 4px 4px rgba($shadow, 0.04), 0 4px 16px rgba($shadow, 0.08);
+$hover-shadow: 0 4px 4px rgba($shadow, 0.04), 0 4px 16px rgba($shadow, 0.16);
 
 // border-radius
 $main-border-radius: 4px;

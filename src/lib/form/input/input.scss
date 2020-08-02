@@ -1,0 +1,20 @@
+
+/** imports */
+@import '@style-assets';
+
+/** styles */
+.input {
+  height: 56px;
+  transition: .2s;
+
+  &-field {}
+  &-placeholder {}
+  &-error {}
+
+  &-field, &-placeholder {
+    -x-size: 100%;
+  }
+  &-placeholder, &-error {
+    position: absolute;
+  }
+}
