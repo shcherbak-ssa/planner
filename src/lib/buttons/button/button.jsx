@@ -29,7 +29,7 @@ function getValue(props) {
   if (props.isCircle) return [props.icon];
   
   const value = [];
-  value.push(getText(props.label));
+  value.push(getLabel(props.label));
 
   if (props.icon) {
     const {icon} = props;
@@ -38,7 +38,6 @@ function getValue(props) {
 
   return value;
 }
-function getText(text) {
-  const paragraphProps = {type: 2, text};
-  return <Typography.Paragraph {...paragraphProps}/>
+function getLabel(label) {
+  return <Typography.Paragraph type="2">{label}</Typography.Paragraph>
 }

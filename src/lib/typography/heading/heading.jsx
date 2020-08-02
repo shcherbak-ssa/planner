@@ -8,6 +8,8 @@ import './heading.scss';
 export default function Heading(props) {
   const headingClassName = 'heading' + props.type;
   return (
-    <div className={headingClassName}>{props.heading}</div>
+    <div className={headingClassName}>
+      {props.children}
+    </div>
   )
 }

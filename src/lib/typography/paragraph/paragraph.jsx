@@ -9,6 +9,8 @@ export default function Paragraph(props) {
   let paragraphClassName = 'paragraph' + props.type;
   paragraphClassName += props.isBold ? '-bold' : '';
   return (
-    <div className={paragraphClassName}>{props.text}</div>
+    <div className={paragraphClassName}>
+      {props.children}
+    </div>
   )
 }
