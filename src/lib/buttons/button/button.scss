@@ -1,0 +1,17 @@
+
+/** imports */
+@import '@style-assets';
+@import '../button-primary.scss';
+
+/** styles */
+.button {
+  padding: 10px 20px;
+}
+.button-circle {
+  border-radius: $circle-border-radius;
+  width: 44px;
+}
+.button, .button-circle {
+  transition: .2s;
+  height: 44px;
+}

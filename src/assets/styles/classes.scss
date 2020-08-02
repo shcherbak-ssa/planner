@@ -1,2 +1,33 @@
 
+/** imports */
 @import './assets.scss';
+
+/** border-radius */
+[data-class~="mbr"] { // main-border-radius
+  border-radius: $main-border-radius;
+}
+
+/** box-sizing */
+[data-class~="bs"] {
+  box-sizing: border-box;
+}
+
+/** flex */
+[data-class~="fc"] { // flex-center
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/** help */
+[data-class~="click"] {
+  cursor: pointer;
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    -x-size: 100%;
+    -x-position: absolute 0 x x 0;
+  }
+}

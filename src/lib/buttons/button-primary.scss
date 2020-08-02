@@ -1,0 +1,12 @@
+
+/** imports */
+@import '@style-assets';
+
+/** styles */
+[data-button-color="primary"] {
+  -x-color: $white $primary;
+
+  &:hover {
+    background: $primary-hover;
+  }
+}
