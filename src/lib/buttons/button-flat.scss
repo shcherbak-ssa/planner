@@ -1,0 +1,15 @@
+
+/** imports */
+@import '@style-assets';
+
+/** styles */
+[data-button-color="flat"] {
+  -x-color: $primary $white;
+
+  &:hover {
+    background: rgba($primary, 0.04);
+  }
+  &:active {
+    background: rgba($primary, 0.16);
+  }
+}

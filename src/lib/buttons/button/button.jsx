@@ -9,20 +9,23 @@ import Typography from '../../typography';
 
 /** Button component */
 export default function Button(props) {
-  const dataButtonColor = props.color || 'primary';
-  const buttonClassName = props.isCircle ? 'button-circle' : 'button';
-  const buttonValue = getButtonValue(props);
+  const attributes = {
+    className: props.isCircle ? 'button-circle' : 'button',
+    'data-class': 'mbr bs fc click',
+    'data-button-color': props.color || 'primary',
+    onClick: props.clickHandler
+  };
+  const value = getValue(props);
+
   return (
-    <div
-      className={buttonClassName}
-      data-class="mbr bs fc click"
-      data-button-color={dataButtonColor}
-    >{buttonValue.map((item, index) => <div key={index}>{item}</div>)}</div>
+    <div {...attributes}>
+      {value.map((item, index) => <div key={index}>{item}</div>)}
+    </div>
   )
 }
 
 /** help functions */
-function getButtonValue(props) {
+function getValue(props) {
   if (props.isCircle) return [props.icon];
   
   const value = [];

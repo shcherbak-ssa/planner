@@ -9,4 +9,7 @@
   &:hover {
     background: $primary-hover;
   }
+  &:active {
+    background: $primary-active;
+  }
 }

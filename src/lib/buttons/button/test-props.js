@@ -7,10 +7,13 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 /** test props */
 const testProps = {
+  color: 'flat',
   isCircle: false,
   label: 'label',
   icon: <Icon icon={faPlus}/>,
-  iconRight: true
+  clickHandler: () => {
+    console.log('buttonClickHandler');
+  }
 };
 
 /** exports */
