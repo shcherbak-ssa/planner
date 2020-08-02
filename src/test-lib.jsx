@@ -3,7 +3,7 @@
 /** imports */
 import '@babel/polyfill';
 import React from 'react';
-import render from './render';
+import render from './tools/render';
 
 // assets
 import './assets/view/test-lib.html';
