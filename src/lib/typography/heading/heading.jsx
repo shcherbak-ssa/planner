@@ -6,7 +6,8 @@ import './heading.scss';
 
 /** Heading component */
 export default function Heading(props) {
-  const headingClassName = 'heading' + props.type;
+  let headingClassName = 'heading' + props.type;
+  headingClassName += props.name ? ` ${props.name}` : '';
   return (
     <div className={headingClassName}>
       {props.children}
