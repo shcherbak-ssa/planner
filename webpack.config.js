@@ -2,8 +2,6 @@
 
 /** imports */
 const {join: joinPaths, resolve: resolvePath} = require('path');
-const webpack = require('webpack');
-const argv = require('optimist').argv;
 
 /** constants */
 const SRC_DIRNAME = joinPaths(__dirname, 'src');
@@ -17,17 +15,15 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 /** webpack config */
 const webpackConfig = (env = {}) => {
   const isDev = env.isDev || false;
-  const {page} = env;
-  const testComponent = page === 'test-lib' ? argv.c : false;
   return {
     mode: currentMode(isDev),
     watch: isDev,
     devtool: currentDevtool(isDev),
-    entry: joinPaths(SRC_DIRNAME, `${page}.jsx`),
+    entry: joinPaths(SRC_DIRNAME, `planner.jsx`),
     output: {
       path: resolvePath(__dirname, 'public'),
       chunkFilename: 'js/[name].chunk.js',
-      filename: `js/${page}.js`
+      filename: `js/planner.js`
     },
     module: {
       rules: [
@@ -114,9 +110,6 @@ const webpackConfig = (env = {}) => {
       }
     },
     plugins: [
-      new webpack.DefinePlugin({
-        TEST_COMPONENT: JSON.stringify(testComponent)
-      }),
       new CleanWebpackPlugin(),
       new MiniCssExtractPlugin({
         filename: `css/${page}.css`

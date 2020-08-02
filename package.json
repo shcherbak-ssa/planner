@@ -5,10 +5,8 @@
   "main": "index.js",
   "scripts": {
     "server": "node server",
-    "server-test-lib": "node server --isTestLib",
-    "dev-lib": "webpack --env.isDev --env.page=test-lib --c=form/input",
-    "dev-login": "webpack --env.isDev --env.page=login",
-    "build-login": "webpack"
+    "dev": "webpack --env.isDev",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -42,7 +40,6 @@
     "html-loader": "^1.1.0",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.14.1",
-    "optimist": "^0.6.1",
     "postcss-loader": "^3.0.0",
     "postcss-short": "^5.0.0",
     "sass-loader": "^9.0.2",
