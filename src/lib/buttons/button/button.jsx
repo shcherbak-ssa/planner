@@ -17,13 +17,25 @@ export default function Button(props) {
       className={buttonClassName}
       data-class="mbr bs fc click"
       data-button-color={dataButtonColor}
-    >{buttonValue}</div>
+    >{buttonValue.map((item, index) => <div key={index}>{item}</div>)}</div>
   )
 }
 
 /** help functions */
 function getButtonValue(props) {
-  if (props.isCircle) return props.icon;
+  if (props.isCircle) return [props.icon];
   
-  return <Typography.Paragraph />
+  const value = [];
+  value.push(getText(props.label));
+
+  if (props.icon) {
+    const {icon} = props;
+    props.iconLeft ? value.unshift(icon) : value.push(icon);
+  }
+
+  return value;
+}
+function getText(text) {
+  const paragraphProps = {type: 2, text};
+  return <Typography.Paragraph {...paragraphProps}/>
 }

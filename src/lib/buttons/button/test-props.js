@@ -2,8 +2,8 @@
 
 /** test props */
 const testProps = {
-  isCircle: true,
-  icon: '+'
+  isCircle: false,
+  label: 'Label'
 };
 
 /** exports */
