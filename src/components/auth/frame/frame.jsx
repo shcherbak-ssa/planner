@@ -31,7 +31,9 @@ export default function Frame(props) {
     <div className="frame" data-class="bs bsh fbr pc white">
       <Typography.Heading type="4" name="frame-heading">{props.heading}</Typography.Heading>
       <Framebar>{props.framebar}</Framebar>
-      {props.children}
+      <div className="frame-form">
+        {props.children}
+      </div>
       <ChangeModeButton label={changeModeButtonLabel} nextMode={`/${getNextMode()}`}/>
     </div>
   )
