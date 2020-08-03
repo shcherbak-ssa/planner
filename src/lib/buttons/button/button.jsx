@@ -12,7 +12,7 @@ export default function Button(props) {
   const attributes = {
     className: props.isCircle ? 'button-circle' : 'button',
     'data-class': 'mbr bs fc click',
-    'data-button-color': props.color || 'primary',
+    'data-button-type': props.type || 'primary',
     onClick: props.clickHandler
   };
   const value = getValue(props);

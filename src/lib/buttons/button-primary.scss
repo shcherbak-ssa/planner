@@ -3,7 +3,7 @@
 @import '@style-assets';
 
 /** styles */
-[data-button-color="primary"] {
+[data-button-type="primary"] {
   -x-color: $white $primary;
 
   &:hover {
