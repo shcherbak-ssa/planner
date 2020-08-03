@@ -9,6 +9,7 @@ import Typography from '../../typography';
 
 /** Button component */
 export default function Button(props) {
+  /** data */
   const attributes = {
     className: props.isCircle ? 'button-circle' : 'button',
     'data-class': 'mbr bs fc click',
@@ -17,6 +18,7 @@ export default function Button(props) {
   };
   const value = getValue(props);
 
+  /** render */
   return (
     <div {...attributes}>
       {value.map((item, index) => <div key={index}>{item}</div>)}
