@@ -6,8 +6,8 @@ import React from 'react';
 // components
 import Container from './container';
 
-/** Login component */
-export default function Login(props) {
+/** Auth component */
+export default function Auth(props) {
   /** render */
   return (
     <Container type={props.type}/>
