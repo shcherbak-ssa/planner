@@ -21,7 +21,7 @@ export default function ChangeEmailButton(props) {
     name: 'change-email-button',
     type: 'flat',
     icon: faArrowLeft,
-    lable: 'Change e-mail',
+    label: 'Change e-mail',
     clickHandler(e) {}
   };
 

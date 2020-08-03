@@ -15,7 +15,8 @@ import {
 } from './src/constants';
 
 // components
-import EntryEmail from './src/entry-email';
+import EntryEmail from './src/entry-email.jsx';
+import ConfirmationCode from './src/confirmation-code';
 
 /** Registration component */
 export default function Registration(props) {
@@ -29,7 +30,7 @@ export default function Registration(props) {
         <EntryEmail/>
       </Route>
       <Route path={CONFIRMATION_CODE_PATH}>
-        
+        <ConfirmationCode/>
       </Route>
       <Route path={FINISH_PATH}>
         

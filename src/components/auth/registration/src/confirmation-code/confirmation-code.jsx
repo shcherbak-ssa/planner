@@ -5,7 +5,7 @@ import React from 'react';
 import './confirmation-code.scss';
 
 // components
-import RegistrationFrame from './registration-frame';
+import RegistrationFrame from '../registration-frame';
 import Typography from '@lib/typography';
 import Input from '@lib/form/input';
 
