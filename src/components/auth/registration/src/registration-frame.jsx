@@ -4,8 +4,8 @@
 import React from 'react';
 
 // components
-import Frame from '../frame';
-import GoogleAuth from '../google-auth';
+import Frame from '../../frame';
+import GoogleAuth from '../../google-auth';
 import ChangeEmailButton from '../change-email-button';
 
 /** constants */
