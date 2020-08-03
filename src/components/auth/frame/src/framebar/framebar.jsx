@@ -8,7 +8,7 @@ import './framebar.scss';
 export default function Framebar(props) {
   /** render */
   return (
-    <div className="framebar" data-class="bs fsb">
+    <div className="framebar" data-class="bs fac">
       {props.children}
     </div>
   )
