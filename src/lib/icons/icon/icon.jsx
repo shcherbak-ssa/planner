@@ -9,9 +9,13 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 /** Icon component */
 export default function Icon(props) {
+  /** data */
+  const size = props.size || 'sm';
+
+  /** render */
   return (
     <div className="icon">
-      <FontAwesomeIcon icon={props.icon} size="sm" />
+      <FontAwesomeIcon icon={props.icon} size={size} />
     </div>
   )
 }

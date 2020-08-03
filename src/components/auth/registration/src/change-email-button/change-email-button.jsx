@@ -10,25 +10,18 @@ import {ENTRY_EMAIL_PATH} from '../constants';
 import './change-email-button.scss';
 
 // components
-import Button from '@lib/buttons/button';
-
-/** constants */
+import Icon from '@lib/icons/icon';
+import Typography from '@lib/typography';
 
 /** ChangeEmailButton component */
 export default function ChangeEmailButton(props) {
-  /** data */
-  const buttonProps = {
-    name: 'change-email-button',
-    type: 'flat',
-    icon: faArrowLeft,
-    label: 'Change e-mail',
-    clickHandler(e) {}
-  };
-
   /** render */
   return (
     <Link to={ENTRY_EMAIL_PATH}>
-      <Button {...buttonProps}/>
+      <div className="change-email-button" data-class="flex">
+        <Icon icon={faArrowLeft} size="xs"/>
+        <Typography.Paragraph type="2">Change email</Typography.Paragraph>
+      </div>
     </Link>
   )
 }

@@ -1,5 +1,12 @@
 
+/** imports */
+@import '@style-assets';
+
 /** styles */
 .change-email-button {
-  width: 122px;
+  color: $primary;
+
+  .icon {
+    margin-right: 6px;
+  }
 }
