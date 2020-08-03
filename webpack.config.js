@@ -57,6 +57,11 @@ const webpackConfig = (env = {}) => {
           }
         },
         {
+          test: /\.ts$/,
+          exclude: /node_modules/,
+          loader: 'ts-loader'
+        },
+        {
           test: /\.scss$/,
           use: [
             MiniCssExtractPlugin.loader,
@@ -103,7 +108,7 @@ const webpackConfig = (env = {}) => {
       ]
     },
     resolve: {
-      extensions: ['.js', '.jsx'],
+      extensions: ['.js', '.jsx', '.ts'],
       alias: {
         '@': SRC_DIRNAME,
         '@lib': joinPaths(SRC_DIRNAME, 'lib'),
