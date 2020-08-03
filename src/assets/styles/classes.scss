@@ -6,10 +6,14 @@
 [data-class~="mbr"] { // main-border-radius
   border-radius: $main-border-radius;
 }
+[data-class~="fbr"] { // frame-border-radius
+  border-radius: $frame-border-radius;
+}
 
 /** box-shadow */
 [data-class~="bsh"] { // box-shadow
   box-shadow: $default-shadow;
+  transition: .4s;
 
   &:hover {
     box-shadow: $hover-shadow;
@@ -19,6 +23,11 @@
 /** box-sizing */
 [data-class~="bs"] {
   box-sizing: border-box;
+}
+
+/** colors */
+[data-class~="white"] {
+  background: $white;
 }
 
 /** flex */
@@ -32,6 +41,10 @@
 [data-class~="ptc"] { // position-top-center
   top: 50%;
   transform: translateY(-50%);
+}
+[data-class~="pc"] { // position-center
+  transform: translate(-50%, -50%);
+  -x-position: absolute 50% 0 0 50%;
 }
 
 /** sizes */
