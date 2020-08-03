@@ -11,7 +11,8 @@ import Button from '@lib/buttons/button'
 export default function ChangeModeButton(props) {
   /** data */
   const buttonProps = {
-    color: 'flat'
+    type: 'flat',
+    clickHandler() {}
   };
   /** render */
   return (
