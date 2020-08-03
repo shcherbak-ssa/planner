@@ -40,9 +40,12 @@ export default function Input(props) {
   });
 
   /** methods */
+  
   // handlers
   function clickHanlder(e) {
     e.preventDefault();
+    if (props.readOnly) return;
+    
     if (!e.target.classList.contains('input-field')) {
       focusOnInput(e);
       setIsFilled(true);

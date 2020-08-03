@@ -4,7 +4,7 @@
 import React from 'react';
 
 // components
-import RegistrationFrame from './registration-frame';
+import RegistrationFrame from '../registration-frame';
 import Input from '@lib/form/input';
 import Button from '@lib/buttons/button';
 
@@ -19,7 +19,7 @@ export default function Finish(props) {
   };
   const inputEmailProps = {
     readOnly: true,
-    value: props.value,
+    value: props.email,
     error: '',
     placeholder: 'E-mail'
   };

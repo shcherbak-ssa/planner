@@ -15,10 +15,12 @@ import Button from '@lib/buttons/button';
 export default function EntryEmail(props) {
   /** data */
   const inputProps = {
-    value: '',
+    value: props.email,
     error: '',
     placeholder: 'E-mail',
-    blurCallback(value) {}
+    blurCallback(value) {
+      props.updateEmail(value);
+    }
   };
   const buttonProps = {
     iconRight: true,

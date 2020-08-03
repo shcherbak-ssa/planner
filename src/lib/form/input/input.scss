@@ -60,4 +60,9 @@
       opacity: 1;
     }
   }
+  &.is-read-only {
+    .input-field {
+      z-index: 0;
+    }
+  }
 }

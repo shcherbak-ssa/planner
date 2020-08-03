@@ -1,7 +1,16 @@
 
+/** imports */
+@import '@style-assets';
+
 /** styles */
 .confirmation-code {
   &-message {
+    text-align: center;
     margin-bottom: 30px;
+    padding: 0 10px;
+
+    span {
+      color: $primary;
+    }
   }
 }
