@@ -21,10 +21,10 @@ export default function PlannerRouter(props) {
           <Redirect to="/registration"/>
         </Route>
         <Route path="/registration">
-          <Auth type="registration"/>
+          <Auth mode="registration"/>
         </Route>
         <Route path="/login">
-          <Auth type="login"/>
+          <Auth mode="login"/>
         </Route>
       </Switch>
     </Router>
