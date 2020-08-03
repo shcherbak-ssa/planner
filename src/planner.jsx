@@ -10,13 +10,14 @@ import './assets/styles/main.scss';
 import './assets/fonts';
 
 // components
-import PlannerRouter from './components/planner-router.jsx';
+import PlannerRouter from './components/planner-router';
 
 /** init */
-window.onbeforeunload = () => {
-  document.cookie = `session=${JSON.stringify({active: false})}`;
-}
 ReactDOM.render(
   <PlannerRouter />,
   document.getElementById('root')
 );
+// @todo: need to prettify
+window.onbeforeunload = () => {
+  document.cookie = `session=${JSON.stringify({active: false})}`;
+}
