@@ -1,0 +1,11 @@
+
+/** imports */
+@import '@style-assets';
+
+/** styles */
+.framebar {
+  background: $white-s;
+  margin-left: -32px;
+  padding: 0 32px;
+  -x-size: calc(100% + 64px) 60px;
+}

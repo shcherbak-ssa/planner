@@ -7,6 +7,7 @@ import './frame.scss';
 // components
 import Typography from '@lib/typography';
 import ChangeModeButton from './src/change-mode-button';
+import Framebar from './src/framebar';
 
 /** constants */
 const modeLabels = {
@@ -29,6 +30,7 @@ export default function Frame(props) {
   return (
     <div className="frame" data-class="bs bsh fbr pc white">
       <Typography.Heading type="4" name="frame-heading">{props.heading}</Typography.Heading>
+      <Framebar>{props.framebar}</Framebar>
       {props.children}
       <ChangeModeButton label={changeModeButtonLabel} nextMode={`/${getNextMode()}`}/>
     </div>

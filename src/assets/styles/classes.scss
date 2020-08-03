@@ -31,6 +31,18 @@
 }
 
 /** flex */
+[data-class~="flex"] {
+  display: flex;
+}
+[data-class~="fac"] { // flex-align-center
+  display: flex;
+  align-items: center;
+}
+[data-class~="fsb"] { // flex-space-between
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 [data-class~="fc"] { // flex-center
   display: flex;
   justify-content: center;
