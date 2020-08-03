@@ -4,6 +4,7 @@
 import React, {useState} from 'react';
 
 // components
+import Container from './container';
 import Login from './login';
 import Registration from './registration';
 
@@ -16,10 +17,18 @@ export default function Auth(props) {
   function changeMode() {
     mode === 'login' ? setMode('registration') : setMode('login');
   }
+  function getModeComponent() {
+    switch(mode) {
+      case 'login': return <Login/>
+      case 'registration': return <Registration/>
+    }
+  }
 
   /** render */
-  switch(mode) {
-    case 'login': return <Login/>
-    case 'registration': return <Registration/>
-  }
+  const ModeComponent = getModeComponent();
+  return (
+    <Container>
+      <ModeComponent/>
+    </Container>
+  )
 }
