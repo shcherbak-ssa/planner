@@ -1,7 +1,7 @@
 'use strict';
 
 /** constants */
-const JSON_CONTENT_TYPE = 'application/json;charset=utf-8';
+const JSON_CONTENT_TYPE: string = 'application/json;charset=utf-8';
 
 /** export */
 export {
