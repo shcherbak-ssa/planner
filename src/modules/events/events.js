@@ -6,10 +6,15 @@ import EventEmitter from './emitter';
 /** init */
 const uiEventEmitter = new EventEmitter();
 
-/** event emitters */
-const eventEmitters = {
-  uiEventEmitter
-};
+/** events */
+const events = {
+  uiEventEmitter,
+  createEmitter(name) {
+    const newEmitter = new EventEmitter();
+    events[`${name}EventEmitter`] = newEmitter;
+    return newEmitter;
+  }
+}
 
 /** export */
-export default eventEmitters;
+export default events;
