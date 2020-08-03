@@ -17,8 +17,9 @@ export default function Input(props) {
   /** constants */
   const filledClassName = isFilled ? ' is-filled' : '';
   const errorClassName = isError ? ' is-error' : '';
+  const parentClassName = props.name ? ` ${props.name}` : '';
   const attributes = {
-    className: `input${filledClassName}${errorClassName}`,
+    className: `input${filledClassName}${errorClassName}${parentClassName}`,
     'data-class': 'bs mbr bsh click'
   };
 
