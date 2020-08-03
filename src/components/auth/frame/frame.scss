@@ -6,4 +6,8 @@
 .frame {
   padding: 32px;
   z-index: 9;
+
+  &-heading {
+    margin-bottom: 20px;
+  }
 }
