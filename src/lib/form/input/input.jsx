@@ -14,12 +14,19 @@ export default function Input(props) {
   const [isError, setIsError] = useState(false);
   const [value, setValue] = useState(props.value);
   
-  /** constants */
+  /** data */
+  const readOnlyClassName = props.readOnly ? ' is-read-only' : '';
   const filledClassName = isFilled ? ' is-filled' : '';
   const errorClassName = isError ? ' is-error' : '';
   const parentClassName = props.name ? ` ${props.name}` : '';
+
   const attributes = {
-    className: `input${filledClassName}${errorClassName}${parentClassName}`,
+    className: `input${
+      readOnlyClassName +
+      filledClassName +
+      errorClassName +
+      parentClassName
+    }`,
     'data-class': 'bs mbr bsh click'
   };
 
@@ -32,7 +39,8 @@ export default function Input(props) {
     }
   });
 
-  /** handlers */
+  /** methods */
+  // handlers
   function clickHanlder(e) {
     e.preventDefault();
     if (!e.target.classList.contains('input-field')) {
@@ -49,7 +57,7 @@ export default function Input(props) {
     props.blurCallback(e.target.value);
   }
 
-  /** src functions */
+  // src
   function focusOnInput(e) {
     e.target.children[0].focus();
   }
