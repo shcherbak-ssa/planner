@@ -103,6 +103,7 @@ const webpackConfig = (env = {}) => {
       ]
     },
     resolve: {
+      extensions: ['.js', '.jsx'],
       alias: {
         '@': SRC_DIRNAME,
         '@lib': joinPaths(SRC_DIRNAME, 'lib'),
