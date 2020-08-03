@@ -10,7 +10,7 @@ import Frame from '../frame';
 export default function Registration(props) {
   /** render */
   return (
-    <Frame>
+    <Frame heading="Registration">
       Registration
     </Frame>
   )
