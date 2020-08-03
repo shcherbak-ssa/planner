@@ -9,6 +9,9 @@ import {
   Redirect,
 } from 'react-router-dom';
 
+// components
+import Auth from './auth';
+
 /** PlannerRouter component */
 export default function PlannerRouter(props) {
   return (
@@ -17,8 +20,12 @@ export default function PlannerRouter(props) {
         <Route exact path="/">
           <Redirect to="/registration"/>
         </Route>
-        <Route path="/registration"></Route>
-        <Route path="/login"></Route>
+        <Route path="/registration">
+          <Auth type="registration"/>
+        </Route>
+        <Route path="/login">
+          <Auth type="login"/>
+        </Route>
       </Switch>
     </Router>
   )
