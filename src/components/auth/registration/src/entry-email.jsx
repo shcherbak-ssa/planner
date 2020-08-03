@@ -4,10 +4,10 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {faAngleRight} from '@fortawesome/free-solid-svg-icons';
-import {CONFIRMATION_CODE_PATH} from '../constants';
+import {CONFIRMATION_CODE_PATH} from './constants';
 
 // components
-import RegistrationFrame from '../registration-frame';
+import RegistrationFrame from './registration-frame';
 import Input from '@lib/form/input';
 import Button from '@lib/buttons/button';
 
@@ -15,7 +15,6 @@ import Button from '@lib/buttons/button';
 export default function EntryEmail(props) {
   /** data */
   const inputProps = {
-    name: 'entry-email-input',
     value: '',
     error: '',
     placeholder: 'E-mail',
