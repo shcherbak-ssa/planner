@@ -6,6 +6,7 @@
 .input {
   background: $white;
   padding: 6px 0 6px 16px;
+  margin-bottom: 32px;
   -x-size: 100% 56px;
 
   &-field {
@@ -52,6 +53,7 @@
   &.is-error {
     background: $primary-red-girl;
     box-shadow: $error-shadow;
+    margin-bottom: 42px;
 
     .input-error {
       bottom: -28px;

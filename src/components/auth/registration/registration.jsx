@@ -14,6 +14,9 @@ import {
   FINISH_PATH,
 } from './src/constants';
 
+// components
+import EntryEmail from './src/entry-email';
+
 /** Registration component */
 export default function Registration(props) {
   /** render */
@@ -23,7 +26,7 @@ export default function Registration(props) {
         <Redirect to={ENTRY_EMAIL_PATH}/>
       </Route>
       <Route path={ENTRY_EMAIL_PATH}>
-        
+        <EntryEmail/>
       </Route>
       <Route path={CONFIRMATION_CODE_PATH}>
         

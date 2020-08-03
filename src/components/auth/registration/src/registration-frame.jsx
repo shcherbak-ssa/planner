@@ -6,7 +6,7 @@ import React from 'react';
 // components
 import Frame from '../../frame';
 import GoogleAuth from '../../google-auth';
-import ChangeEmailButton from '../change-email-button';
+import ChangeEmailButton from './change-email-button';
 
 /** constants */
 const CURRENT_MODE = 'registration';

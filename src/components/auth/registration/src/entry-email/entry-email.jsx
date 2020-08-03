@@ -3,6 +3,8 @@
 /** imports */
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {faAngleRight} from '@fortawesome/free-solid-svg-icons';
+import {CONFIRMATION_CODE_PATH} from '../constants';
 
 // components
 import RegistrationFrame from '../registration-frame';
@@ -20,13 +22,17 @@ export default function EntryEmail(props) {
     blurCallback(value) {}
   };
   const buttonProps = {
-
+    iconRight: true,
+    icon: faAngleRight,
+    label: 'Continue',
+    clickHandler(e) {}
   };
+  
   /** render */
   return (
     <RegistrationFrame type="email">
       <Input {...inputProps}/>
-      <Link>
+      <Link to={CONFIRMATION_CODE_PATH}>
         <Button {...buttonProps}/>
       </Link>
     </RegistrationFrame>

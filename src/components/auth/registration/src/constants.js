@@ -15,4 +15,9 @@ const constants = {
 };
 
 /** export */
-export default constants;
+export {
+  REGISTRATION_PATH,
+  ENTRY_EMAIL_PATH,
+  CONFIRMATION_CODE_PATH,
+  FINISH_PATH,
+};
