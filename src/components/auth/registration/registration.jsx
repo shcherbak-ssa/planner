@@ -28,21 +28,27 @@ export default function Registration(props) {
   function updateEmail(value) {
     setEmail(value);
   }
+  function redirect() {
+    return <Redirect to={ENTRY_EMAIL_PATH}/>
+  }
+  function drawIfEmailExist(component) {
+    return email ? component : redirect();
+  }
 
   /** render */
   return (
     <Switch>
       <Route exact path={REGISTRATION_PATH}>
-        <Redirect to={ENTRY_EMAIL_PATH}/>
+        {redirect()}
       </Route>
       <Route path={ENTRY_EMAIL_PATH}>
         <EntryEmail email={email} updateEmail={updateEmail} />
       </Route>
       <Route path={CONFIRMATION_CODE_PATH}>
-        <ConfirmationCode email={email} />
+        {drawIfEmailExist(<ConfirmationCode email={email} />)}
       </Route>
       <Route path={FINISH_PATH}>
-        <Finish email={email} />
+        {drawIfEmailExist(<Finish email={email} />)}
       </Route>
     </Switch>
   )

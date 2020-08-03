@@ -40,7 +40,7 @@ export default function Input(props) {
   });
 
   /** methods */
-  
+
   // handlers
   function clickHanlder(e) {
     e.preventDefault();
@@ -53,11 +53,12 @@ export default function Input(props) {
   }
   function changeHandler({target}) {
     setValue(target.value);
+    if (props.changeHandler) props.changeHandler(targe.value);
   }
   function blurHandler(e) {
     e.preventDefault();
     if (value === '') setIsFilled(false);
-    props.blurCallback(e.target.value);
+    if (props.blurCallback) props.blurCallback(e.target.value);
   }
 
   // src
