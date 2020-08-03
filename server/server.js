@@ -2,8 +2,10 @@
 
 /** imports */
 const express = require('express');
+const cookieParser = require('cookie-parser');
+
 const {
-  rootRouter,
+  rootRequestHandler,
   staticRouter
 } = require('./network');
 
@@ -16,12 +18,15 @@ const STATIC_REGEXP_PATH = /^\/(css|js|fonts|images)/;
 
 /** init */
 const planner = express();
+planner.use(cookieParser());
 
-// init routers
-planner.use(ROOT_REGEXP_PATH, rootRouter);
+// root request
+planner.get(ROOT_REGEXP_PATH, rootRequestHandler);
+
+// routers
 planner.use(STATIC_REGEXP_PATH, staticRouter);
 
-// run server
+// run
 planner.listen(PORT, HOSTNAME, () => {
   console.log(`Server runs on http://${HOSTNAME}:${PORT}/`);
 });

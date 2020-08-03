@@ -14,7 +14,6 @@ class StaticFileSender {
   constructor(res, filename) {
     this._res = res;
     this._filePath = this._getFilePath(filename);
-    console.log(this._filePath);
   }
 
   /** static methods */

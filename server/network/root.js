@@ -1,22 +1,20 @@
 'use strict';
 
 /** imports */
-const {Router} = require('express');
 const StaticFileSender = require('./src/static-file-sender');
 
 /** constants */
-const COOKIE_SESSION_ACTIVE = 'session-active';
+const SESSION_COOKIE_OPTIONS = {active: true};
 const ROOT_FILE_PATH = 'view/index.html';
 
 /** init */
-const rootRouter = new Router();
+async function rootRequestHandler(req, res, next) {
+  const sessionCookie = req.cookies.session;
+  if (sessionCookie && JSON.parse(sessionCookie).active) return next();
 
-rootRouter.use(async (req, res, next) => {
-  if (req.cookies[COOKIE_SESSION_ACTIVE]) return next();
-
-  res.cookies(COOKIE_SESSION_ACTIVE, true);
+  res.cookie('session', JSON.stringify(SESSION_COOKIE_OPTIONS));
   await StaticFileSender.createForRoot(res, ROOT_FILE_PATH).send();
-});
+}
 
 /** exports */
-module.exports = rootRouter;
+module.exports = rootRequestHandler;
