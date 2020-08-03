@@ -6,27 +6,29 @@ import {
   Switch,
   Route,
   Redirect,
-  useRouteMatch,
 } from 'react-router-dom';
+import {
+  REGISTRATION_PATH,
+  ENTRY_EMAIL_PATH,
+  CONFIRMATION_CODE_PATH,
+  FINISH_PATH,
+} from './src/constants';
 
 /** Registration component */
 export default function Registration(props) {
-  /** data */
-  const {path} = useRouteMatch();
-
   /** render */
   return (
     <Switch>
-      <Route exact path={path}>
-        <Redirect to={`${path}/email`}/>
+      <Route exact path={REGISTRATION_PATH}>
+        <Redirect to={ENTRY_EMAIL_PATH}/>
       </Route>
-      <Route path={`${path}/email`}>
+      <Route path={ENTRY_EMAIL_PATH}>
         
       </Route>
-      <Route path={`${path}/code`}>
+      <Route path={CONFIRMATION_CODE_PATH}>
         
       </Route>
-      <Route path={`${path}/finish`}>
+      <Route path={FINISH_PATH}>
         
       </Route>
     </Switch>

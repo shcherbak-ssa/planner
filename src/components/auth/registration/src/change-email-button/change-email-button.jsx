@@ -4,6 +4,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {faArrowLeft} from '@fortawesome/free-solid-svg-icons';
+import {ENTRY_EMAIL_PATH} from '../constants';
 
 // assets
 import './change-email-button.scss';
@@ -12,7 +13,6 @@ import './change-email-button.scss';
 import Button from '@lib/buttons/button';
 
 /** constants */
-const CHANGE_EMAIL_PATH = '/registration/email';
 
 /** ChangeEmailButton component */
 export default function ChangeEmailButton(props) {
@@ -27,7 +27,7 @@ export default function ChangeEmailButton(props) {
 
   /** render */
   return (
-    <Link to={CHANGE_EMAIL_PATH}>
+    <Link to={ENTRY_EMAIL_PATH}>
       <Button {...buttonProps}/>
     </Link>
   )
