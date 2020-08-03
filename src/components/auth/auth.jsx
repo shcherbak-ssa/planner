@@ -25,10 +25,9 @@ export default function Auth(props) {
   }
 
   /** render */
-  const ModeComponent = getModeComponent();
   return (
     <Container>
-      <ModeComponent/>
+      {getModeComponent()}
     </Container>
   )
 }
