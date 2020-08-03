@@ -11,16 +11,17 @@ import Button from '@lib/buttons/button'
 export default function ChangeModeButton(props) {
   /** data */
   const buttonProps = {
+    name: 'change-mode-button',
     type: 'flat',
     label: props.label,
     clickHandler(e) {
-      e.preventDefault();
+      //e.preventDefault();
     }
   };
 
   /** render */
   return (
-    <Link to={props.mode}>
+    <Link to={props.nextMode}>
       <Button {...buttonProps}/>
     </Link>
   )

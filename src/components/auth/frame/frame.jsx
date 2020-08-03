@@ -17,15 +17,20 @@ const modeLabels = {
 /** Frame component */
 export default function Frame(props) {
   /** data */
-  const {mode} = props;
-  const changeModeButtonLabel = modeLabels[mode];
+  const {currentMode} = props;
+  const changeModeButtonLabel = modeLabels[currentMode];
+
+  /** methods */
+  function getNextMode() {
+    return currentMode === 'login' ? 'registration' : 'login'
+  }
 
   /** render */
   return (
     <div className="frame" data-class="bs bsh fbr pc white">
       <Typography.Heading type="4" name="frame-heading">{props.heading}</Typography.Heading>
       {props.children}
-      <ChangeModeButton label={changeModeButtonLabel} mode={`/${mode}`}/>
+      <ChangeModeButton label={changeModeButtonLabel} nextMode={`/${getNextMode()}`}/>
     </div>
   )
 }

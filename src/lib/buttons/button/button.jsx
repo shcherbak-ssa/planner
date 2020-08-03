@@ -10,8 +10,11 @@ import Typography from '../../typography';
 /** Button component */
 export default function Button(props) {
   /** data */
+  const buttonClassName = props.isCircle ? 'button-circle' : 'button';
+  const parentClassName = props.name ? ` ${props.name}` : '';
+  
   const attributes = {
-    className: props.isCircle ? 'button-circle' : 'button',
+    className: buttonClassName + parentClassName,
     'data-class': 'mbr bs fc click',
     'data-button-type': props.type || 'primary',
     onClick: props.clickHandler
