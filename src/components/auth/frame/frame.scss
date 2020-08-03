@@ -2,10 +2,14 @@
 /** imports */
 @import '@style-assets';
 
+/** assets */
+$design-login-frame-width: 474px;
+
 /** styles */
 .frame {
   padding: 32px;
   z-index: 9;
+  width: $design-login-frame-width;
 
   &-heading {
     margin-bottom: 20px;
