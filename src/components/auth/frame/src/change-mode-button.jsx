@@ -12,12 +12,16 @@ export default function ChangeModeButton(props) {
   /** data */
   const buttonProps = {
     type: 'flat',
-    clickHandler() {}
+    label: props.label,
+    clickHandler(e) {
+      e.preventDefault();
+    }
   };
+
   /** render */
   return (
-    <Link>
-      <Button></Button>
+    <Link to={props.mode}>
+      <Button {...buttonProps}/>
     </Link>
   )
 }
