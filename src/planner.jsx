@@ -3,7 +3,6 @@
 /** imports */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Cookie from '@module/tools/cookie';
 
 // assets
 import './assets/index.html';
@@ -14,10 +13,7 @@ import './assets/fonts';
 import PlannerRouter from './components/planner-router.jsx';
 
 /** init */
-const cookie = new Cookie();
-const rootMode = cookie.get('root-mode');
-
 ReactDOM.render(
-  <PlannerRouter rootMode={rootMode}/>,
+  <PlannerRouter />,
   document.getElementById('root')
 );
