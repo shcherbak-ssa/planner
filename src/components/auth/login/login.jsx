@@ -4,7 +4,7 @@
 import React from 'react';
 
 // components
-import Frame from '../frame';
+import Frame from '../components/frame';
 
 /** Login component */
 export default function Login(props) {

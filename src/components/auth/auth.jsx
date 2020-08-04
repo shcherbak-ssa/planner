@@ -9,7 +9,7 @@ import {
 } from '@module/events/auth';
 
 // components
-import Container from './container';
+import Container from './components/container';
 import Login from './login';
 import Registration from './registration';
 

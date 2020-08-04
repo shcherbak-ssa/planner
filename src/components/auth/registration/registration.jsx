@@ -7,17 +7,18 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
+
 import {
   REGISTRATION_PATH,
   ENTRY_EMAIL_PATH,
   CONFIRMATION_CODE_PATH,
   FINISH_PATH,
-} from './src/constants';
+} from './constants';
 
 // components
-import EntryEmail from './src/entry-email.jsx';
-import ConfirmationCode from './src/confirmation-code';
-import Finish from './src/finish';
+import EntryEmail from './components/entry-email.jsx';
+import ConfirmationCode from './components/confirmation-code';
+import Finish from './components/finish';
 
 /** Registration component */
 export default function Registration(props) {
