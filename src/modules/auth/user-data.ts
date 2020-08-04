@@ -34,6 +34,9 @@ class UserDataCreator {
   setPrivacyPolicy(isPrivacyPolicyChecked: boolean) {
     this.data.isPrivacyPolicyChecked = isPrivacyPolicyChecked;
   }
+  createUserData() {
+    return new UserData(this.data);
+  }
 }
 class UserData {
   private data: UserDataType;

@@ -4,6 +4,7 @@
 import EventEmitter from './emitter';
 import EntryEmail from '../auth/entry-email';
 import ConfirmCode from '../auth/confirm-code';
+import CreateAccount from '../auth/create-account';
 
 /** constants */
 const INIT_REGISTRATION: string = 'init-registration';
@@ -11,18 +12,20 @@ const INIT_LOGIN: string = 'init-login';
 
 const VALIDATE_ENTRY_EMAIL: string = 'validate-entry-email';
 const SEND_CONFIRM_CODE_TO_EMAIL: string = 'send-confirm-code-to-email';
+
 const GET_CONFIRM_CODE_LENGTH: string = 'get-confirm-code-length';
 const VALIDATE_CONFIRM_CODE: string = 'validate-confirm-code';
+
 const GET_USER_DATA_CREATOR: string = 'get-user-data-creator';
-const CREATE_USER: string = 'create-user';
+const CREATE_ACCOUNT: string = 'create-account';
 
 const INIT_ENTRY_EMAIL: string = 'init-entry-email';
 const INIT_CONFIRM_CODE: string = 'init-confirm-code';
-const INIT_FIHISH: string = 'init-finish';
+const INIT_CREATE_ACCOUNT: string = 'init-create-account';
 
 const REMOVE_ENTRY_EMAIL: string = 'remove-entry-email';
 const REMOVE_CONFIRM_CODE: string = 'remove-confirm-code';
-const REMOVE_FIHISH: string = 'remove-finish';
+const REMOVE_CREATE_ACCOUNT: string = 'remove-create-account';
 
 /** init */
 const authEventEmitter: EventEmitter = new EventEmitter();
@@ -57,29 +60,29 @@ function initConfirmCodeEvents() {
     .on(GET_CONFIRM_CODE_LENGTH, ConfirmCode.getConfirmCodeLength)
     .on(VALIDATE_CONFIRM_CODE, ConfirmCode.validate)
     .on(REMOVE_CONFIRM_CODE, removeConfirmCodeEvents)
-    .on(INIT_FIHISH, initFinishEvents);
+    .on(INIT_CREATE_ACCOUNT, initFinishEvents);
 }
 function removeConfirmCodeEvents() {
   authEventEmitter
     .off(GET_CONFIRM_CODE_LENGTH, ConfirmCode.getConfirmCodeLength)
     .off(VALIDATE_CONFIRM_CODE, ConfirmCode.validate)
     .off(REMOVE_CONFIRM_CODE, removeConfirmCodeEvents)
-    .off(INIT_FIHISH, initFinishEvents)
+    .off(INIT_CREATE_ACCOUNT, initFinishEvents)
 }
 
 // registration/finish
 function initFinishEvents() {
   authEventEmitter
-    .on(GET_USER_DATA_CREATOR, () => {})
-    .on(CREATE_USER, () => {})
-    .on(REMOVE_FIHISH, removeFinishEvents)
+    .on(GET_USER_DATA_CREATOR, CreateAccount.getUserDataCreator)
+    .on(CREATE_ACCOUNT, CreateAccount.create)
+    .on(REMOVE_CREATE_ACCOUNT, removeFinishEvents)
     .on(INIT_ENTRY_EMAIL, initEntryEmailEvents)
 }
 function removeFinishEvents() {
   authEventEmitter
-    .off(GET_USER_DATA_CREATOR, () => {})
-    .off(CREATE_USER, () => {})
-    .off(REMOVE_FIHISH, removeFinishEvents)
+    .off(GET_USER_DATA_CREATOR, CreateAccount.getUserDataCreator)
+    .off(CREATE_ACCOUNT, CreateAccount.create)
+    .off(REMOVE_CREATE_ACCOUNT, removeFinishEvents)
     .off(INIT_ENTRY_EMAIL, initEntryEmailEvents)
 }
 
@@ -96,11 +99,12 @@ export {
   SEND_CONFIRM_CODE_TO_EMAIL,
   GET_CONFIRM_CODE_LENGTH,
   VALIDATE_CONFIRM_CODE,
-  CREATE_USER,
+  GET_USER_DATA_CREATOR,
+  CREATE_ACCOUNT,
   INIT_ENTRY_EMAIL,
   INIT_CONFIRM_CODE,
-  INIT_FIHISH,
+  INIT_CREATE_ACCOUNT,
   REMOVE_ENTRY_EMAIL,
   REMOVE_CONFIRM_CODE,
-  REMOVE_FIHISH,
+  REMOVE_CREATE_ACCOUNT,
 }

@@ -5,9 +5,10 @@ import React, {useState, useEffect} from 'react';
 
 import {
   authEventEmitter,
-  INIT_FIHISH,
-  REMOVE_FINISH,
-  CREATE_USER,
+  INIT_CREATE_ACCOUNT,
+  REMOVE_CREATE_ACCOUNT,
+  GET_USER_DATA_CREATOR,
+  CREATE_ACCOUNT,
 } from '@module/events/auth';
 
 // components

@@ -8,7 +8,7 @@ class AuthGlobal {
   }
 
   /** public methods */
-  getCurrentAuthMode() {
+  getCurrentAuthMode(): string {
     return this.currentAuthMode;
   }
   setCurrentAuthMode(currentAuthMode: string) {
@@ -17,4 +17,5 @@ class AuthGlobal {
 }
 
 /** export */
-export default AuthGlobal;
+const authGlobal: AuthGlobal = new AuthGlobal();
+export default authGlobal;
