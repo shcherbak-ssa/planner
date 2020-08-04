@@ -23,6 +23,7 @@ import Button from '@lib/buttons/button';
 export default function EntryEmail(props) {
   /** states */
   const [inputError, setInputError] = useState('');
+  //const [inputValue, setInputValue] = useState(props.email);
   const history = useHistory();
 
   /** data */
@@ -30,8 +31,8 @@ export default function EntryEmail(props) {
     value: props.email,
     error: inputError,
     placeholder: 'E-mail',
-    changeHandler(value) {
-      props.updateEmail(value);
+    changeHandler({target}) {
+      props.updateEmail(target.value);
       if (inputError) setInputError('');
     },
   };

@@ -25,18 +25,25 @@ import Input from '@lib/form/input';
 export default function ConfirmationCode(props) {
   /** states */
   const [inputError, setInputError] = useState('');
+  const [inputValue, setInputValue] = useState('');
   const [confirmCodeLength, setConfirmCodeLength] = useState(0);
   const history = useHistory();
 
   /** data */
   const inputProps = {
-    value: '',
+    value: inputValue,
     error: inputError,
     placeholder: 'Confirmation code',
-    changeHandler(value) {
-      if (value.length === confirmCodeLength) {
-        authEventEmitter.emit(VALIDATE_CONFIRM_CODE, value, validateConfirmCodeCallback)
+    changeHandler({target: {value}}) {
+      setInputError('');
+      
+      const valueLength = value.length;
+      if (valueLength > confirmCodeLength) return;
+      if (valueLength === confirmCodeLength) {
+        authEventEmitter.emit(VALIDATE_CONFIRM_CODE, value, validateConfirmCodeCallback);
+        return setInputValue(value);
       }
+      setInputValue(value);
     },
   };
 
