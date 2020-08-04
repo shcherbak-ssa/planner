@@ -24,6 +24,8 @@ export default function CreateAccount(props) {
   const [inputPasswordValue, setInputPasswordValue] = useState('');
   const [inputPasswordError, setInputPasswordError] = useState('');
 
+  const [userDataCreator, setUserDataCreator] = useState(null);
+
   /** data */
   const inputFullnameProps = {
     value: inputFullnameValue,
@@ -31,7 +33,8 @@ export default function CreateAccount(props) {
     placeholder: 'Full name',
     changeHandler({target: {value}}) {
       setInputFullnameError('');
-
+      setInputFullnameValue(value);
+      userDataCreator.setFullname(value);
     }
   };
   const inputEmailProps = {
@@ -53,17 +56,29 @@ export default function CreateAccount(props) {
     label: 'Create account',
     clickHandler(e) {
       e.preventDefault();
+      const userData = userDataCreator.createUserData();
+      authEventEmitter.emit(CREATE_ACCOUNT, userData, createAccountCallback);
     }
   };
 
   /** methods */
+  function createAccountCallback(error) {
+    if (error) return;
+
+  }
 
   /** effects */
   useEffect(() => {
-    authEventEmitter.emit(INIT_FIHISH);
+    authEventEmitter.emit(INIT_CREATE_ACCOUNT);
     return () => {
-      authEventEmitter.emit(REMOVE_FINISH);
+      authEventEmitter.emit(REMOVE_CREATE_ACCOUNT);
     }
+  });
+  useEffect(() => {
+    authEventEmitter.emit(GET_USER_DATA_CREATOR, (creator) => {
+      setUserDataCreator(creator);
+      userDataCreator.setEmail(props.email);
+    });
   });
   
   /** render */
