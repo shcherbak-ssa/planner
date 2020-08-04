@@ -34,11 +34,19 @@ export default function Input(props) {
   /** effects */
   useEffect(() => {
     if (value !== '') setIsFilled(true);
+  });
+  useEffect(() => {
     if (props.error !== '') {
-      inputField.current.focus();
+      focusOnInput();
       setIsFilled(true);
       setIsError(true);
     }
+  });
+  useEffect(() => {
+    if (props.focus) {
+      focusOnInput();
+      setIsFilled(true);
+    }   
   });
 
   /** methods */
@@ -49,12 +57,16 @@ export default function Input(props) {
     if (props.readOnly) return;
     
     if (!e.target.classList.contains('input-field')) {
-      focusOnInput(e);
+      focusOnInput();
       setIsFilled(true);
     }
   }
   function changeHandler({target}) {
     setValue(target.value);
+    if (props.error && props.removeError) {
+      props.removeError();
+      removeError();
+    }
     if (props.changeHandler) props.changeHandler(targe.value);
   }
   function blurHandler(e) {
@@ -64,8 +76,11 @@ export default function Input(props) {
   }
 
   // src
-  function focusOnInput(e) {
-    e.target.children[0].focus();
+  function focusOnInput() {
+    inputField.current.focus();
+  }
+  function removeError() {
+    setIsError(false);
   }
 
   /** render */

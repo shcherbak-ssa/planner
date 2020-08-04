@@ -31,6 +31,9 @@ export default function EntryEmail(props) {
     placeholder: 'E-mail',
     blurCallback(value) {
       props.updateEmail(value);
+    },
+    removeError() {
+      setInputError('');
     }
   };
   const buttonProps = {
@@ -52,10 +55,8 @@ export default function EntryEmail(props) {
 
   /** effects */
   useEffect(() => {
-    console.log('init-entry-email');
     authEventEmitter.emit(INIT_ENTRY_EMAIL);
     return () => {
-      console.log('remove-entry-email');
       authEventEmitter.emit(REMOVE_ENTRY_EMAIL)
     }
   });

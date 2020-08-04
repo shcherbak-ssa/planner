@@ -7,10 +7,8 @@ import EntryEmail from './entry-email';
 class Auth {
   /** public methods */
   async checkEntryEmail(email: string, callback: Function) {
-    console.log(email);
     try {
       const entryEmail: EntryEmail = new EntryEmail();
-      console.log(email);
       await entryEmail.check(email);
       callback();
     } catch (error) {

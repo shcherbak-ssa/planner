@@ -5,6 +5,13 @@ import React, {useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
 import {FINISH_PATH} from '../constants';
 
+import {
+  authEventEmitter,
+  INIT_CONFIRM_CODE,
+  REMOVE_CONFIRM_CODE,
+  CHECK_CONFIRM_CODE,
+} from '@module/events/auth';
+
 // assets
 import './confirmation-code.scss';
 
@@ -15,8 +22,10 @@ import Input from '@lib/form/input';
 
 /** ConfirmationCode component */
 export default function ConfirmationCode(props) {
-  /** data */
+  /** states */
   const history = useHistory();
+
+  /** data */
   const inputProps = {
     value: '',
     error: '',
@@ -26,9 +35,10 @@ export default function ConfirmationCode(props) {
 
   /** effects */
   useEffect(() => {
-    setTimeout(() => {
-      history.push(FINISH_PATH);
-    }, 3000)
+    authEventEmitter.emit(INIT_CONFIRM_CODE);
+    return () => {
+      authEventEmitter.emit(REMOVE_CONFIRM_CODE);
+    }
   });
   
   /** render */
