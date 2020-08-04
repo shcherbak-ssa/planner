@@ -12,6 +12,7 @@ export default function Input(props) {
   /** states */
   const [isFilled, setIsFilled] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [error, setError] = useState(props.error);
   const [value, setValue] = useState(props.value);
   const inputField = useRef(null);
   
@@ -21,22 +22,19 @@ export default function Input(props) {
   const errorClassName = isError ? ' is-error' : '';
   const parentClassName = props.name ? ` ${props.name}` : '';
 
-  const attributes = {
-    className: `input${
-      readOnlyClassName +
-      filledClassName +
-      errorClassName +
-      parentClassName
-    }`,
-    'data-class': 'bs mbr bsh click'
-  };
+  const className = `input${
+    readOnlyClassName +
+    filledClassName +
+    errorClassName +
+    parentClassName
+  }`;
 
   /** effects */
   useEffect(() => {
     if (value !== '') setIsFilled(true);
   });
   useEffect(() => {
-    if (props.error !== '') {
+    if (error !== '') {
       focusOnInput();
       setIsFilled(true);
       setIsError(true);
@@ -62,17 +60,13 @@ export default function Input(props) {
     }
   }
   function changeHandler({target}) {
+    if (error) removeError();
     setValue(target.value);
-    if (props.error && props.removeError) {
-      props.removeError();
-      removeError();
-    }
-    if (props.changeHandler) props.changeHandler(target.value);
+    props.changeHandler(target.value);
   }
   function blurHandler(e) {
     e.preventDefault();
     if (value === '') setIsFilled(false);
-    if (props.blurCallback) props.blurCallback(e.target.value);
   }
 
   // src
@@ -81,11 +75,12 @@ export default function Input(props) {
   }
   function removeError() {
     setIsError(false);
+    setError('');
   }
 
   /** render */
   return (
-    <div {...attributes} onClick={clickHanlder}>
+    <div className={className} data-class="bs mbr bsh click" onClick={clickHanlder}>
       <input
         ref={inputField}
         type="text"
@@ -96,14 +91,10 @@ export default function Input(props) {
         onBlur={blurHandler}
       />
       <div className="input-placeholder" data-class="ptc">
-        <Typography.Paragraph type="2">
-          {props.placeholder}
-        </Typography.Paragraph>
+        <Typography.Paragraph type="2">{props.placeholder}</Typography.Paragraph>
       </div>
       <div className="input-error">
-        <Typography.Paragraph type="2">
-          {props.error}
-        </Typography.Paragraph>
+        <Typography.Paragraph type="2">{error}</Typography.Paragraph>
       </div>
     </div>
   )
