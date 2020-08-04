@@ -6,15 +6,16 @@ const cookieParser = require('cookie-parser');
 
 const {
   rootRequestHandler,
-  staticRouter
+  staticRouter,
+  authRouter,
 } = require('./network');
 
-/** constants */
-const PORT = 8080;
-const HOSTNAME = 'localhost';
-
-const ROOT_REGEXP_PATH = /^\//;
-const STATIC_REGEXP_PATH = /^\/(css|js|fonts|images)/;
+const {
+  PORT, HOSTNAME,
+  ROOT_REGEXP_PATH,
+  STATIC_REGEXP_PATH,
+  AUTH_REGEXP_PATH,
+} = require('./constants').server;
 
 /** init */
 const planner = express();
@@ -25,6 +26,7 @@ planner.get(ROOT_REGEXP_PATH, rootRequestHandler);
 
 // routers
 planner.use(STATIC_REGEXP_PATH, staticRouter);
+planner.use(AUTH_REGEXP_PATH, authRouter);
 
 // run
 planner.listen(PORT, HOSTNAME, () => {
