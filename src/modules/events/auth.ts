@@ -3,6 +3,7 @@
 /** imports */
 import EventEmitter from './emitter';
 import EntryEmail from '../auth/entry-email';
+import ConfirmCode from '../auth/confirm-code';
 
 /** constants */
 const INIT_REGISTRATION: string = 'init-registration';
@@ -10,6 +11,7 @@ const INIT_LOGIN: string = 'init-login';
 
 const VALIDATE_ENTRY_EMAIL: string = 'validate-entry-email';
 const SEND_CONFIRM_CODE_TO_EMAIL = 'send-confirm-code-to-email';
+const GET_CONFIRM_CODE_LENGTH = 'get-confirm-code-length';
 const VALIDATE_CONFIRM_CODE: string = 'validate-confirm-code';
 const CREATE_USER: string = 'create-user';
 
@@ -51,13 +53,15 @@ function removeEntryEmailEvents() {
 // registration/confirmation-code
 function initConfirmCodeEvents() {
   authEventEmitter
-    .on(VALIDATE_CONFIRM_CODE, () => {})
+    .on(GET_CONFIRM_CODE_LENGTH, ConfirmCode.getConfirmCodeLength)
+    .on(VALIDATE_CONFIRM_CODE, ConfirmCode.validate)
     .on(REMOVE_CONFIRM_CODE, removeConfirmCodeEvents)
     .on(INIT_FIHISH, initFinishEvents);
 }
 function removeConfirmCodeEvents() {
   authEventEmitter
-    .off(VALIDATE_CONFIRM_CODE, () => {})
+    .off(GET_CONFIRM_CODE_LENGTH, ConfirmCode.getConfirmCodeLength)
+    .off(VALIDATE_CONFIRM_CODE, ConfirmCode.validate)
     .off(REMOVE_CONFIRM_CODE, removeConfirmCodeEvents)
     .off(INIT_FIHISH, initFinishEvents)
 }
@@ -87,6 +91,7 @@ export {
   INIT_LOGIN,
   VALIDATE_ENTRY_EMAIL,
   SEND_CONFIRM_CODE_TO_EMAIL,
+  GET_CONFIRM_CODE_LENGTH,
   VALIDATE_CONFIRM_CODE,
   CREATE_USER,
   INIT_ENTRY_EMAIL,

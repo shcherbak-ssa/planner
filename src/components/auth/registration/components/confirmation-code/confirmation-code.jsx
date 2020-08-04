@@ -9,6 +9,7 @@ import {
   authEventEmitter,
   INIT_CONFIRM_CODE,
   REMOVE_CONFIRM_CODE,
+  GET_CONFIRM_CODE_LENGTH,
   VALIDATE_CONFIRM_CODE,
 } from '@module/events/auth';
 
@@ -24,6 +25,7 @@ import Input from '@lib/form/input';
 export default function ConfirmationCode(props) {
   /** states */
   const [inputError, setInputError] = useState('');
+  const [confirmCodeLength, setConfirmCodeLength] = useState(0);
   const history = useHistory();
 
   /** data */
@@ -32,9 +34,17 @@ export default function ConfirmationCode(props) {
     error: inputError,
     placeholder: 'Confirmation code',
     changeHandler(value) {
-      console.log(value);
+      if (value.length === confirmCodeLength) {
+        authEventEmitter.emit(VALIDATE_CONFIRM_CODE, value, validateConfirmCodeCallback)
+      }
     },
   };
+
+  /** methods */
+  function validateConfirmCodeCallback(errorMessage) {
+    if (errorMessage) return setInputError(errorMessage);
+    history.push(FINISH_PATH);
+  }
 
   /** effects */
   useEffect(() => {
@@ -42,6 +52,11 @@ export default function ConfirmationCode(props) {
     return () => {
       authEventEmitter.emit(REMOVE_CONFIRM_CODE);
     }
+  });
+  useEffect(() => {
+    authEventEmitter.emit(GET_CONFIRM_CODE_LENGTH, (length) => {
+      setConfirmCodeLength(length);
+    });
   });
   
   /** render */

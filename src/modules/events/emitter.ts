@@ -29,6 +29,7 @@ class EventEmitter {
   emit(event: string, ...options: any) {
     if (!this.hasEvent(event)) throw new Error(`Unknow event: ${event}`);
     
+    console.log('emit:', event);
     const handlers = this.getHandlers(event);
     handlers.map((handler) => handler(...options));
     return this;
