@@ -19,7 +19,7 @@ import './confirmation-code.scss';
 // components
 import RegistrationFrame from '../registration-frame';
 import Typography from '@lib/typography';
-import Input from '@lib/form/input';
+import Form from '@lib/form';
 
 /** ConfirmationCode component */
 export default function ConfirmationCode(props) {
@@ -73,7 +73,7 @@ export default function ConfirmationCode(props) {
         A confirmation code was sent to your email
         <span> {props.email}</span>
       </Typography.Paragraph>
-      <Input {...inputProps}/>
+      <Form.Input {...inputProps}/>
     </RegistrationFrame>
   )
 }

@@ -13,7 +13,7 @@ import {
 
 // components
 import RegistrationFrame from '../registration-frame';
-import Input from '@lib/form/input';
+import Form from '@lib/form';
 import Button from '@lib/buttons/button';
 
 /** CreateAccount component */
@@ -91,9 +91,9 @@ export default function CreateAccount(props) {
   /** render */
   return (
     <RegistrationFrame>
-      <Input {...inputFullnameProps}/>
-      <Input {...inputEmailProps}/>
-      <Input {...inputPasswordProps}/>
+      <Form.Input {...inputFullnameProps}/>
+      <Form.Input {...inputEmailProps}/>
+      <Form.Input {...inputPasswordProps}/>
       <Button {...buttonProps}/>
     </RegistrationFrame>
   )
