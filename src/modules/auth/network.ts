@@ -2,7 +2,7 @@
 
 /** auth network interfaces */
 interface EntryEmailNetwork {
-  checkUserEmail(email: string): Promise<Response>;
+  checkForUniqueness(email: string): Promise<Response>;
 }
 
 /** export */

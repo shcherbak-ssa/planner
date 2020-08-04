@@ -12,13 +12,13 @@ import {
   REGISTRATION_PATH,
   ENTRY_EMAIL_PATH,
   CONFIRMATION_CODE_PATH,
-  FINISH_PATH,
+  CREATE_ACCOUNT_PATH,
 } from './constants';
 
 // components
 import EntryEmail from './components/entry-email.jsx';
 import ConfirmationCode from './components/confirmation-code';
-import Finish from './components/finish';
+import CreateAccount from './components/create-account';
 
 /** Registration component */
 export default function Registration(props) {
@@ -29,18 +29,18 @@ export default function Registration(props) {
   function updateEmail(value) {
     setEmail(value);
   }
-  function redirect() {
+  function redirectToEntryEmail() {
     return <Redirect to={ENTRY_EMAIL_PATH}/>
   }
   function drawIfEmailExist(component) {
-    return email ? component : redirect();
+    return email ? component : redirectToEntryEmail();
   }
 
   /** render */
   return (
     <Switch>
       <Route exact path={REGISTRATION_PATH}>
-        {redirect()}
+        {redirectToEntryEmail()}
       </Route>
       <Route path={ENTRY_EMAIL_PATH}>
         <EntryEmail email={email} updateEmail={updateEmail} />
@@ -48,8 +48,8 @@ export default function Registration(props) {
       <Route path={CONFIRMATION_CODE_PATH}>
         {drawIfEmailExist(<ConfirmationCode email={email} />)}
       </Route>
-      <Route path={FINISH_PATH}>
-        {drawIfEmailExist(<Finish email={email} />)}
+      <Route path={CREATE_ACCOUNT_PATH}>
+        {drawIfEmailExist(<CreateAccount email={email} />)}
       </Route>
     </Switch>
   )

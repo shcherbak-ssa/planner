@@ -12,7 +12,6 @@ export default function Input(props) {
   /** states */
   const [isFilled, setIsFilled] = useState(false);
   const [isError, setIsError] = useState(false);
-  const [value, setValue] = useState(props.value);
   const inputField = useRef(null);
   
   /** data */
@@ -30,20 +29,20 @@ export default function Input(props) {
 
   /** effects */
   useEffect(() => {
-    if (value !== '') setIsFilled(true);
-  });
+    if (props.value !== '') setIsFilled(true);
+  }, [props.value]);
   useEffect(() => {
     if (props.error === '') return setIsError(false);
     focusOnInput();
     setIsFilled(true);
     setIsError(true);
-  });
+  }, [props.error]);
   useEffect(() => {
     if (props.focus) {
       focusOnInput();
       setIsFilled(true);
     }   
-  });
+  }, [props.focus]);
 
   /** methods */
 
@@ -57,13 +56,9 @@ export default function Input(props) {
       setIsFilled(true);
     }
   }
-  function changeHandler({target}) {
-    setValue(target.value);
-    props.changeHandler(target.value);
-  }
   function blurHandler(e) {
     e.preventDefault();
-    if (value === '') setIsFilled(false);
+    if (e.target.value === '') setIsFilled(false);
   }
 
   // src
@@ -76,11 +71,11 @@ export default function Input(props) {
     <div className={className} data-class="bs mbr bsh click" onClick={clickHanlder}>
       <input
         ref={inputField}
-        type="text"
+        type={props.type ? props.type : 'text'}
         className="input-field paragraph2"
         data-class="bs"
-        value={value}
-        onChange={changeHandler}
+        value={props.value}
+        onChange={props.changeHandler}
         onBlur={blurHandler}
       />
       <div className="input-placeholder" data-class="ptc">

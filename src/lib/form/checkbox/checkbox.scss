@@ -1,0 +1,46 @@
+
+/** imports */
+@import '@style-assets';
+
+/** styles */
+.checkbox {
+  color: $black;
+  margin-bottom: 20px;
+
+  span {
+    color: $primary;
+  }
+  &-field {
+    border: 1px solid $gray-s;
+    color: $white;
+    margin-right: 12px;
+    -x-size: 24px;
+  }
+  &-icon {
+    font-size: 16px;
+    opacity: 0;
+  }
+
+  &:hover &-field {
+    background: $white-s;
+  }
+  &.is-selected &-field {
+    background: $primary;
+    border-color: $primary;
+  }
+  &.is-selected &-icon {
+    opacity: 1;
+  }
+  &.is-selected:hover &-field {
+    background: $primary-hover;
+    border-color: $primary-hover;
+  }
+  &.is-error {
+    color: $primary-red;
+
+    .checkbox-field {
+      background: $primary-red-girl;
+      border-color: $primary-red-girl;
+    }
+  }
+}
