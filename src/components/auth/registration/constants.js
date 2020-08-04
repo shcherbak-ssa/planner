@@ -4,12 +4,12 @@
 const REGISTRATION_PATH = '/registration';
 const ENTRY_EMAIL_PATH = '/registration/entry-email';
 const CONFIRMATION_CODE_PATH = '/registration/confirmation-code';
-const FINISH_PATH = '/registration/finish';
+const CREATE_ACCOUNT_PATH = '/registration/create-account';
 
 /** export */
 export {
   REGISTRATION_PATH,
   ENTRY_EMAIL_PATH,
   CONFIRMATION_CODE_PATH,
-  FINISH_PATH,
+  CREATE_ACCOUNT_PATH,
 };

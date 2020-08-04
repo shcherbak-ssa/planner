@@ -16,8 +16,8 @@ import RegistrationFrame from '../registration-frame';
 import Input from '@lib/form/input';
 import Button from '@lib/buttons/button';
 
-/** Finish component */
-export default function Finish(props) {
+/** CreateAccount component */
+export default function CreateAccount(props) {
   /** states */
   const [inputFullnameValue, setInputFullnameValue] = useState('');
   const [inputFullnameError, setInputFullnameError] = useState('');

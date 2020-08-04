@@ -3,7 +3,7 @@
 /** imports */
 import React, {useState, useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
-import {FINISH_PATH} from '../../constants';
+import {CREATE_ACCOUNT_PATH} from '../../constants';
 
 import {
   authEventEmitter,
