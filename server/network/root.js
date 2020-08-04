@@ -1,7 +1,7 @@
 'use strict';
 
 /** imports */
-const StaticFileSender = require('./src/static-file-sender');
+const StaticFileSender = require('./static-file-sender');
 
 /** constants */
 const SESSION_COOKIE_OPTIONS = {active: true};

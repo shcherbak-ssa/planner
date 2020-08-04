@@ -2,7 +2,7 @@
 
 /** imports */
 const {Router} = require('express');
-const StaticFileSender = require('./src/static-file-sender');
+const StaticFileSender = require('./static-file-sender');
 
 /** init */
 const staticRouter = new Router();
