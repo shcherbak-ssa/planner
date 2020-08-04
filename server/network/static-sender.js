@@ -2,15 +2,18 @@
 
 /** imports */
 const {existsSync} = require('fs');
-const {join: joinPaths, extname: getExtname, parse: parsePath} = require('path');
+const {join: joinPaths} = require('path');
 
-/** constants */
-const SUCCESS_STATUS_CODE = 200;
-const ERROR_STATUS_CODE = 404;
-const PUBLIC_PATH = joinPaths(process.cwd(), 'public');
+const {
+  PUBLIC_PATH,
+  statuses: {
+    SUCCESS_STATUS_CODE,
+    ERROR_STATUS_CODE
+  }
+} = require('../constants');
 
-/** static file sender */
-class StaticFileSender {
+/** static sender */
+class StaticSender {
   constructor(res, filename) {
     this._res = res;
     this._filePath = this._getFilePath(filename);
@@ -43,4 +46,4 @@ class StaticFileSender {
 }
 
 /** exports */
-module.exports = StaticFileSender;
+module.exports = StaticSender;

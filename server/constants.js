@@ -1,6 +1,10 @@
 'use strict';
 
+/** imports */
+const {join: joinPaths} = require('path');
+
 /** init */
+const PUBLIC_PATH = joinPaths(process.cwd(), 'public');
 
 // server
 const PORT = 8080;
@@ -17,9 +21,20 @@ const serverConstants = {
   AUTH_REGEXP_PATH,
 };
 
+// http statuses
+const SUCCESS_STATUS_CODE = 200;
+const ERROR_STATUS_CODE = 404;
+
+const statusesConstants = {
+  SUCCESS_STATUS_CODE,
+  ERROR_STATUS_CODE,
+};
+
 /** constatns */
 const constants = {
+  PUBLIC_PATH,
   server: serverConstants,
+  statuses: statusesConstants,
 };
 
 /** exports */
