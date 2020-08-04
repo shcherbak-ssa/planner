@@ -60,29 +60,29 @@ function initConfirmCodeEvents() {
     .on(GET_CONFIRM_CODE_LENGTH, ConfirmCode.getConfirmCodeLength)
     .on(VALIDATE_CONFIRM_CODE, ConfirmCode.validate)
     .on(REMOVE_CONFIRM_CODE, removeConfirmCodeEvents)
-    .on(INIT_CREATE_ACCOUNT, initFinishEvents);
+    .on(INIT_CREATE_ACCOUNT, initCreateAccountEvents);
 }
 function removeConfirmCodeEvents() {
   authEventEmitter
     .off(GET_CONFIRM_CODE_LENGTH, ConfirmCode.getConfirmCodeLength)
     .off(VALIDATE_CONFIRM_CODE, ConfirmCode.validate)
     .off(REMOVE_CONFIRM_CODE, removeConfirmCodeEvents)
-    .off(INIT_CREATE_ACCOUNT, initFinishEvents)
+    //.off(INIT_CREATE_ACCOUNT, initCreateAccountEvents)
 }
 
-// registration/finish
-function initFinishEvents() {
+// registration/create-accout
+function initCreateAccountEvents() {
   authEventEmitter
     .on(GET_USER_DATA_CREATOR, CreateAccount.getUserDataCreator)
     .on(CREATE_ACCOUNT, CreateAccount.create)
-    .on(REMOVE_CREATE_ACCOUNT, removeFinishEvents)
+    .on(REMOVE_CREATE_ACCOUNT, removeCreateAccountEvents)
     .on(INIT_ENTRY_EMAIL, initEntryEmailEvents)
 }
-function removeFinishEvents() {
+function removeCreateAccountEvents() {
   authEventEmitter
     .off(GET_USER_DATA_CREATOR, CreateAccount.getUserDataCreator)
     .off(CREATE_ACCOUNT, CreateAccount.create)
-    .off(REMOVE_CREATE_ACCOUNT, removeFinishEvents)
+    .off(REMOVE_CREATE_ACCOUNT, removeCreateAccountEvents)
     .off(INIT_ENTRY_EMAIL, initEntryEmailEvents)
 }
 

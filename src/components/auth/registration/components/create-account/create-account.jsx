@@ -28,6 +28,9 @@ export default function CreateAccount(props) {
 
   const [userDataCreator, setUserDataCreator] = useState(null);
 
+  /** init */
+  //userDataCreator.setEmail(props.email);
+
   /** data */
   const inputFullnameProps = {
     value: inputFullnameValue,
@@ -43,7 +46,8 @@ export default function CreateAccount(props) {
     readOnly: true,
     value: props.email,
     error: '',
-    placeholder: 'E-mail'
+    placeholder: 'E-mail',
+    changeHandler() {}
   };
   const inputPasswordProps = {
     value: inputPasswordValue,
@@ -92,10 +96,11 @@ export default function CreateAccount(props) {
     }
   });
   useEffect(() => {
-    authEventEmitter.emit(GET_USER_DATA_CREATOR, (creator) => {
-      setUserDataCreator(creator);
-      userDataCreator.setEmail(props.email);
-    });
+    // console.log('creator:');
+    // authEventEmitter.emit(GET_USER_DATA_CREATOR, (creator) => {
+    //   console.log('creator:', creator);
+    //   setUserDataCreator(creator);
+    // });
   });
   
   /** render */

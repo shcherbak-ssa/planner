@@ -50,7 +50,7 @@ export default function ConfirmationCode(props) {
   /** methods */
   function validateConfirmCodeCallback(errorMessage) {
     if (errorMessage) return setInputError(errorMessage);
-    history.push(FINISH_PATH);
+    history.push(CREATE_ACCOUNT_PATH);
   }
 
   /** effects */

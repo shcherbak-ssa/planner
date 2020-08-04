@@ -30,19 +30,19 @@ export default function Input(props) {
   /** effects */
   useEffect(() => {
     if (props.value !== '') setIsFilled(true);
-  });
+  }, [props.value]);
   useEffect(() => {
     if (props.error === '') return setIsError(false);
     focusOnInput();
     setIsFilled(true);
     setIsError(true);
-  });
+  }, [props.error]);
   useEffect(() => {
     if (props.focus) {
       focusOnInput();
       setIsFilled(true);
     }   
-  });
+  }, [props.focus]);
 
   /** methods */
 
