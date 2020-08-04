@@ -1,7 +1,6 @@
 'use strict';
 
 /** imports */
-import AuthNetwork from './network';
 
 /** Auth module */
 class Auth {}
