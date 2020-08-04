@@ -1,7 +1,7 @@
 'use strict';
 
 /** imports */
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import './input.scss';
 
 // components
@@ -13,6 +13,7 @@ export default function Input(props) {
   const [isFilled, setIsFilled] = useState(false);
   const [isError, setIsError] = useState(false);
   const [value, setValue] = useState(props.value);
+  const inputField = useRef(null);
   
   /** data */
   const readOnlyClassName = props.readOnly ? ' is-read-only' : '';
@@ -34,7 +35,8 @@ export default function Input(props) {
   useEffect(() => {
     if (value !== '') setIsFilled(true);
     if (props.error !== '') {
-      //focusOnInput(e);
+      inputField.current.focus();
+      setIsFilled(true);
       setIsError(true);
     }
   });
@@ -70,6 +72,7 @@ export default function Input(props) {
   return (
     <div {...attributes} onClick={clickHanlder}>
       <input
+        ref={inputField}
         type="text"
         className="input-field paragraph2"
         data-class="bs"

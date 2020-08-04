@@ -10,7 +10,7 @@ import {
   authEventEmitter,
   INIT_ENTRY_EMAIL,
   REMOVE_ENTRY_EMAIL,
-  CHECK_EMAIL,
+  CHECK_ENTRY_EMAIL,
 } from '@module/events/auth';
 
 // components
@@ -40,7 +40,7 @@ export default function EntryEmail(props) {
     clickHandler(e) {
       e.preventDefault();
       if (props.email === '') return setInputError('Required to entry e-mail');
-      authEventEmitter.emit(CHECK_EMAIL, props.email, checkEmailCallback);
+      authEventEmitter.emit(CHECK_ENTRY_EMAIL, props.email, checkEmailCallback);
     }
   };
 
@@ -52,8 +52,10 @@ export default function EntryEmail(props) {
 
   /** effects */
   useEffect(() => {
+    console.log('init-entry-email');
     authEventEmitter.emit(INIT_ENTRY_EMAIL);
     return () => {
+      console.log('remove-entry-email');
       authEventEmitter.emit(REMOVE_ENTRY_EMAIL)
     }
   });

@@ -30,7 +30,7 @@ authEventEmitter
 
 // registration
 function initRegistrationEvents() {
-  initEntryEmailEvents();
+  authEventEmitter.on(INIT_ENTRY_EMAIL, initEntryEmailEvents);
 }
 
 // registration/entry-email
@@ -39,7 +39,7 @@ function initEntryEmailEvents() {
     .on(CHECK_ENTRY_EMAIL, auth.checkEntryEmail)
     .on(REMOVE_ENTRY_EMAIL, removeEntryEmailEvents)
     .on(INIT_CONFIRM_CODE, initConfirmCodeEvents)
-    .off(INIT_ENTRY_EMAIL, initEntryEmailEvents);
+    //.off(INIT_ENTRY_EMAIL, initEntryEmailEvents);
 }
 function removeEntryEmailEvents() {
   authEventEmitter
@@ -61,6 +61,7 @@ function removeConfirmCodeEvents() {
     .off(CHECK_CONFIRM_CODE, auth.checkConfirmCode)
     .off(REMOVE_CONFIRM_CODE, removeConfirmCodeEvents)
     .off(INIT_FIHISH, initFinishEvents)
+    .off(INIT_ENTRY_EMAIL, initEntryEmailEvents)
 }
 
 // registration/finish
@@ -68,11 +69,13 @@ function initFinishEvents() {
   authEventEmitter
     .on(CREATE_USER, auth.createUser)
     .on(REMOVE_FIHISH, removeFinishEvents)
+    .on(INIT_ENTRY_EMAIL, initEntryEmailEvents)
 }
 function removeFinishEvents() {
   authEventEmitter
     .off(CREATE_USER, auth.createUser)
     .off(REMOVE_FIHISH, removeFinishEvents)
+    .off(INIT_ENTRY_EMAIL, initEntryEmailEvents)
 }
 
 // login
