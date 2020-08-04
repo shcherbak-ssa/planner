@@ -22,10 +22,10 @@ class StaticSender {
   /** static methods */
   static create(req, res) {
     const filename = req.originalUrl;
-    return new StaticFileSender(res, filename);
+    return new StaticSender(res, filename);
   }
   static createForRoot(res, filename) {
-    return new StaticFileSender(res, filename);
+    return new StaticSender(res, filename);
   }
 
   /** public methods */
