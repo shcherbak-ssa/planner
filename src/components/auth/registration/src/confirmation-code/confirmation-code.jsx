@@ -1,7 +1,7 @@
 'use strict';
 
 /** imports */
-import React, {useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
 import {FINISH_PATH} from '../constants';
 
@@ -23,14 +23,17 @@ import Input from '@lib/form/input';
 /** ConfirmationCode component */
 export default function ConfirmationCode(props) {
   /** states */
+  const [inputError, setInputError] = useState('');
   const history = useHistory();
 
   /** data */
   const inputProps = {
     value: '',
-    error: '',
+    error: inputError,
     placeholder: 'Confirmation code',
-    blurCallback(value) {}
+    changeHandler(value) {
+      console.log(value);
+    },
   };
 
   /** effects */

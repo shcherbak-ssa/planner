@@ -67,7 +67,7 @@ export default function Input(props) {
       props.removeError();
       removeError();
     }
-    if (props.changeHandler) props.changeHandler(targe.value);
+    if (props.changeHandler) props.changeHandler(target.value);
   }
   function blurHandler(e) {
     e.preventDefault();
