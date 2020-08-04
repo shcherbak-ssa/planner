@@ -35,7 +35,7 @@ export default function ConfirmationCode(props) {
     error: inputError,
     placeholder: 'Confirmation code',
     changeHandler({target: {value}}) {
-      setInputError('');
+      if (inputError) setInputError('');
       
       const valueLength = value.length;
       if (valueLength > confirmCodeLength) return;
@@ -59,12 +59,12 @@ export default function ConfirmationCode(props) {
     return () => {
       authEventEmitter.emit(REMOVE_CONFIRM_CODE);
     }
-  });
+  }, []);
   useEffect(() => {
     authEventEmitter.emit(GET_CONFIRM_CODE_LENGTH, (length) => {
       setConfirmCodeLength(length);
     });
-  });
+  }, [confirmCodeLength]);
   
   /** render */
   return (

@@ -22,7 +22,7 @@ export default function Checkbox(props) {
   return (
     <div className={className} data-class="fac click" onClick={props.clickHandler}>
       <div className="checkbox-field" data-class="mbr bs fc">
-        <Icon icon={faCheck} />
+        <Icon icon={faCheck} size="xs" name="checkbox-icon"/>
       </div>
       <Typography.Paragraph type="2">{props.description}</Typography.Paragraph>
     </div>

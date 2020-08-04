@@ -7,11 +7,18 @@
   color: $black;
   margin-bottom: 20px;
 
+  span {
+    color: $primary;
+  }
   &-field {
     border: 1px solid $gray-s;
     color: $white;
     margin-right: 12px;
     -x-size: 24px;
+  }
+  &-icon {
+    font-size: 16px;
+    opacity: 0;
   }
 
   &:hover &-field {
@@ -20,6 +27,9 @@
   &.is-selected &-field {
     background: $primary;
     border-color: $primary;
+  }
+  &.is-selected &-icon {
+    opacity: 1;
   }
   &.is-selected:hover &-field {
     background: $primary-hover;

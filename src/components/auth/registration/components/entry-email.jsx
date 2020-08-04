@@ -23,7 +23,6 @@ import Button from '@lib/buttons/button';
 export default function EntryEmail(props) {
   /** states */
   const [inputError, setInputError] = useState('');
-  //const [inputValue, setInputValue] = useState(props.email);
   const history = useHistory();
 
   /** data */
@@ -60,7 +59,7 @@ export default function EntryEmail(props) {
     return () => {
       authEventEmitter.emit(REMOVE_ENTRY_EMAIL)
     }
-  });
+  }, []);
   
   /** render */
   return (

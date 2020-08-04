@@ -71,7 +71,7 @@ export default function Input(props) {
     <div className={className} data-class="bs mbr bsh click" onClick={clickHanlder}>
       <input
         ref={inputField}
-        type="text"
+        type={props.type ? props.type : 'text'}
         className="input-field paragraph2"
         data-class="bs"
         value={props.value}

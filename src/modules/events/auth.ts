@@ -67,7 +67,6 @@ function removeConfirmCodeEvents() {
     .off(GET_CONFIRM_CODE_LENGTH, ConfirmCode.getConfirmCodeLength)
     .off(VALIDATE_CONFIRM_CODE, ConfirmCode.validate)
     .off(REMOVE_CONFIRM_CODE, removeConfirmCodeEvents)
-    //.off(INIT_CREATE_ACCOUNT, initCreateAccountEvents)
 }
 
 // registration/create-accout
@@ -76,14 +75,12 @@ function initCreateAccountEvents() {
     .on(GET_USER_DATA_CREATOR, CreateAccount.getUserDataCreator)
     .on(CREATE_ACCOUNT, CreateAccount.create)
     .on(REMOVE_CREATE_ACCOUNT, removeCreateAccountEvents)
-    .on(INIT_ENTRY_EMAIL, initEntryEmailEvents)
 }
 function removeCreateAccountEvents() {
   authEventEmitter
     .off(GET_USER_DATA_CREATOR, CreateAccount.getUserDataCreator)
     .off(CREATE_ACCOUNT, CreateAccount.create)
     .off(REMOVE_CREATE_ACCOUNT, removeCreateAccountEvents)
-    .off(INIT_ENTRY_EMAIL, initEntryEmailEvents)
 }
 
 // login

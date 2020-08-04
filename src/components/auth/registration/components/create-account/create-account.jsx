@@ -21,15 +21,14 @@ export default function CreateAccount(props) {
   /** states */
   const [inputFullnameValue, setInputFullnameValue] = useState('');
   const [inputFullnameError, setInputFullnameError] = useState('');
+
   const [inputPasswordValue, setInputPasswordValue] = useState('');
   const [inputPasswordError, setInputPasswordError] = useState('');
+  
   const [checkboxIsSelected, setCheckboxIsSelected] = useState(false);
   const [checkboxIsError, setCheckboxIsError] = useState(false);
 
-  const [userDataCreator, setUserDataCreator] = useState(null);
-
-  /** init */
-  //userDataCreator.setEmail(props.email);
+  const [userDataCreator, setUserDataCreator] = useState(0);
 
   /** data */
   const inputFullnameProps = {
@@ -37,9 +36,9 @@ export default function CreateAccount(props) {
     error: inputFullnameError,
     placeholder: 'Full name',
     changeHandler({target: {value}}) {
-      setInputFullnameError('');
-      setInputFullnameValue(value);
+      if (inputFullnameError) setInputFullnameError('');
       userDataCreator.setFullname(value);
+      setInputFullnameValue(value);
     }
   };
   const inputEmailProps = {
@@ -50,26 +49,31 @@ export default function CreateAccount(props) {
     changeHandler() {}
   };
   const inputPasswordProps = {
+    type: 'password',
     value: inputPasswordValue,
     error: inputPasswordError,
     placeholder: 'Password',
     changeHandler({target: {value}}) {
-      setInputPasswordError('');
-
+      if (inputPasswordError) setInputPasswordError('');
+      userDataCreator.setPassword(value);
+      setInputPasswordValue(value);
     }
   };
   const checkboxProps = {
     isSelected: checkboxIsSelected,
     isError: checkboxIsError,
-    description: 'I accept the terms of the offer of the privacy policy',
+    description: <div>I accept the terms of the offer of the <span>privacy policy</span></div>,
     clickHandler() {
-      setCheckboxIsSelected(!checkboxIsSelected);
+      const reverseCheckboxIsSelected = !checkboxIsSelected;
+      userDataCreator.setPrivacyPolicy(reverseCheckboxIsSelected);
+      setCheckboxIsSelected(reverseCheckboxIsSelected);
     }
   };
   const buttonProps = {
     label: 'Create account',
     clickHandler(e) {
       e.preventDefault();
+      userDataCreator.setEmail(props.email);
       const userData = userDataCreator.createUserData();
       authEventEmitter.emit(CREATE_ACCOUNT, userData, createAccountCallback);
     }
@@ -78,7 +82,7 @@ export default function CreateAccount(props) {
   /** methods */
   function createAccountCallback(error) {
     if (error) return setError(error);
-
+    // @todo: save new user in localStorage
   }
   function setError({type, message}) {
     switch(type) {
@@ -87,6 +91,15 @@ export default function CreateAccount(props) {
       case 'privacy': return setCheckboxIsError(true);
     }
   }
+  function getLastSymbol(value) {
+    return value[value.length - 1];
+  }
+  function lastSymbolIsSpace(lastSymbol) {
+    return lastSymbol === ' ';
+  }
+  function lastSymbolIsStar(lastSymbol) {
+    return lastSymbol === '*';
+  }
 
   /** effects */
   useEffect(() => {
@@ -94,14 +107,12 @@ export default function CreateAccount(props) {
     return () => {
       authEventEmitter.emit(REMOVE_CREATE_ACCOUNT);
     }
-  });
+  }, []);
   useEffect(() => {
-    // console.log('creator:');
-    // authEventEmitter.emit(GET_USER_DATA_CREATOR, (creator) => {
-    //   console.log('creator:', creator);
-    //   setUserDataCreator(creator);
-    // });
-  });
+    authEventEmitter.emit(GET_USER_DATA_CREATOR, (creator) => {
+      setUserDataCreator(creator);
+    });
+  }, []);
   
   /** render */
   return (
