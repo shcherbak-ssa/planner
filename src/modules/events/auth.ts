@@ -10,9 +10,10 @@ const INIT_REGISTRATION: string = 'init-registration';
 const INIT_LOGIN: string = 'init-login';
 
 const VALIDATE_ENTRY_EMAIL: string = 'validate-entry-email';
-const SEND_CONFIRM_CODE_TO_EMAIL = 'send-confirm-code-to-email';
-const GET_CONFIRM_CODE_LENGTH = 'get-confirm-code-length';
+const SEND_CONFIRM_CODE_TO_EMAIL: string = 'send-confirm-code-to-email';
+const GET_CONFIRM_CODE_LENGTH: string = 'get-confirm-code-length';
 const VALIDATE_CONFIRM_CODE: string = 'validate-confirm-code';
+const GET_USER_DATA_CREATOR: string = 'get-user-data-creator';
 const CREATE_USER: string = 'create-user';
 
 const INIT_ENTRY_EMAIL: string = 'init-entry-email';
@@ -69,12 +70,14 @@ function removeConfirmCodeEvents() {
 // registration/finish
 function initFinishEvents() {
   authEventEmitter
+    .on(GET_USER_DATA_CREATOR, () => {})
     .on(CREATE_USER, () => {})
     .on(REMOVE_FIHISH, removeFinishEvents)
     .on(INIT_ENTRY_EMAIL, initEntryEmailEvents)
 }
 function removeFinishEvents() {
   authEventEmitter
+    .off(GET_USER_DATA_CREATOR, () => {})
     .off(CREATE_USER, () => {})
     .off(REMOVE_FIHISH, removeFinishEvents)
     .off(INIT_ENTRY_EMAIL, initEntryEmailEvents)
