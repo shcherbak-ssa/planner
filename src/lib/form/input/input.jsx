@@ -12,7 +12,6 @@ export default function Input(props) {
   /** states */
   const [isFilled, setIsFilled] = useState(false);
   const [isError, setIsError] = useState(false);
-  const [error, setError] = useState(props.error);
   const [value, setValue] = useState(props.value);
   const inputField = useRef(null);
   
@@ -34,11 +33,10 @@ export default function Input(props) {
     if (value !== '') setIsFilled(true);
   });
   useEffect(() => {
-    if (error !== '') {
-      focusOnInput();
-      setIsFilled(true);
-      setIsError(true);
-    }
+    if (props.error === '') return setIsError(false);
+    focusOnInput();
+    setIsFilled(true);
+    setIsError(true);
   });
   useEffect(() => {
     if (props.focus) {
@@ -60,7 +58,6 @@ export default function Input(props) {
     }
   }
   function changeHandler({target}) {
-    if (error) removeError();
     setValue(target.value);
     props.changeHandler(target.value);
   }
@@ -72,10 +69,6 @@ export default function Input(props) {
   // src
   function focusOnInput() {
     inputField.current.focus();
-  }
-  function removeError() {
-    setIsError(false);
-    setError('');
   }
 
   /** render */
@@ -94,7 +87,7 @@ export default function Input(props) {
         <Typography.Paragraph type="2">{props.placeholder}</Typography.Paragraph>
       </div>
       <div className="input-error">
-        <Typography.Paragraph type="2">{error}</Typography.Paragraph>
+        <Typography.Paragraph type="2">{props.error}</Typography.Paragraph>
       </div>
     </div>
   )

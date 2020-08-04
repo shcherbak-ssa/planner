@@ -4,7 +4,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {faArrowLeft} from '@fortawesome/free-solid-svg-icons';
-import {ENTRY_EMAIL_PATH} from '../constants';
+import {ENTRY_EMAIL_PATH} from '../../constants';
 
 // assets
 import './change-email-button.scss';

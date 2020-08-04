@@ -4,7 +4,7 @@
 import React, {useState, useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
 import {faAngleRight} from '@fortawesome/free-solid-svg-icons';
-import {CONFIRMATION_CODE_PATH} from './constants';
+import {CONFIRMATION_CODE_PATH} from '../constants';
 
 import {
   authEventEmitter,
@@ -29,12 +29,10 @@ export default function EntryEmail(props) {
     value: props.email,
     error: inputError,
     placeholder: 'E-mail',
-    blurCallback(value) {
+    changeHandler(value) {
       props.updateEmail(value);
+      if (inputError) setInputError('');
     },
-    removeError() {
-      setInputError('');
-    }
   };
   const buttonProps = {
     iconRight: true,
