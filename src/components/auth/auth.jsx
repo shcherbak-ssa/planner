@@ -2,6 +2,11 @@
 
 /** imports */
 import React from 'react';
+import {
+  authEventEmitter,
+  INIT_REGISTRATION,
+  INIT_LOGIN,
+} from '@module/events/auth';
 
 // components
 import Container from './container';
@@ -13,8 +18,12 @@ export default function Auth(props) {
   /** methods */
   function getModeComponent() {
     switch(props.mode) {
-      case 'login': return <Login/>
-      case 'registration': return <Registration/>
+      case 'login':
+        authEventEmitter.emit(INIT_LOGIN);
+        return <Login/>
+      case 'registration':
+        authEventEmitter.emit(INIT_REGISTRATION);
+        return <Registration/>
     }
   }
 
