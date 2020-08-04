@@ -17,6 +17,8 @@ class EventEmitter {
     return this;
   }
   off(event: string, handler: Function) {
+    if (!this.hasEvent(event)) return this;
+
     const updatedHandlers = this.getHandlers(event).filter((item) => item !== handler);
     updatedHandlers.length === 0
       ? this.deleteEvent(event)
