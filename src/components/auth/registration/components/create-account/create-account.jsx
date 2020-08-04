@@ -23,6 +23,8 @@ export default function CreateAccount(props) {
   const [inputFullnameError, setInputFullnameError] = useState('');
   const [inputPasswordValue, setInputPasswordValue] = useState('');
   const [inputPasswordError, setInputPasswordError] = useState('');
+  const [checkboxIsSelected, setCheckboxIsSelected] = useState(false);
+  const [checkboxIsError, setCheckboxIsError] = useState(false);
 
   const [userDataCreator, setUserDataCreator] = useState(null);
 
@@ -52,6 +54,14 @@ export default function CreateAccount(props) {
 
     }
   };
+  const checkboxProps = {
+    isSelected: checkboxIsSelected,
+    isError: checkboxIsError,
+    description: 'I accept the terms of the offer of the privacy policy',
+    clickHandler() {
+      setCheckboxIsSelected(!checkboxIsSelected);
+    }
+  };
   const buttonProps = {
     label: 'Create account',
     clickHandler(e) {
@@ -70,7 +80,7 @@ export default function CreateAccount(props) {
     switch(type) {
       case 'fullname': return setInputFullnameError(message);
       case 'password': return setInputPasswordError(message);
-      case 'privacy': return;
+      case 'privacy': return setCheckboxIsError(true);
     }
   }
 
@@ -94,6 +104,7 @@ export default function CreateAccount(props) {
       <Form.Input {...inputFullnameProps}/>
       <Form.Input {...inputEmailProps}/>
       <Form.Input {...inputPasswordProps}/>
+      <Form.Checkbox {...checkboxProps}/>
       <Button {...buttonProps}/>
     </RegistrationFrame>
   )
