@@ -9,7 +9,7 @@ import {
   authEventEmitter,
   INIT_CONFIRM_CODE,
   REMOVE_CONFIRM_CODE,
-  CHECK_CONFIRM_CODE,
+  VALIDATE_CONFIRM_CODE,
 } from '@module/events/auth';
 
 // assets

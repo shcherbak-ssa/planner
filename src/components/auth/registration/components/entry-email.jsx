@@ -10,7 +10,8 @@ import {
   authEventEmitter,
   INIT_ENTRY_EMAIL,
   REMOVE_ENTRY_EMAIL,
-  CHECK_ENTRY_EMAIL,
+  VALIDATE_ENTRY_EMAIL,
+  SEND_CONFIRM_CODE_TO_EMAIL,
 } from '@module/events/auth';
 
 // components
@@ -41,13 +42,14 @@ export default function EntryEmail(props) {
     clickHandler(e) {
       e.preventDefault();
       if (props.email === '') return setInputError('Required to entry e-mail');
-      authEventEmitter.emit(CHECK_ENTRY_EMAIL, props.email, checkEmailCallback);
+      authEventEmitter.emit(VALIDATE_ENTRY_EMAIL, props.email, validateEmailCallback);
     }
   };
 
   /** methods */
-  function checkEmailCallback(errorMessage) {
+  function validateEmailCallback(errorMessage) {
     if (errorMessage) return setInputError(errorMessage);
+    authEventEmitter.emit(SEND_CONFIRM_CODE_TO_EMAIL);
     history.push(CONFIRMATION_CODE_PATH);
   }
 

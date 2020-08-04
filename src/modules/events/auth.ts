@@ -2,14 +2,15 @@
 
 /** imports */
 import EventEmitter from './emitter';
-import Auth from '../auth';
+import EntryEmail from '../auth/entry-email';
 
 /** constants */
 const INIT_REGISTRATION: string = 'init-registration';
 const INIT_LOGIN: string = 'init-login';
 
-const CHECK_ENTRY_EMAIL: string = 'check-entry-email';
-const CHECK_CONFIRM_CODE: string = 'check-confirm-code';
+const VALIDATE_ENTRY_EMAIL: string = 'validate-entry-email';
+const SEND_CONFIRM_CODE_TO_EMAIL = 'send-confirm-code-to-email';
+const VALIDATE_CONFIRM_CODE: string = 'validate-confirm-code';
 const CREATE_USER: string = 'create-user';
 
 const INIT_ENTRY_EMAIL: string = 'init-entry-email';
@@ -22,7 +23,6 @@ const REMOVE_FIHISH: string = 'remove-finish';
 
 /** init */
 const authEventEmitter: EventEmitter = new EventEmitter();
-const auth: Auth = new Auth();
 
 authEventEmitter
   .on(INIT_REGISTRATION, initRegistrationEvents)
@@ -36,44 +36,42 @@ function initRegistrationEvents() {
 // registration/entry-email
 function initEntryEmailEvents() {
   authEventEmitter
-    .on(CHECK_ENTRY_EMAIL, auth.checkEntryEmail)
+    .on(VALIDATE_ENTRY_EMAIL, EntryEmail.validate)
+    .on(SEND_CONFIRM_CODE_TO_EMAIL, EntryEmail.sendConfirmCodeToEmail)
     .on(REMOVE_ENTRY_EMAIL, removeEntryEmailEvents)
     .on(INIT_CONFIRM_CODE, initConfirmCodeEvents)
-    //.off(INIT_ENTRY_EMAIL, initEntryEmailEvents);
 }
 function removeEntryEmailEvents() {
   authEventEmitter
-    .off(CHECK_ENTRY_EMAIL, auth.checkEntryEmail)
+    .off(VALIDATE_ENTRY_EMAIL, EntryEmail.validate)
     .off(REMOVE_ENTRY_EMAIL, removeEntryEmailEvents)
-    //.off(INIT_CONFIRM_CODE, initConfirmCodeEvents);
+    .off(SEND_CONFIRM_CODE_TO_EMAIL, EntryEmail.sendConfirmCodeToEmail);
 }
 
 // registration/confirmation-code
 function initConfirmCodeEvents() {
   authEventEmitter
-    .on(CHECK_CONFIRM_CODE, auth.checkConfirmCode)
+    .on(VALIDATE_CONFIRM_CODE, () => {})
     .on(REMOVE_CONFIRM_CODE, removeConfirmCodeEvents)
-    //.on(INIT_ENTRY_EMAIL, initEntryEmailEvents)
     .on(INIT_FIHISH, initFinishEvents);
 }
 function removeConfirmCodeEvents() {
   authEventEmitter
-    .off(CHECK_CONFIRM_CODE, auth.checkConfirmCode)
+    .off(VALIDATE_CONFIRM_CODE, () => {})
     .off(REMOVE_CONFIRM_CODE, removeConfirmCodeEvents)
     .off(INIT_FIHISH, initFinishEvents)
-    //.off(INIT_ENTRY_EMAIL, initEntryEmailEvents)
 }
 
 // registration/finish
 function initFinishEvents() {
   authEventEmitter
-    .on(CREATE_USER, auth.createUser)
+    .on(CREATE_USER, () => {})
     .on(REMOVE_FIHISH, removeFinishEvents)
     .on(INIT_ENTRY_EMAIL, initEntryEmailEvents)
 }
 function removeFinishEvents() {
   authEventEmitter
-    .off(CREATE_USER, auth.createUser)
+    .off(CREATE_USER, () => {})
     .off(REMOVE_FIHISH, removeFinishEvents)
     .off(INIT_ENTRY_EMAIL, initEntryEmailEvents)
 }
@@ -87,8 +85,9 @@ export {
   authEventEmitter,
   INIT_REGISTRATION,
   INIT_LOGIN,
-  CHECK_ENTRY_EMAIL,
-  CHECK_CONFIRM_CODE,
+  VALIDATE_ENTRY_EMAIL,
+  SEND_CONFIRM_CODE_TO_EMAIL,
+  VALIDATE_CONFIRM_CODE,
   CREATE_USER,
   INIT_ENTRY_EMAIL,
   INIT_CONFIRM_CODE,
