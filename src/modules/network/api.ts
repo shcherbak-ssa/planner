@@ -2,6 +2,7 @@
 
 /** imports */
 import {Request} from './request';
+import {CONTENT_TYPE_REGEXP} from './constants';
 
 /** NetworkAPI */
 class NetworkAPI {
@@ -43,8 +44,7 @@ class NetworkAPI {
     return this.parseResponseBody(response, contentType);
   }
   private parseContentType(contentTypeHeaderValue: string) {
-    const contentTypeRegexp: RegExp = /[^/]+\/([^;]+);/;
-    const contentTypeMatch = contentTypeHeaderValue.match(contentTypeRegexp);
+    const contentTypeMatch = contentTypeHeaderValue.match(CONTENT_TYPE_REGEXP);
     return contentTypeMatch ? contentTypeMatch[1] : '';
   }
   private async parseResponseBody(response: any, contentType: string) {
