@@ -63,8 +63,15 @@ export default function CreateAccount(props) {
 
   /** methods */
   function createAccountCallback(error) {
-    if (error) return;
+    if (error) return setError(error);
 
+  }
+  function setError({type, message}) {
+    switch(type) {
+      case 'fullname': return setInputFullnameError(message);
+      case 'password': return setInputPasswordError(message);
+      case 'privacy': return;
+    }
   }
 
   /** effects */
