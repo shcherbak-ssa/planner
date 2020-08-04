@@ -1,7 +1,14 @@
 'use strict';
 
 /** imports */
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+
+import {
+  authEventEmitter,
+  INIT_FIHISH,
+  REMOVE_FINISH,
+  CREATE_USER,
+} from '@module/events/auth';
 
 // components
 import RegistrationFrame from '../registration-frame';
@@ -10,12 +17,21 @@ import Button from '@lib/buttons/button';
 
 /** Finish component */
 export default function Finish(props) {
+  /** states */
+  const [inputFullnameValue, setInputFullnameValue] = useState('');
+  const [inputFullnameError, setInputFullnameError] = useState('');
+  const [inputPasswordValue, setInputPasswordValue] = useState('');
+  const [inputPasswordError, setInputPasswordError] = useState('');
+
   /** data */
   const inputFullnameProps = {
-    value: '',
-    error: '',
+    value: inputFullnameValue,
+    error: inputFullnameError,
     placeholder: 'Full name',
-    blurCallback(value) {}
+    changeHandler({target: {value}}) {
+      setInputFullnameError('');
+
+    }
   };
   const inputEmailProps = {
     readOnly: true,
@@ -24,15 +40,30 @@ export default function Finish(props) {
     placeholder: 'E-mail'
   };
   const inputPasswordProps = {
-    value: '',
-    error: '',
+    value: inputPasswordValue,
+    error: inputPasswordError,
     placeholder: 'Password',
-    blurCallback(value) {}
+    changeHandler({target: {value}}) {
+      setInputPasswordError('');
+
+    }
   };
   const buttonProps = {
     label: 'Create account',
-    clickHandler(e) {}
+    clickHandler(e) {
+      e.preventDefault();
+    }
   };
+
+  /** methods */
+
+  /** effects */
+  useEffect(() => {
+    authEventEmitter.emit(INIT_FIHISH);
+    return () => {
+      authEventEmitter.emit(REMOVE_FINISH);
+    }
+  });
   
   /** render */
   return (
