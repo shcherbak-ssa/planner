@@ -4,8 +4,8 @@
 import React from 'react';
 
 // components
-import Frame from '../components/frame';
-import GoogleAuth from '../../components/google-auth';
+import Frame from './components/frame';
+import GoogleAuth from './components/google-auth';
 import Form from '@lib/form';
 import Button from '@lib/buttons/button';
 

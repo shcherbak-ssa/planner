@@ -6,8 +6,8 @@ import './frame.scss';
 
 // components
 import Typography from '@lib/typography';
-import ChangeModeButton from './components/change-mode-button';
-import Framebar from './components/framebar';
+import ChangeModeButton from '../change-mode-button';
+import Framebar from '../framebar';
 
 /** constants */
 const modeLabels = {
