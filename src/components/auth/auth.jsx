@@ -8,8 +8,6 @@ import {
   INIT_LOGIN,
 } from '@module/events/auth';
 
-import authGlobal from '@module/global/auth';
-
 // components
 import Container from './components/container';
 import Login from './login';
@@ -19,7 +17,6 @@ import Registration from './registration';
 export default function Auth(props) {
   /** methods */
   function getModeComponent() {
-    authGlobal.setCurrentAuthMode(props.mode);
     switch(props.mode) {
       case 'login':
         authEventEmitter.emit(INIT_LOGIN);
