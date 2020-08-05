@@ -6,31 +6,23 @@ import EntryEmail from '../auth/entry-email';
 import ConfirmCode from '../auth/confirm-code';
 import CreateAccount from '../auth/create-account';
 import Login from '../auth/login';
-
 import getUserDataCreator from '../auth/get-user-data-creator';
 
 /** constants */
 const GET_USER_DATA_CREATOR: string = 'get-user-data-creator';
-
 const INIT_REGISTRATION: string = 'init-registration';
 const INIT_LOGIN: string = 'init-login';
-
 const VALIDATE_ENTRY_EMAIL: string = 'validate-entry-email';
 const SEND_CONFIRM_CODE_TO_EMAIL: string = 'send-confirm-code-to-email';
-
 const GET_CONFIRM_CODE_LENGTH: string = 'get-confirm-code-length';
 const VALIDATE_CONFIRM_CODE: string = 'validate-confirm-code';
-
 const CREATE_ACCOUNT: string = 'create-account';
-
 const INIT_ENTRY_EMAIL: string = 'init-entry-email';
 const INIT_CONFIRM_CODE: string = 'init-confirm-code';
 const INIT_CREATE_ACCOUNT: string = 'init-create-account';
-
 const REMOVE_ENTRY_EMAIL: string = 'remove-entry-email';
 const REMOVE_CONFIRM_CODE: string = 'remove-confirm-code';
 const REMOVE_CREATE_ACCOUNT: string = 'remove-create-account';
-
 const REMOVE_LOGIN: string = 'remove-login-account';
 const LOGIN_ACCOUNT: string = 'login-account';
 
