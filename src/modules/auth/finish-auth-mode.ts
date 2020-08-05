@@ -2,7 +2,7 @@
 
 /** imports */
 import {IUserData} from './user-data';
-import reloadToOrigin from './reload';
+import reloadToOrigin from './reload-to-origin';
 import saveUserToLocalStorage from './save-user-to-local-storage';
 
 /** finishAuthMode */
