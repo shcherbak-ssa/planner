@@ -49,7 +49,7 @@ class CreateAccount {
     await validateEmail(email);
 
     const password: string = userData.getPassword();
-    await validateEmail(password);
+    await validatePassword(password);
 
     const isPrivacyPoliceChecked: boolean = userData.getPrivacyPolicy();
     await validatePrivacyPolicy(isPrivacyPoliceChecked);

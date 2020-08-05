@@ -15,7 +15,7 @@ import Icon from '../../icons/icon';
 export default function Checkbox(props) {
   /** data */
   const isCheckedClassName = props.isSelected ? ' is-selected' : '';
-  const isErrorClassName = props.isError ? ' is-error' : '';
+  const isErrorClassName = props.isError && !props.isSelected ? ' is-error' : '';
   const className = `checkbox${isCheckedClassName + isErrorClassName}`;
 
   /** render */

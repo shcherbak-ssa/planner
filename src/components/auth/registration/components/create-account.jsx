@@ -12,7 +12,7 @@ import {
 } from '@module/events/auth';
 
 // components
-import RegistrationFrame from '../registration-frame';
+import RegistrationFrame from './registration-frame';
 import Form from '@lib/form';
 import Button from '@lib/buttons/button';
 
@@ -65,6 +65,7 @@ export default function CreateAccount(props) {
     description: <div>I accept the terms of the offer of the <span>privacy policy</span></div>,
     clickHandler() {
       const reverseCheckboxIsSelected = !checkboxIsSelected;
+      //if (reverseCheckboxIsSelected) setCheckboxIsError(false);
       userDataCreator.setPrivacyPolicy(reverseCheckboxIsSelected);
       setCheckboxIsSelected(reverseCheckboxIsSelected);
     }
