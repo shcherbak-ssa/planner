@@ -1,7 +1,7 @@
 'use strict';
 
 /** imports */
-import {AuthError} from './auth-error';
+import AuthError from './auth-error';
 
 /** constants */
 const CONFIRM_CODE_LENGTH: number = 6;
@@ -29,7 +29,7 @@ async function validateEmail(email: string) {
     throw new AuthError(FIELD_CANNOT_BE_EMPTY, 'email');
   }
   if (!EMAIL_REGEXP.test(email)) {
-    throw new Error(INVALID_EMAIL_MESSAGE);
+    throw new AuthError(INVALID_EMAIL_MESSAGE, 'email');
   }
 }
 

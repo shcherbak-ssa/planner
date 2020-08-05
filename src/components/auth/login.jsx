@@ -53,11 +53,21 @@ export default function Login(props) {
     clickHandler(e) {
       e.preventDefault();
       const userData = userDataCreator.createUserData();
-      authEventEmitter.emit(LOGIN_ACCOUNT, userData, createAccountCallback);
+      authEventEmitter.emit(LOGIN_ACCOUNT, userData, loginAccountCallback);
     }
   };
   
   /** methods */
+  function loginAccountCallback(error) {
+    if (error) return setError(error);
+  }
+  function setError({type, message}) {
+    switch(type) {
+      case 'email': return setInputEmailError(message);
+      case 'password': return setInputPasswordError(message);
+      default: return;
+    }
+  }
   function setFramebar() {
     return <GoogleAuth currentMode={CURRENT_MODE}/>
   }
