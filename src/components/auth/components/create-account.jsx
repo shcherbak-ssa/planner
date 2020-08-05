@@ -2,7 +2,6 @@
 
 /** imports */
 import React, {useState, useEffect} from 'react';
-import {useHistory} from 'react-router-dom';
 
 import {
   authEventEmitter,
@@ -14,6 +13,7 @@ import {
 
 // components
 import RegistrationFrame from './registration-frame';
+import InputPassword from './input-password';
 import Form from '@lib/form';
 import Button from '@lib/buttons/button';
 
@@ -23,15 +23,12 @@ export default function CreateAccount(props) {
   const [inputFullnameValue, setInputFullnameValue] = useState('');
   const [inputFullnameError, setInputFullnameError] = useState('');
 
-  const [inputPasswordValue, setInputPasswordValue] = useState('');
   const [inputPasswordError, setInputPasswordError] = useState('');
   
   const [checkboxIsSelected, setCheckboxIsSelected] = useState(false);
   const [checkboxIsError, setCheckboxIsError] = useState(false);
 
   const [userDataCreator, setUserDataCreator] = useState(0);
-
-  const history = useHistory();
 
   /** data */
   const inputFullnameProps = {
@@ -52,14 +49,12 @@ export default function CreateAccount(props) {
     changeHandler() {}
   };
   const inputPasswordProps = {
-    type: 'password',
-    value: inputPasswordValue,
     error: inputPasswordError,
-    placeholder: 'Password',
-    changeHandler({target: {value}}) {
-      if (inputPasswordError) setInputPasswordError('');
+    removeError() {
+      setInputPasswordError('');
+    },
+    setInputValue(value) {
       userDataCreator.setPassword(value);
-      setInputPasswordValue(value);
     }
   };
   const checkboxProps = {
@@ -68,7 +63,6 @@ export default function CreateAccount(props) {
     description: <div>I accept the terms of the offer of the <span>privacy policy</span></div>,
     clickHandler() {
       const reverseCheckboxIsSelected = !checkboxIsSelected;
-      //if (reverseCheckboxIsSelected) setCheckboxIsError(false);
       userDataCreator.setPrivacyPolicy(reverseCheckboxIsSelected);
       setCheckboxIsSelected(reverseCheckboxIsSelected);
     }
@@ -86,7 +80,6 @@ export default function CreateAccount(props) {
   /** methods */
   function createAccountCallback(error) {
     if (error) return setError(error);
-    //history.push('/');
   }
   function setError({type, message}) {
     switch(type) {
@@ -115,7 +108,7 @@ export default function CreateAccount(props) {
     <RegistrationFrame>
       <Form.Input {...inputFullnameProps}/>
       <Form.Input {...inputEmailProps}/>
-      <Form.Input {...inputPasswordProps}/>
+      <InputPassword {...inputPasswordProps}/>
       <Form.Checkbox {...checkboxProps}/>
       <Button {...buttonProps}/>
     </RegistrationFrame>
