@@ -1,15 +1,10 @@
 'use strict';
 
 /** imports */
-import authGlobal from '../global/auth';
 import UserLocalStorage from '../user-local-storage';
 import {AUTH_ERROR_NAME} from './auth-error';
 import reloadToOrigin from './reload';
-
-import {
-  RegistrationUserData,
-  UserDataCreator,
-} from './user-data';
+import {RegistrationUserData} from './user-data';
 
 import {
   validateFullname,
@@ -21,11 +16,6 @@ import {
 /** CreateAccount */
 class CreateAccount {
   /** static methods */
-  static getUserDataCreator(callback: Function) {
-    const currentAuthMode: string = authGlobal.getCurrentAuthMode();
-    const userDataCreator: UserDataCreator = new UserDataCreator(currentAuthMode);
-    callback(userDataCreator);
-  }
   static async create(userData: RegistrationUserData, callback: Function) {
     const createAccount: CreateAccount = new CreateAccount();
     try {

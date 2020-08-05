@@ -5,8 +5,13 @@ import EventEmitter from './emitter';
 import EntryEmail from '../auth/entry-email';
 import ConfirmCode from '../auth/confirm-code';
 import CreateAccount from '../auth/create-account';
+import Login from '../auth/login';
+
+import getUserDataCreator from '../auth/get-user-data-creator';
 
 /** constants */
+const GET_USER_DATA_CREATOR: string = 'get-user-data-creator';
+
 const INIT_REGISTRATION: string = 'init-registration';
 const INIT_LOGIN: string = 'init-login';
 
@@ -16,7 +21,6 @@ const SEND_CONFIRM_CODE_TO_EMAIL: string = 'send-confirm-code-to-email';
 const GET_CONFIRM_CODE_LENGTH: string = 'get-confirm-code-length';
 const VALIDATE_CONFIRM_CODE: string = 'validate-confirm-code';
 
-const GET_USER_DATA_CREATOR: string = 'get-user-data-creator';
 const CREATE_ACCOUNT: string = 'create-account';
 
 const INIT_ENTRY_EMAIL: string = 'init-entry-email';
@@ -26,6 +30,9 @@ const INIT_CREATE_ACCOUNT: string = 'init-create-account';
 const REMOVE_ENTRY_EMAIL: string = 'remove-entry-email';
 const REMOVE_CONFIRM_CODE: string = 'remove-confirm-code';
 const REMOVE_CREATE_ACCOUNT: string = 'remove-create-account';
+
+const REMOVE_LOGIN: string = 'remove-login-account';
+const LOGIN_ACCOUNT: string = 'login-account';
 
 /** init */
 const authEventEmitter: EventEmitter = new EventEmitter();
@@ -72,31 +79,41 @@ function removeConfirmCodeEvents() {
 // registration/create-accout
 function initCreateAccountEvents() {
   authEventEmitter
-    .on(GET_USER_DATA_CREATOR, CreateAccount.getUserDataCreator)
+    .on(GET_USER_DATA_CREATOR, getUserDataCreator)
     .on(CREATE_ACCOUNT, CreateAccount.create)
     .on(REMOVE_CREATE_ACCOUNT, removeCreateAccountEvents)
 }
 function removeCreateAccountEvents() {
   authEventEmitter
-    .off(GET_USER_DATA_CREATOR, CreateAccount.getUserDataCreator)
+    .off(GET_USER_DATA_CREATOR, getUserDataCreator)
     .off(CREATE_ACCOUNT, CreateAccount.create)
     .off(REMOVE_CREATE_ACCOUNT, removeCreateAccountEvents)
 }
 
 // login
-function initLoginEvents() {}
-function removeLoginEvents() {}
+function initLoginEvents() {
+  authEventEmitter
+    .on(REMOVE_LOGIN, removeLoginEvents)
+    .on(GET_USER_DATA_CREATOR, getUserDataCreator)
+    .on(LOGIN_ACCOUNT, Login.login)
+}
+function removeLoginEvents() {
+  authEventEmitter
+    .off(REMOVE_LOGIN, removeLoginEvents)
+    .off(GET_USER_DATA_CREATOR, getUserDataCreator)
+    .off(LOGIN_ACCOUNT, Login.login)
+}
 
 /** export */
 export {
   authEventEmitter,
+  GET_USER_DATA_CREATOR,
   INIT_REGISTRATION,
   INIT_LOGIN,
   VALIDATE_ENTRY_EMAIL,
   SEND_CONFIRM_CODE_TO_EMAIL,
   GET_CONFIRM_CODE_LENGTH,
   VALIDATE_CONFIRM_CODE,
-  GET_USER_DATA_CREATOR,
   CREATE_ACCOUNT,
   INIT_ENTRY_EMAIL,
   INIT_CONFIRM_CODE,
@@ -104,4 +121,6 @@ export {
   REMOVE_ENTRY_EMAIL,
   REMOVE_CONFIRM_CODE,
   REMOVE_CREATE_ACCOUNT,
+  REMOVE_LOGIN,
+  LOGIN_ACCOUNT,
 }

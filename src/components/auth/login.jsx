@@ -4,8 +4,7 @@
 import React, {useState} from 'react';
 import {
   authEventEmitter,
-  INIT_LOGIN_ACCOUNT,
-  REMOVE_LOGIN_ACCOUNT,
+  REMOVE_LOGIN,
   GET_USER_DATA_CREATOR,
   LOGIN_ACCOUNT,
 } from '@module/events/auth';
