@@ -11,10 +11,14 @@ class AuthError extends Error {
     this.type = type;
     this.name = AUTH_ERROR_NAME;
   }
+
+  /** static methods */
+  static async parseError(error: Error, callback: Function) {
+    if (error.name === AUTH_ERROR_NAME) return callback(error);
+    console.log(error);
+    callback(error);
+  }
 }
 
 /** export */
-export {
-  AuthError,
-  AUTH_ERROR_NAME,
-}
+export default AuthError;

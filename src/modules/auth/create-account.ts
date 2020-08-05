@@ -1,62 +1,37 @@
 'use strict';
 
 /** imports */
-import UserLocalStorage from '../user-local-storage';
-import {AUTH_ERROR_NAME} from './auth-error';
-import reloadToOrigin from './reload';
-import {RegistrationUserData} from './user-data';
-
-import {
-  validateFullname,
-  validateEmail,
-  validatePassword,
-  validatePrivacyPolicy,
-} from './rules';
+import AuthError from './auth-error';
+import {IUserData} from './user-data';
+import Validate from './validate';
+import finishAuthMode from './finish-auth-mode';
 
 /** CreateAccount */
 class CreateAccount {
   /** static methods */
-  static async create(userData: RegistrationUserData, callback: Function) {
-    const createAccount: CreateAccount = new CreateAccount();
+  static async create(userData: IUserData, callback: Function) {
     try {
+      const createAccount: CreateAccount = new CreateAccount();
       await createAccount.createAccount(userData);
     } catch (error) {
-      await createAccount.parseError(error, callback);
+      await AuthError.parseError(error, callback);
     }
   }
 
   /** public methods */
-  async createAccount(userData: RegistrationUserData) {
+  async createAccount(userData: IUserData) {
     await this.validateUserData(userData);
     // @todo: server request logic
-    
-    await this.saveUserToLocalStorage(userData);
-    reloadToOrigin();
-  }
-  async parseError(error: Error, callback: Function) {
-    if (error.name === AUTH_ERROR_NAME) return callback(error);
-    console.log(error);
-    callback(error);
+    await finishAuthMode(userData);
   }
 
   /** private methods */
-  private async validateUserData(userData: RegistrationUserData) {
-    const fullname: string = userData.getFullname();
-    await validateFullname(fullname);
-
-    const email: string = userData.getEmail();
-    await validateEmail(email);
-
-    const password: string = userData.getPassword();
-    await validatePassword(password);
-
-    const isPrivacyPoliceChecked: boolean = userData.getPrivacyPolicy();
-    await validatePrivacyPolicy(isPrivacyPoliceChecked);
-  }
-  private async saveUserToLocalStorage(userData: RegistrationUserData) {
-    const email: string = userData.getEmail();
-    const password: string = userData.getPassword();
-    UserLocalStorage.saveUserData(email, password);
+  private async validateUserData(userData: IUserData) {
+    const validate: Validate = new Validate();
+    await validate.validateFullname(userData);
+    await validate.validateEmail(userData);
+    await validate.validatePassword(userData);
+    await validate.validatePrivacyPolicy(userData)
   }
 }
 

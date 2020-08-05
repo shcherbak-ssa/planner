@@ -1,7 +1,7 @@
 'use strict';
 
 /** imports */
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   authEventEmitter,
   REMOVE_LOGIN,
@@ -61,6 +61,18 @@ export default function Login(props) {
   function setFramebar() {
     return <GoogleAuth currentMode={CURRENT_MODE}/>
   }
+
+  /** effects */
+  useEffect(() => {
+    return () => {
+      authEventEmitter.emit(REMOVE_LOGIN);
+    }
+  }, []);
+  useEffect(() => {
+    authEventEmitter.emit(GET_USER_DATA_CREATOR, (creator) => {
+      setUserDataCreator(creator);
+    })
+  }, []);
 
   /** render */
   return (

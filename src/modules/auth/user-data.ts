@@ -8,21 +8,19 @@ class UserDataType {
   email: string;
   password: string;
   isPrivacyPolicyChecked: boolean;
-  authMode: string;
-  constructor(authMode: string) {
+  constructor() {
     this.fullname = '';
     this.email = '';
     this.password = '';
     this.isPrivacyPolicyChecked = false;
-    this.authMode = authMode;
   }
 }
 
 // user-data-creator
 class UserDataCreator {
   private data: UserDataType;
-  constructor(authMode: string) {
-    this.data = new UserDataType(authMode);
+  constructor() {
+    this.data = new UserDataType();
   }
 
   /** public methods */
@@ -39,49 +37,41 @@ class UserDataCreator {
     this.data.isPrivacyPolicyChecked = isPrivacyPolicyChecked;
   }
   createUserData(): UserData {
-    return this.data.authMode === 'login'
-      ? new LoginUserData(this.data)
-      : new RegistrationUserData(this.data);
+    return new UserData(this.data);
   }
 }
 
 // user-data
-class UserData {
+interface IUserData {
+  getFullname(): string;
+  getEmail(): string;
+  getPassword(): string;
+  getPrivacyPolicy(): boolean;
+}
+
+class UserData implements IUserData {
   data: UserDataType;
   constructor(data: UserDataType) {
     this.data = data;
   }
 
   /** public methods */
+  getFullname(): string {
+    return this.data.fullname;
+  }
   getEmail(): string {
     return this.data.email;
   }
   getPassword(): string {
     return this.data.password;
   }
-}
-class RegistrationUserData extends UserData {
-  constructor(data: UserDataType) {
-    super(data);
-  }
-
-  /** public methods */
-  getFullname(): string {
-    return this.data.fullname;
-  }
   getPrivacyPolicy(): boolean {
     return this.data.isPrivacyPolicyChecked;
-  }
-}
-class LoginUserData extends UserData {
-  constructor(data: UserDataType) {
-    super(data);
   }
 }
 
 /** export */
 export {
   UserDataCreator,
-  RegistrationUserData,
-  LoginUserData,
+  IUserData
 }
