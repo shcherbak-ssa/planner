@@ -16,7 +16,7 @@ import Auth from './auth';
 export default function PlannerRouter(props) {
   /** methods */
   function setRootComponent() {
-    return props.isUserLogged ? <h1>App</h1> : <Redirect to="/registration"/>
+    return props.isUserLogged ? <h1>App</h1> : <Redirect to="/login"/>
   }
 
   /** render */
