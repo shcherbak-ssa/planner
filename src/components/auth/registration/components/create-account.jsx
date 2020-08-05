@@ -91,15 +91,6 @@ export default function CreateAccount(props) {
       case 'privacy': return setCheckboxIsError(true);
     }
   }
-  function getLastSymbol(value) {
-    return value[value.length - 1];
-  }
-  function lastSymbolIsSpace(lastSymbol) {
-    return lastSymbol === ' ';
-  }
-  function lastSymbolIsStar(lastSymbol) {
-    return lastSymbol === '*';
-  }
 
   /** effects */
   useEffect(() => {
