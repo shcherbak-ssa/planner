@@ -98,11 +98,18 @@ const webpackConfig = (env = {}) => {
           }
         },
         {
-          test: /\.(ico|jpg|png)$/,
+          test: /\.(jpg|png)$/,
           loader: 'file-loader',
           options: {
             name: '[name].[ext]',
             outputPath: 'images'
+          }
+        },
+        {
+          test: /\.ico$/,
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
           }
         }
       ]

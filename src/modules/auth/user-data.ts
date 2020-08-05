@@ -1,6 +1,8 @@
 'use strict';
 
 /** UserData */
+
+// user-data-type
 class UserDataType {
   fullname: string;
   email: string;
@@ -16,6 +18,7 @@ class UserDataType {
   }
 }
 
+// user-data-creator
 class UserDataCreator {
   private data: UserDataType;
   constructor(authMode: string) {
@@ -42,6 +45,7 @@ class UserDataCreator {
   }
 }
 
+// user-data
 class UserData {
   data: UserDataType;
   constructor(data: UserDataType) {

@@ -14,7 +14,6 @@ const UserLocalStorage = {
   saveUserData(email: string, password: string) {
     const userData: string = transformToJSON(email, password);
     localStorage.setItem(USER_DATA_STORAGE_KEY, userData);
-    location.reload();
   }
 };
 

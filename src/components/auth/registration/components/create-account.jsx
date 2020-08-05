@@ -2,6 +2,7 @@
 
 /** imports */
 import React, {useState, useEffect} from 'react';
+import {useHistory} from 'react-router-dom';
 
 import {
   authEventEmitter,
@@ -29,6 +30,8 @@ export default function CreateAccount(props) {
   const [checkboxIsError, setCheckboxIsError] = useState(false);
 
   const [userDataCreator, setUserDataCreator] = useState(0);
+
+  const history = useHistory();
 
   /** data */
   const inputFullnameProps = {
@@ -83,8 +86,7 @@ export default function CreateAccount(props) {
   /** methods */
   function createAccountCallback(error) {
     if (error) return setError(error);
-    // @todo: save new user in localStorage
-    alert('New user created');
+    //history.push('/');
   }
   function setError({type, message}) {
     switch(type) {
