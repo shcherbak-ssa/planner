@@ -3,6 +3,7 @@
 /** imports */
 import React from 'react';
 import ReactDOM from 'react-dom';
+import initPlanner from './init';
 
 // assets
 import './assets/index.html';
@@ -13,11 +14,12 @@ import './assets/fonts';
 import PlannerRouter from './components/planner-router';
 
 /** init */
-ReactDOM.render(
-  <PlannerRouter />,
-  document.getElementById('root')
-);
-// @todo: need to prettify
-window.onbeforeunload = () => {
-  document.cookie = `session=${JSON.stringify({active: false})}`;
+runPlanner();
+
+async function runPlanner() {
+  const isUserLogged = await initPlanner();
+  ReactDOM.render(
+    <PlannerRouter isUserLogged={isUserLogged} />,
+    document.getElementById('root')
+  );  
 }

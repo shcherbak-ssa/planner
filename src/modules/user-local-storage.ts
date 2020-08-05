@@ -4,7 +4,7 @@
 const USER_DATA_STORAGE_KEY: string = 'user';
 
 /** UserLocalStorage */
-const UserLocalStorage: object = {
+const UserLocalStorage = {
   isUserExist() {
     return !!getUserDataItem();
   },
@@ -14,6 +14,7 @@ const UserLocalStorage: object = {
   saveUserData(email: string, password: string) {
     const userData: string = transformToJSON(email, password);
     localStorage.setItem(USER_DATA_STORAGE_KEY, userData);
+    location.reload();
   }
 };
 

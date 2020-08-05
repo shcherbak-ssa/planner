@@ -14,12 +14,9 @@ import Auth from './auth';
 
 /** PlannerRouter component */
 export default function PlannerRouter(props) {
-  // @todo: remove
-  const isLogged = false;
-  
   /** methods */
   function setRootComponent() {
-    return isLogged ? <h1>App</h1> : <Redirect to="/registration"/>
+    return props.isUserLogged ? <h1>App</h1> : <Redirect to="/registration"/>
   }
 
   /** render */

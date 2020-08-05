@@ -5,6 +5,7 @@ import EventEmitter from './emitter';
 import EntryEmail from '../auth/entry-email';
 import ConfirmCode from '../auth/confirm-code';
 import CreateAccount from '../auth/create-account';
+import UserLocalStorage from '../user-local-storage';
 
 /** constants */
 const INIT_REGISTRATION: string = 'init-registration';
@@ -27,12 +28,15 @@ const REMOVE_ENTRY_EMAIL: string = 'remove-entry-email';
 const REMOVE_CONFIRM_CODE: string = 'remove-confirm-code';
 const REMOVE_CREATE_ACCOUNT: string = 'remove-create-account';
 
+const SAVE_USER: string = 'save-user';
+
 /** init */
 const authEventEmitter: EventEmitter = new EventEmitter();
 
 authEventEmitter
   .on(INIT_REGISTRATION, initRegistrationEvents)
-  .on(INIT_LOGIN, initLoginEvents);
+  .on(INIT_LOGIN, initLoginEvents)
+  .on(SAVE_USER, UserLocalStorage.saveUserData)
 
 // registration
 function initRegistrationEvents() {
