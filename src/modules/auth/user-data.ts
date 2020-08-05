@@ -15,6 +15,7 @@ class UserDataType {
     this.authMode = authMode;
   }
 }
+
 class UserDataCreator {
   private data: UserDataType;
   constructor(authMode: string) {
@@ -34,19 +35,49 @@ class UserDataCreator {
   setPrivacyPolicy(isPrivacyPolicyChecked: boolean) {
     this.data.isPrivacyPolicyChecked = isPrivacyPolicyChecked;
   }
-  createUserData() {
-    return new UserData(this.data);
+  createUserData(): UserData {
+    return this.data.authMode === 'login'
+      ? new LoginUserData(this.data)
+      : new RegistrationUserData(this.data);
   }
 }
+
 class UserData {
-  private data: UserDataType;
+  data: UserDataType;
   constructor(data: UserDataType) {
     this.data = data;
+  }
+
+  /** public methods */
+  getEmail(): string {
+    return this.data.email;
+  }
+  getPassword(): string {
+    return this.data.password;
+  }
+}
+class RegistrationUserData extends UserData {
+  constructor(data: UserDataType) {
+    super(data);
+  }
+
+  /** public methods */
+  getFullname(): string {
+    return this.data.fullname;
+  }
+  getPrivacyPolicy(): boolean {
+    return this.data.isPrivacyPolicyChecked;
+  }
+}
+class LoginUserData extends UserData {
+  constructor(data: UserDataType) {
+    super(data);
   }
 }
 
 /** export */
 export {
   UserDataCreator,
-  UserData
+  RegistrationUserData,
+  LoginUserData,
 }

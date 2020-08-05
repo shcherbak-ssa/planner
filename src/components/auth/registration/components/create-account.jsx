@@ -83,12 +83,14 @@ export default function CreateAccount(props) {
   function createAccountCallback(error) {
     if (error) return setError(error);
     // @todo: save new user in localStorage
+    alert('New user created');
   }
   function setError({type, message}) {
     switch(type) {
       case 'fullname': return setInputFullnameError(message);
       case 'password': return setInputPasswordError(message);
       case 'privacy': return setCheckboxIsError(true);
+      default: return;
     }
   }
 
