@@ -50,7 +50,7 @@ interface IUserData {
 }
 
 class UserData implements IUserData {
-  data: UserDataType;
+  private data: UserDataType;
   constructor(data: UserDataType) {
     this.data = data;
   }
