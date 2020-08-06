@@ -9,6 +9,9 @@
 [data-class~="fbr"] { // frame-border-radius
   border-radius: $frame-border-radius;
 }
+[data-class~="circle"] {
+  border-radius: 50%;
+}
 
 /** box-shadow */
 [data-class~="bsh"] { // box-shadow

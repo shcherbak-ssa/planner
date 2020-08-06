@@ -1,0 +1,13 @@
+
+/** imports */
+@import '@style-assets';
+
+/** styles */
+.user-avatar {
+  background: {
+    size: cover;
+    position: center;
+  };
+  border: 2px solid $white;
+  -x-size: 56px;
+}

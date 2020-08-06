@@ -1,9 +1,12 @@
 'use strict';
 
 /** imports */
+import UserAvatar from './user-avatar';
 
 /** Avatar components */
-const Avatar = {};
+const Avatar = {
+  UserAvatar
+};
 
 /** export */
 export default Avatar;
