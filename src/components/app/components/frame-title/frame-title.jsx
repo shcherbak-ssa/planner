@@ -10,6 +10,9 @@ import './frame-title.scss';
 // components
 import Typography from '@lib/typography';
 
+/** constants */
+const PLANNER_TITLE = 'Planner';
+
 /** FrameTitle component */
 export default function FrameTitle(props) {
   /** states */
@@ -17,9 +20,14 @@ export default function FrameTitle(props) {
 
   /** methods */
   function setTitle() {
-    const pathname = location.pathname.split('/');
-    pathname[0] = 'Planner';
-    return pathname.join(' / ');
+    if (isRootLocationPathname()) return PLANNER_TITLE;
+    return getFullLocationPathname().split('/').join(' / ');
+  }
+  function isRootLocationPathname() {
+    return location.pathname === '/';
+  }
+  function getFullLocationPathname() {
+    return PLANNER_TITLE + location.pathname;
   }
 
   /** render */

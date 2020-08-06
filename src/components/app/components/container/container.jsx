@@ -9,6 +9,7 @@ import dropdownItems from './dropdown-items';
 import './container.scss';
 
 // components
+import FrameTitle from '../frame-title';
 import Topbar from '@lib/topbar';
 import Icons from '@lib/icons';
 import Avatar from '@lib/avatar';
@@ -44,8 +45,9 @@ export default function Container(props) {
     <div className="container" data-class="full">
       <Topbar>
         <div className="container-topbar" data-class="bs full fsb">
-          <div className="container-topbar-left">
+          <div className="container-topbar-left" data-class="fac">
             <Icons.ClickIcon icon={faBars} clickHandler={menuClickHandler}/>
+            <FrameTitle/>
           </div>
           <div className="container-topbar-right">
             <div className="container-user">

@@ -5,8 +5,10 @@
 /** styles */
 .frame-title {
   color: $black;
+  margin-left: 24px;
 
   .popup & {
     color: $white;
+    margin: 0;
   }
 }
