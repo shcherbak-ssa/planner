@@ -3,4 +3,10 @@
 @import '@style-assets';
 
 /** styles */
-.frame-title {}
+.frame-title {
+  color: $black;
+
+  .popup & {
+    color: $white;
+  }
+}
