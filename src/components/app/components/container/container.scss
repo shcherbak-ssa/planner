@@ -4,8 +4,6 @@
 
 /** styles */
 .container {
-  color: $primary;
-  
   &-topbar, &-content {
     padding: 0 design-relative-padding();
   }

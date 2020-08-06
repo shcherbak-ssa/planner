@@ -1,6 +1,10 @@
 
+/** imports */
+@import '@style-assets';
+
 /** styles */
 .app {
+  color: $primary;
   position: relative;
 
   &-page, &-popup {
