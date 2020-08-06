@@ -14,7 +14,7 @@ export default function PlannerRouter(props) {
   /** data */
   const AppComponent = lazy(() => import('./app'));
   //const AuthComponent = lazy(() => import('./auth'));
-  const AuthComponent = <div>Auth</div>
+  const AuthComponent = () => <div>Auth</div>
 
   /** methods */
   function setInitialComponent() {

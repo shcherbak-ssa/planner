@@ -2,7 +2,7 @@
 
 /** imports */
 import React, {useState} from 'react';
-import {faHamburger} from '@fortawesome/free-solid-svg-icons';
+import {faBars} from '@fortawesome/free-solid-svg-icons';
 
 // assets
 import dropdownItems from './dropdown-items';
@@ -27,20 +27,25 @@ export default function Container(props) {
   };
 
   /** methods */
+  function menuClickHandler() {
+    console.log('menu-click');
+  }
   function avatarClickHandler() {
-    console.log('avata-click')
+    console.log('avata-click');
+    setIsDropdownOpen(!isDropdownOpen);
   }
   function dropdownClickHandler(type) {
     console.log(type);
+    setIsDropdownOpen(false);
   }
 
   /** render */
   return (
     <div className="container" data-class="full">
       <Topbar>
-        <div className="container-topbar" data-class="full fsb">
+        <div className="container-topbar" data-class="bs full fsb">
           <div className="container-topbar-left">
-            <Icons.ClickIcon icon={faHamburger}/>
+            <Icons.ClickIcon icon={faBars} clickHandler={menuClickHandler}/>
           </div>
           <div className="container-topbar-right">
             <div className="container-user">

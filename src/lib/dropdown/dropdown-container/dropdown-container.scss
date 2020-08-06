@@ -5,6 +5,7 @@
   padding: 8px 0;
   width: 244px;
   transform: translateY(100%);
+  z-index: 9;
   -x-position: absolute x 0 0 x;
 
   &.is-open {

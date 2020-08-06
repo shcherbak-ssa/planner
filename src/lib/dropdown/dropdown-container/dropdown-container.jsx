@@ -15,7 +15,7 @@ export default function DropdownContainer(props) {
   
   /** render */
   return (
-    <div className={className} data-class="mbr bsh">
+    <div className={className} data-class="mbr bsh white">
       {props.children}
     </div>
   )
