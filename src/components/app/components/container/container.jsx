@@ -2,6 +2,9 @@
 
 /** imports */
 import React, {useState} from 'react';
+import {faHamburger} from '@fortawesome/free-solid-svg-icons';
+
+// assets
 import './container.scss';
 
 // components
@@ -26,7 +29,6 @@ export default function Container(props) {
       <Topbar>
         <div className="container-topbar" data-class="full fsb">
           <div className="container-topbar-left">
-
           </div>
           <div className="container-topbar-right">
             <div className="container-user">
