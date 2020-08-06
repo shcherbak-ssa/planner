@@ -2,6 +2,7 @@
 
 /** imports */
 import React from 'react';
+import classnames from 'classnames';
 import {faCheck} from '@fortawesome/free-solid-svg-icons';
 
 // assets
@@ -14,9 +15,11 @@ import Icon from '../../icons/icon';
 /** Checkbox component */
 export default function Checkbox(props) {
   /** data */
-  const isCheckedClassName = props.isSelected ? ' is-selected' : '';
-  const isErrorClassName = props.isError && !props.isSelected ? ' is-error' : '';
-  const className = `checkbox${isCheckedClassName + isErrorClassName}`;
+  const className = classnames({
+    'checkbox': true,
+    'is-selected': props.isSelected,
+    'is-error': props.isError && !props.isSelected
+  });
 
   /** render */
   return (
