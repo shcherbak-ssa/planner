@@ -1,21 +1,25 @@
 'use strict';
 
 /** imports */
-import React from 'react';
+import React, {useState} from 'react';
 import './container.scss';
 
 // components
 import Topbar from '@lib/topbar';
 import Icons from '@lib/icons';
 import Avatar from '@lib/avatar';
+import Dropdown from '@lib/dropdown';
 
 /** Container component */
 export default function Container(props) {
+  /** states */
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
   /** methods */
   function avatarClickHandler() {
-
+    console.log('avata-click')
   }
-  
+
   /** render */
   return (
     <div className="container" data-class="full">
@@ -26,7 +30,8 @@ export default function Container(props) {
           </div>
           <div className="container-topbar-right">
             <div className="container-user">
-              <Avatar.UserAvatar/>
+              <Avatar.UserAvatar clickHandler={avatarClickHandler}/>
+              <Dropdown.Default isOpen={isDropdownOpen}/>
             </div>
           </div>
         </div>

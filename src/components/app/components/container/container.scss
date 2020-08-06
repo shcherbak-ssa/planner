@@ -7,6 +7,10 @@
   &-topbar, &-content {
     padding: 0 design-relative-padding();
   }
+  &-user {
+    margin-left: 12px;
+    position: relative;
+  }
   &-content {
     height: calc(100% - 76px);
     padding-top: 64px;
