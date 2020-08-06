@@ -1,0 +1,9 @@
+
+/** imports */
+@import '@style-assets';
+
+/** styles */
+.topbar {
+  box-shadow: $topbar-shadow;
+  -x-size: 100% 76px;
+}
