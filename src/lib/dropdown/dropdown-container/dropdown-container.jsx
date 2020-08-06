@@ -2,13 +2,16 @@
 
 /** imports */
 import React from 'react';
+import classnames from 'classnames';
 import './dropdown-container.scss';
 
 /** DropdownContainer component */
 export default function DropdownContainer(props) {
   /** data */
-  const isOpenClassName = props.isOpen ? ' is-open' : '';
-  const className = `dropdown-container${isOpenClassName}`;
+  const className = classnames({
+    'dropdown-container': true,
+    'is-open': props.isOpen
+  });
   
   /** render */
   return (
