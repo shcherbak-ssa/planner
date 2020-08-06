@@ -13,17 +13,19 @@ export default function ClickIcon(props) {
   const iconProps = {
     icon: props.icon
   };
-  const styles = {
-    color: props.color
-  };
+
+  /** methods */
+  function clickHandler(e) {
+    e.preventDefault();
+    props.clickHandler();
+  }
 
   /** render */
   return (
     <div
       className="click-icon"
       data-class="click"
-      style={styles}
-      onClick={props.clickHandler}
+      onClick={clickHandler}
     >
       <Icon {...iconProps}/>
     </div>
