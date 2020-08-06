@@ -6,6 +6,7 @@ import DropdownService from '@service/dropdown';
 
 // components
 import Container from './components/container';
+import AppRouter from './app-router';
 
 /** init */
 DropdownService.init();
@@ -15,7 +16,7 @@ export default function App(props) {
   /** render */
   return (
     <Container>
-      <h1>App</h1>
+      <AppRouter/>
     </Container>
   )
 }
