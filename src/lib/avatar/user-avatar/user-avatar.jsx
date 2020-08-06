@@ -7,13 +7,15 @@ import './user-avatar.scss';
 /** UserAvatar component */
 export default function UserAvatar(props) {
   /** data */
+  const styles = props.image ? {backgroundImage: `url('${props.image}')`} : false;
   const attributes = {
     className: 'user-avatar',
     'data-class': 'bs circle click',
-    onClick: props.clickHandler,
-    style: {
-      backgroundImage: `url('${props.image}')`
-    }
+    onClick: (e) => {
+      e.preventDefault();
+      props.clickHandler();
+    },
+    style: styles || {}
   };
 
   /** render */
