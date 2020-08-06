@@ -1,7 +1,7 @@
 'use strict';
 
 /** imports */
-import React from 'react';
+import React, {Suspense, lazy} from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -9,30 +9,33 @@ import {
   Redirect,
 } from 'react-router-dom';
 
-// components
-import Auth from './auth';
-
 /** PlannerRouter component */
 export default function PlannerRouter(props) {
+  /** data */
+  const AppComponent = lazy(() => import('./app'));
+  const AuthComponent = lazy(() => import('./auth'));
+
   /** methods */
-  function setRootComponent() {
-    return props.isUserLogged ? <h1>App</h1> : <Redirect to="/login"/>
+  function setInitialComponent() {
+    return props.isUserLogged ? <AppComponent/> : <Redirect to="/login"/>
   }
 
   /** render */
   return (
     <Router>
-      <Switch>
-        <Route exact path="/">
-          {setRootComponent()}
-        </Route>
-        <Route path="/registration">
-          <Auth mode="registration"/>
-        </Route>
-        <Route path="/login">
-          <Auth mode="login"/>
-        </Route>
-      </Switch>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Switch>
+          <Route exact path="/">
+            {setInitialComponent()}
+          </Route>
+          <Route path="/registration">
+            <AuthComponent mode="registration"/>
+          </Route>
+          <Route path="/login">
+            <AuthComponent mode="login"/>
+          </Route>
+        </Switch>
+      </Suspense>
     </Router>
   )
 }
