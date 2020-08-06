@@ -19,7 +19,7 @@ export default function Icon(props) {
 
   /** render */
   return (
-    <div className={className}>
+    <div className={className} data-class="fc">
       <FontAwesomeIcon icon={props.icon} size={size} />
     </div>
   )
