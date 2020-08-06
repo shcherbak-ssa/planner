@@ -5,6 +5,7 @@ import React, {useState} from 'react';
 import {faHamburger} from '@fortawesome/free-solid-svg-icons';
 
 // assets
+import dropdownItems from './dropdown-items';
 import './container.scss';
 
 // components
@@ -18,10 +19,18 @@ export default function Container(props) {
   /** states */
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
+  /** data */
+  const dropdownProps = {
+    isOpen: isDropdownOpen,
+    items: dropdownItems,
+    clickHandler: dropdownClickHandler
+  };
+
   /** methods */
   function avatarClickHandler() {
     console.log('avata-click')
   }
+  function dropdownClickHandler(type) {}
 
   /** render */
   return (
@@ -29,11 +38,12 @@ export default function Container(props) {
       <Topbar>
         <div className="container-topbar" data-class="full fsb">
           <div className="container-topbar-left">
+            <Icons.ClickIcon icon={faHamburger}/>
           </div>
           <div className="container-topbar-right">
             <div className="container-user">
               <Avatar.UserAvatar clickHandler={avatarClickHandler}/>
-              <Dropdown.Default isOpen={isDropdownOpen}/>
+              <Dropdown.Default {...dropdownProps}/>
             </div>
           </div>
         </div>
