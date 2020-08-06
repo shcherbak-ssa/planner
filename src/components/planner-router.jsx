@@ -26,7 +26,7 @@ export default function PlannerRouter(props) {
     <Router>
       <Suspense fallback={<div>Loading...</div>}>
         <Switch>
-          <Route exact path="/">
+          <Route path="/">
             {setInitialComponent()}
           </Route>
           <Route path="/registration">
