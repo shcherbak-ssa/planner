@@ -2,12 +2,18 @@
 
 /** imports */
 import React from 'react';
+import classnames from 'classnames';
 import './heading.scss';
 
 /** Heading component */
 export default function Heading(props) {
-  let headingClassName = 'heading' + props.type;
-  headingClassName += props.name ? ` ${props.name}` : '';
+  /** data */
+  const className = classnames({
+    ['heading' + props.type]: true,
+    [props.name]: !!props.name
+  });
+
+  /** render */
   return (
     <div className={headingClassName}>
       {props.children}
