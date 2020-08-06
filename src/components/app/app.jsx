@@ -1,7 +1,8 @@
 'use strict';
 
 /** imports */
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import {useLocation} from 'react-router-dom';
 import classnames from 'classnames';
 import DropdownService from '@service/dropdown';
 
@@ -19,6 +20,7 @@ DropdownService.init();
 /** App component */
 export default function App(props) {
   /** states */
+  const location = useLocation();
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   /** data */
@@ -27,12 +29,19 @@ export default function App(props) {
     'is-open': isPopupOpen
   });
 
+  /** effects */
+  useEffect(() => {
+    location.state && location.state.background
+      ? setIsPopupOpen(true)
+      : setIsPopupOpen(false);
+  }, [location])
+
   /** render */
   return (
     <div className="app" data-class="full">
       <div className="app-page" data-class="full">
         <Page>
-          <PageRouter/>
+          {/* <PageRouter/> */}
         </Page>
       </div>
       <div className={appPopupClassName}>
