@@ -2,6 +2,7 @@
 
 /** imports */
 import React, {useState} from 'react';
+import {useLocation} from 'react-router-dom';
 import {faBars} from '@fortawesome/free-solid-svg-icons';
 import DropdownService from '@service/dropdown';
 
@@ -19,6 +20,7 @@ import Dropdown from '@lib/dropdown';
 /** Page component */
 export default function Page(props) {
   /** states */
+  const location = useLocation();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   /** data */
@@ -42,7 +44,11 @@ export default function Page(props) {
   }
   function dropdownClickHandler(type) {
     closeDropdown();
-    console.log(type);
+    switch(type) {
+      case '': return;
+      case '': return;
+      case '': return;
+    }
   }
   function closeDropdown() {
     setIsDropdownOpen(false);
