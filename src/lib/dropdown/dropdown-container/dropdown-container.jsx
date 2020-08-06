@@ -6,9 +6,13 @@ import './dropdown-container.scss';
 
 /** DropdownContainer component */
 export default function DropdownContainer(props) {
+  /** data */
+  const isOpenClassName = props.isOpen ? ' is-open' : '';
+  const className = `dropdown-container${isOpenClassName}`;
+  
   /** render */
   return (
-    <div className="dropdown-container" data-class="mbr">
+    <div className={className} data-class="mbr">
       {props.children}
     </div>
   )
