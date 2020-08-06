@@ -9,8 +9,8 @@ import {
   PROJECT_PATH,
 } from './constants';
 
-/** AppRouter component */
-export default function AppRouter(props) {
+/** PageRouter component */
+export default function PageRouter(props) {
   /** render */
   return (
     <Switch>
