@@ -12,7 +12,7 @@ export default function DropdownDefault(props) {
   /** render */
   return (
     <DropdownContainer isOpen={props.isOpen}>
-      <DropdownGroup items={props.items} clickHanlder={props.clickHanlder}/>
+      <DropdownGroup items={props.items} clickHandler={props.clickHandler}/>
     </DropdownContainer>
   )
 }
