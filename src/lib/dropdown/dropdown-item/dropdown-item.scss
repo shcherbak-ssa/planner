@@ -1,0 +1,14 @@
+
+/** imports */
+@import '@style-assets';
+
+/** styles */
+.dropdown-item {
+  color: $black;
+  padding: 0 12px 0 16px;
+  -x-size: 100% 40px;
+
+  &:hover {
+    background: $white-l;
+  }
+}
