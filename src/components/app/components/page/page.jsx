@@ -74,7 +74,7 @@ export default function Page(props) {
         <div className="page-topbar" data-class="bs full fsb">
           <div className="page-topbar-left" data-class="fac">
             <Icons.ClickIcon icon={faBars} clickHandler={menuClickHandler}/>
-            <FrameTitle/>
+            <FrameTitle isPage/>
           </div>
           <div className="page-topbar-right">
             <div className="page-user">

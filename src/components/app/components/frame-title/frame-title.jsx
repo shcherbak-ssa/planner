@@ -1,7 +1,7 @@
 'use strict';
 
 /** imports */
-import React, {useState} from 'react';
+import React from 'react';
 import {useLocation} from 'react-router-dom';
 
 // assets
@@ -17,23 +17,41 @@ const PLANNER_TITLE = 'Planner';
 export default function FrameTitle(props) {
   /** states */
   const location = useLocation();
-  const [currentTitle, setCurrentTitle] = useState('');
+
+  /** data */
+  const headingType = props.isPage ? 6 : 5;
 
   /** methods */
-  function setTitle() {
+  function setTitleForPage() {
     if (isRootLocationPathname()) return PLANNER_TITLE;
-    const fullLocationPathname = getFullLocationPathname().split('/');
-    const transformedFullLocationPathname = transformeFirstLettersToUpperCase(fullLocationPathname);
-    return transformedFullLocationPathname.join(' / ');
+    const pathname = getPathnameForPage();
+    return transformPathname(pathname);
   }
   function isRootLocationPathname() {
     return location.pathname === '/';
   }
-  function getFullLocationPathname() {
+  function getPathnameForPage() {
+    return location.state && location.state.background
+      ? PLANNER_TITLE + location.state.background.pathname
+      : getLocationPathname();
+  }
+  function setTitleForPopup() {
+    const pathname = getPathnameForPopup();
+    return transformPathname(pathname);
+  }
+  function getPathnameForPopup() {
+    return getLocationPathname();
+  }
+  function getLocationPathname() {
     return PLANNER_TITLE + location.pathname;
   }
-  function transformeFirstLettersToUpperCase(fullLocationPathname) {
-    return fullLocationPathname.map((part) => {
+  function transformPathname(pathname) {
+    const pathnameParts = pathname.split('/');
+    const transformedPathnameParts = transformFirstLettersToUpperCase(pathnameParts);
+    return transformedPathnameParts.join(' / ');
+  }
+  function transformFirstLettersToUpperCase(pathnameParts) {
+    return pathnameParts.map((part) => {
       const splitedPart = part.split('');
       splitedPart[0] = splitedPart[0].toUpperCase();
       return splitedPart.join('');
@@ -43,7 +61,9 @@ export default function FrameTitle(props) {
   /** render */
   return (
     <div className="frame-title">
-      <Typography.Heading type="6">{setTitle()}</Typography.Heading>
+      <Typography.Heading type={headingType}>
+        {props.isPage ? setTitleForPage() : setTitleForPopup()}
+      </Typography.Heading>
     </div>
   )
 }
