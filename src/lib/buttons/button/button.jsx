@@ -2,6 +2,7 @@
 
 /** imports */
 import React from 'react';
+import classnames from 'classnames';
 import './button.scss';
 
 // components
@@ -10,12 +11,13 @@ import Icon from '../../icons/icon';
 
 /** Button component */
 export default function Button(props) {
-  /** data */
-  const buttonClassName = props.isCircle ? 'button-circle' : 'button';
-  const parentClassName = props.name ? ` ${props.name}` : '';
-  
+  /** data */  
   const attributes = {
-    className: buttonClassName + parentClassName,
+    className: classnames({
+      'button': !props.isCircle,
+      'button-circle': props.isCircle,
+      [props.name]: !!props.name
+    }),
     'data-class': 'mbr bs fc click',
     'data-button-type': props.type || 'primary',
     onClick: props.clickHandler
