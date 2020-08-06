@@ -1,0 +1,15 @@
+
+/** imports */
+@import '@style-assets';
+
+/** styles */
+.container {
+  &-topbar, &-content {
+    padding: 0 design-relative-padding();
+  }
+  &-content {
+    height: calc(100% - 76px);
+    padding-top: 64px;
+    position: relative;
+  }
+}
