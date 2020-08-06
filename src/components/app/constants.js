@@ -4,7 +4,7 @@
 const PAGE_HOME_PATH = '/';
 const PAGE_PROJECT_LIST_PATH = '/projects';
 const PAGE_PROJECT_DETAILS_PATH = '/:project/details';
-const PAGE_PROJECT_TASKS_PATH = '/:project/tasks';
+const PAGE_PROJECT_TASK_LIST_PATH = '/:project/tasks';
 const PAGE_PROJECT_TASK_OPEN_PATH = '/:project/:task';
 
 const POPUP_PROFILE_PATH = '/profile';
@@ -20,7 +20,7 @@ export {
   PAGE_HOME_PATH,
   PAGE_PROJECT_LIST_PATH,
   PAGE_PROJECT_DETAILS_PATH,
-  PAGE_PROJECT_TASKS_PATH,
+  PAGE_PROJECT_TASK_LIST_PATH,
   PAGE_PROJECT_TASK_OPEN_PATH,
   POPUP_PROFILE_PATH,
   POPUP_SETTINGS_PATH,
