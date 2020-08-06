@@ -3,6 +3,7 @@
 /** imports */
 import React, {useState} from 'react';
 import {faBars} from '@fortawesome/free-solid-svg-icons';
+import DropdownService from '@service/dropdown';
 
 // assets
 import dropdownItems from './dropdown-items';
@@ -31,11 +32,19 @@ export default function Container(props) {
   function menuClickHandler() {
     console.log('menu-click');
   }
-  function avatarClickHandler() {
-    setIsDropdownOpen(!isDropdownOpen);
+  function avatarClickHandler({target}) {
+    const currentIsDropdownOpen = !isDropdownOpen;
+    setIsDropdownOpen(currentIsDropdownOpen);
+    if (currentIsDropdownOpen) saveDropdownToService(target);
+  }
+  function saveDropdownToService(target) {
+    DropdownService.saveActiveDropdown(target, closeDropdown);
   }
   function dropdownClickHandler(type) {
+    closeDropdown();
     console.log(type);
+  }
+  function closeDropdown() {
     setIsDropdownOpen(false);
   }
 

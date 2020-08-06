@@ -1,22 +1,44 @@
 'use strict';
 
+/** Dropdown */
+class Dropdown {
+  private parentElement: HTMLElement;
+  private closeDropdown: Function;
+  constructor(parentElement: HTMLElement, closeDropdown: Function) {
+    this.parentElement = parentElement;
+    this.closeDropdown = closeDropdown;
+  }
+
+  /** public methods */
+  getParentElement(): HTMLElement {
+    return this.parentElement;
+  }
+  getCloseDropdownFunction(): Function {
+    return this.closeDropdown;
+  }
+}
+
 /** data */
-const activeDropdown: Function[] = [];
+const activeDropdown: Dropdown[] = [];
 
 /** DropdownService */
 const DropdownService = {
   init() {
     document.addEventListener('click', closeActiveDropdown);
   },
-  saveActiveDropdown(closeDropdown: Function) {
-    activeDropdown.push(closeDropdown);
+  saveActiveDropdown(parentElement: HTMLElement, closeDropdown: Function) {
+    const dropdown: Dropdown = new Dropdown(parentElement, closeDropdown);
+    activeDropdown.push(dropdown);
   }
 };
 
 /** src */
-function closeActiveDropdown() {
-  const closeDropdown = activeDropdown.pop();
-  if (closeDropdown) closeDropdown();
+function closeActiveDropdown(e: Event) {
+  const dropdown = activeDropdown.pop();
+  if (dropdown && dropdown.getParentElement() !== e.target) {
+    const closeDropdown: Function = dropdown.getCloseDropdownFunction();
+    closeDropdown();
+  };
 }
 
 /** export */

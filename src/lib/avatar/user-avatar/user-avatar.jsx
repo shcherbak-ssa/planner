@@ -13,7 +13,7 @@ export default function UserAvatar(props) {
     'data-class': 'bs circle click',
     onClick: (e) => {
       e.preventDefault();
-      props.clickHandler();
+      props.clickHandler(e);
     },
     style: styles || {}
   };

@@ -2,9 +2,13 @@
 
 /** imports */
 import React from 'react';
+import DropdownService from '@service/dropdown';
 
 // components
 import Container from './components/container';
+
+/** init */
+DropdownService.init();
 
 /** App component */
 export default function App(props) {
