@@ -10,6 +10,7 @@ import './app.scss';
 
 // components
 import Page from './components/page';
+import Popup from './components/popup';
 import PageRouter from './pages/page-router';
 
 /** init */
@@ -34,7 +35,9 @@ export default function App(props) {
           <PageRouter/>
         </Page>
       </div>
-      <div className={appPopupClassName}></div>
+      <div className={appPopupClassName}>
+        <Popup></Popup>
+      </div>
     </div>
   )
 }
