@@ -3,4 +3,7 @@
 @import '@style-assets';
 
 /** styles */
-.popup {}
+.popup {
+  background: $popup-background;
+  padding: 28px design-relative-padding() 0;
+}

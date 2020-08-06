@@ -4,10 +4,17 @@
 import React from 'react';
 import './popup.scss';
 
+// components
+import FrameTitle from '../frame-title';
+
 /** Popup component */
 export default function Popup(props) {
   /** render */
   return (
-    <div className="popup" data-class="full"></div>
+    <div className="popup" data-class="bs full">
+      <div className="popup-header" data-class="fsb">
+        <FrameTitle/>
+      </div>
+    </div>
   )
 }
