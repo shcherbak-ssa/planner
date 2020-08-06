@@ -32,7 +32,6 @@ export default function Container(props) {
     console.log('menu-click');
   }
   function avatarClickHandler() {
-    console.log('avata-click');
     setIsDropdownOpen(!isDropdownOpen);
   }
   function dropdownClickHandler(type) {
