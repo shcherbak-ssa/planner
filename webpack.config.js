@@ -117,10 +117,10 @@ const webpackConfig = (env = {}) => {
     resolve: {
       extensions: ['.js', '.jsx', '.ts'],
       alias: {
-        '@': SRC_DIRNAME,
         '@lib': joinPaths(SRC_DIRNAME, 'lib'),
         '@style-assets': joinPaths(SRC_DIRNAME, 'assets', 'styles', 'assets.scss'),
-        '@module': joinPaths(SRC_DIRNAME, 'modules')
+        '@module': joinPaths(SRC_DIRNAME, 'modules'),
+        '@service': joinPaths(SRC_DIRNAME, 'services')
       }
     },
     plugins: [
