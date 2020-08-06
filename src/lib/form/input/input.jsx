@@ -2,6 +2,7 @@
 
 /** imports */
 import React, {useState, useEffect, useRef} from 'react';
+import classnames from 'classnames';
 import './input.scss';
 
 // components
@@ -15,28 +16,26 @@ export default function Input(props) {
   const inputField = useRef(null);
   
   /** data */
-  const readOnlyClassName = props.readOnly ? ' is-read-only' : '';
-  const filledClassName = isFilled ? ' is-filled' : '';
-  const errorClassName = isError ? ' is-error' : '';
-  const parentClassName = props.name ? ` ${props.name}` : '';
-
-  const className = `input${
-    readOnlyClassName +
-    filledClassName +
-    errorClassName +
-    parentClassName
-  }`;
+  const className = classnames({
+    'input': true,
+    'is-read-only': props.readOnly,
+    'is-filled': isFilled,
+    'is-error': isError,
+    [props.name]: !!props.name
+  })
 
   /** effects */
   useEffect(() => {
     if (props.value !== '') setIsFilled(true);
   }, [props.value]);
+
   useEffect(() => {
     if (props.error === '') return setIsError(false);
     focusOnInput();
     setIsFilled(true);
     setIsError(true);
   }, [props.error]);
+
   useEffect(() => {
     if (props.focus) {
       focusOnInput();
@@ -45,8 +44,6 @@ export default function Input(props) {
   }, [props.focus]);
 
   /** methods */
-
-  // handlers
   function clickHanlder(e) {
     e.preventDefault();
     if (props.readOnly) return;
@@ -60,8 +57,6 @@ export default function Input(props) {
     e.preventDefault();
     if (e.target.value === '') setIsFilled(false);
   }
-
-  // src
   function focusOnInput() {
     inputField.current.focus();
   }
