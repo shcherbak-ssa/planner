@@ -30,7 +30,9 @@ export default function Container(props) {
   function avatarClickHandler() {
     console.log('avata-click')
   }
-  function dropdownClickHandler(type) {}
+  function dropdownClickHandler(type) {
+    console.log(type);
+  }
 
   /** render */
   return (
