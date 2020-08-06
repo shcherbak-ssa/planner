@@ -13,6 +13,7 @@ import './app.scss';
 import Page from './components/page';
 import Popup from './components/popup';
 import PageRouter from './pages/page-router';
+import PopupRouter from './popups/popup-router';
 
 /** init */
 DropdownService.init();
@@ -45,7 +46,9 @@ export default function App(props) {
         </Page>
       </div>
       <div className={appPopupClassName}>
-        <Popup></Popup>
+        <Popup>
+          <PopupRouter/>
+        </Popup>
       </div>
     </div>
   )
