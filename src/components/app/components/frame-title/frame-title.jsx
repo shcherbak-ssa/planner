@@ -1,7 +1,7 @@
 'use strict';
 
 /** imports */
-import React from 'react';
+import React, {useState} from 'react';
 import {useLocation} from 'react-router-dom';
 
 // assets
@@ -17,17 +17,27 @@ const PLANNER_TITLE = 'Planner';
 export default function FrameTitle(props) {
   /** states */
   const location = useLocation();
+  const [currentTitle, setCurrentTitle] = useState('');
 
   /** methods */
   function setTitle() {
     if (isRootLocationPathname()) return PLANNER_TITLE;
-    return getFullLocationPathname().split('/').join(' / ');
+    const fullLocationPathname = getFullLocationPathname().split('/');
+    const transformedFullLocationPathname = transformeFirstLettersToUpperCase(fullLocationPathname);
+    return transformedFullLocationPathname.join(' / ');
   }
   function isRootLocationPathname() {
     return location.pathname === '/';
   }
   function getFullLocationPathname() {
     return PLANNER_TITLE + location.pathname;
+  }
+  function transformeFirstLettersToUpperCase(fullLocationPathname) {
+    return fullLocationPathname.map((part) => {
+      const splitedPart = part.split('');
+      splitedPart[0] = splitedPart[0].toUpperCase();
+      return splitedPart.join('');
+    });
   }
 
   /** render */
