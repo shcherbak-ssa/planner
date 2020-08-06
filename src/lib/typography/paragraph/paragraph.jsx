@@ -2,18 +2,22 @@
 
 /** imports */
 import React from 'react';
+import classnames from 'classnames';
 import './paragraph.scss';
 
 /** Paragraph component */
 export default function Paragraph(props) {
   /** data */
-  let paragraphClassName = 'paragraph' + props.type;
-  paragraphClassName += props.isBold ? '-bold' : '';
-  paragraphClassName += props.name ? ` ${props.name}` : '';
+  const paragraphClassName = 'paragraph' + props.type;
+  const className = classnames({
+    [paragraphClassName]: !props.isBold,
+    [paragraphClassName + '-bold']: props.isBold,
+    [props.name]: !!props.name
+  });
   
   /** render */
   return (
-    <div className={paragraphClassName}>
+    <div className={className}>
       {props.children}
     </div>
   )
