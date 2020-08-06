@@ -1,7 +1,7 @@
 'use strict';
 
 /** imports */
-import React from 'react';
+import React, {Suspense, lazy} from 'react';
 import {
   authEventEmitter,
   INIT_REGISTRATION,
@@ -10,27 +10,31 @@ import {
 
 // components
 import Container from './components/container';
-import Login from './login';
-import Registration from './registration';
 
 /** Auth component */
 export default function Auth(props) {
+  /** data */
+  const LoginComponent = lazy(() => import('./login'));
+  const RegistrationComponent = lazy(() => import('./registration'));
+
   /** methods */
   function getModeComponent() {
     switch(props.mode) {
       case 'login':
         authEventEmitter.emit(INIT_LOGIN);
-        return <Login/>
+        return <LoginComponent/>
       case 'registration':
         authEventEmitter.emit(INIT_REGISTRATION);
-        return <Registration/>
+        return <RegistrationComponent/>
     }
   }
 
   /** render */
   return (
     <Container>
-      {getModeComponent()}
+      <Suspense>
+        {getModeComponent()}
+      </Suspense>
     </Container>
   )
 }
