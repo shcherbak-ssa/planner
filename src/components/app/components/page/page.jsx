@@ -5,6 +5,11 @@ import React, {useState} from 'react';
 import {useLocation} from 'react-router-dom';
 import {faBars} from '@fortawesome/free-solid-svg-icons';
 import DropdownService from '@service/dropdown';
+import {
+  DROPDOWN_TYPE_PROFILE,
+  DROPDOWN_TYPE_SETTINGS,
+  DROPDOWN_TYPE_LOGOUT,
+} from './constants';
 
 // assets
 import dropdownItems from './dropdown-items';
@@ -43,11 +48,11 @@ export default function Page(props) {
     DropdownService.saveActiveDropdown(target, closeDropdown);
   }
   function dropdownClickHandler(type) {
-    closeDropdown();
+    //closeDropdown();
     switch(type) {
-      case '': return;
-      case '': return;
-      case '': return;
+      case DROPDOWN_TYPE_PROFILE: return;
+      case DROPDOWN_TYPE_SETTINGS: return;
+      case DROPDOWN_TYPE_LOGOUT: return;
     }
   }
   function closeDropdown() {

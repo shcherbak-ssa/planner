@@ -7,7 +7,7 @@ import {
   ROOT_PATH,
   PROJECT_LIST_PATH,
   PROJECT_PATH,
-} from './constants';
+} from '../constants';
 
 /** PageRouter component */
 export default function PageRouter(props) {
