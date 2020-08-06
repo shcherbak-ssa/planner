@@ -9,7 +9,7 @@ import DropdownService from '@service/dropdown';
 import './app.scss';
 
 // components
-import Container from './components/container';
+import Page from './components/page';
 import PageRouter from './pages/page-router';
 
 /** init */
@@ -30,9 +30,9 @@ export default function App(props) {
   return (
     <div className="app" data-class="full">
       <div className="app-page" data-class="full">
-        <Container>
+        <Page>
           <PageRouter/>
-        </Container>
+        </Page>
       </div>
       <div className={appPopupClassName}></div>
     </div>

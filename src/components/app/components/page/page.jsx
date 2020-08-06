@@ -7,7 +7,7 @@ import DropdownService from '@service/dropdown';
 
 // assets
 import dropdownItems from './dropdown-items';
-import './container.scss';
+import './page.scss';
 
 // components
 import FrameTitle from '../frame-title';
@@ -16,8 +16,8 @@ import Icons from '@lib/icons';
 import Avatar from '@lib/avatar';
 import Dropdown from '@lib/dropdown';
 
-/** Container component */
-export default function Container(props) {
+/** Page component */
+export default function Page(props) {
   /** states */
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -50,22 +50,22 @@ export default function Container(props) {
 
   /** render */
   return (
-    <div className="container" data-class="full">
+    <div className="page" data-class="full">
       <Topbar>
-        <div className="container-topbar" data-class="bs full fsb">
-          <div className="container-topbar-left" data-class="fac">
+        <div className="page-topbar" data-class="bs full fsb">
+          <div className="page-topbar-left" data-class="fac">
             <Icons.ClickIcon icon={faBars} clickHandler={menuClickHandler}/>
             <FrameTitle/>
           </div>
-          <div className="container-topbar-right">
-            <div className="container-user">
+          <div className="page-topbar-right">
+            <div className="page-user">
               <Avatar.UserAvatar clickHandler={avatarClickHandler}/>
               <Dropdown.Default {...dropdownProps}/>
             </div>
           </div>
         </div>
       </Topbar>
-      <div className="container-content" data-class="bs">
+      <div className="page-content" data-class="bs">
         {props.children}
       </div>
     </div>
