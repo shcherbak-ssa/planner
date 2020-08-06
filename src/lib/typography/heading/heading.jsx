@@ -15,7 +15,7 @@ export default function Heading(props) {
 
   /** render */
   return (
-    <div className={headingClassName}>
+    <div className={className}>
       {props.children}
     </div>
   )

@@ -2,6 +2,7 @@
 
 /** imports */
 import React from 'react';
+import classnames from 'classnames';
 import './icon.scss';
 
 // components
@@ -11,7 +12,10 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 export default function Icon(props) {
   /** data */
   const size = props.size || 'sm';
-  const className = 'icon' + (props.name ? ` ${props.name}` : '');
+  const className = classnames({
+    'icon': true,
+    [props.name]: !!props.name
+  });
 
   /** render */
   return (
