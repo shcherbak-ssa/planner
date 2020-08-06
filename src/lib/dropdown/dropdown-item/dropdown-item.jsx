@@ -24,7 +24,7 @@ export default function DropdownItem(props) {
   return (
     <div {...attributes}>
       <Typography.Paragraph type="2">{props.text}</Typography.Paragraph>
-      <Icons.Icon Icon={props.icon}/>
+      <Icons.Icon icon={props.icon}/>
     </div>
   )
 }
