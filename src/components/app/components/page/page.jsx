@@ -2,7 +2,7 @@
 
 /** imports */
 import React, {useState} from 'react';
-import {useLocation} from 'react-router-dom';
+import {useLocation, useHistory} from 'react-router-dom';
 import {faBars} from '@fortawesome/free-solid-svg-icons';
 import DropdownService from '@service/dropdown';
 import {
@@ -26,6 +26,7 @@ import Dropdown from '@lib/dropdown';
 export default function Page(props) {
   /** states */
   const location = useLocation();
+  const history = useHistory();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   /** data */
@@ -47,16 +48,23 @@ export default function Page(props) {
   function saveDropdownToService(target) {
     DropdownService.saveActiveDropdown(target, closeDropdown);
   }
+  function closeDropdown() {
+    setIsDropdownOpen(false);
+  }
   function dropdownClickHandler(type) {
-    //closeDropdown();
     switch(type) {
-      case DROPDOWN_TYPE_PROFILE: return;
-      case DROPDOWN_TYPE_SETTINGS: return;
+      case DROPDOWN_TYPE_PROFILE: return openPopup('profile');
+      case DROPDOWN_TYPE_SETTINGS: return openPopup('settings');
       case DROPDOWN_TYPE_LOGOUT: return;
     }
   }
-  function closeDropdown() {
-    setIsDropdownOpen(false);
+  function openPopup(popupName) {
+    history.push({
+      pathname: `/${popupName}`,
+      state: {
+        background: location
+      }
+    })
   }
 
   /** render */

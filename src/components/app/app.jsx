@@ -41,7 +41,7 @@ export default function App(props) {
     <div className="app" data-class="full">
       <div className="app-page" data-class="full">
         <Page>
-          {/* <PageRouter/> */}
+          <PageRouter/>
         </Page>
       </div>
       <div className={appPopupClassName}>
