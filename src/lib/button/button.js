@@ -2,10 +2,12 @@
 
 /** imports */
 import ButtonDefault from './button-default';
+import ButtonCircle from './button-circle';
 
 /** Button components */
 const Button = {
-  Default: ButtonDefault
+  Default: ButtonDefault,
+  Circle: ButtonCircle
 };
 
 /** export */

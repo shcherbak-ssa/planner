@@ -5,12 +5,11 @@
 @import '../button-flat.scss';
 
 /** styles */
-.button {
-  padding: 10px 20px;
+.button-circle {
   transition: .2s;
-  -x-size: 100% 44px;
+  -x-size: 44px;
 
-  .icon, .paragraph2 {
-    margin: 0 4px;
+  .icon {
+    color: $white;
   }
 }
