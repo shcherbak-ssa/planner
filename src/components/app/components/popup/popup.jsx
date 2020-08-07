@@ -42,6 +42,8 @@ export default function Popup(props) {
 
   /** effects */
   useEffect(() => {
+    if (!PopupService.isPopupOpen()) return setPopupContainerStyle({});
+    
     const containerHeight = popupContainer.current.offsetHeight;
     const validContainerHeight = getValidContainerHeight();
     if (containerHeight >= validContainerHeight) {
