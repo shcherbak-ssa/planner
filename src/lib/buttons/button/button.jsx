@@ -14,8 +14,7 @@ export default function Button(props) {
   /** data */  
   const attributes = {
     className: classnames({
-      'button': !props.isCircle,
-      'button-circle': props.isCircle,
+      'button': true,
       [props.name]: !!props.name
     }),
     'data-class': 'mbr bs fc click',
@@ -26,8 +25,6 @@ export default function Button(props) {
 
   /** methods */
   function getValue() {
-    if (props.isCircle) return [getIcon(props.icon)];
-    
     const value = [];
     value.push(getLabel(props.label));
   
