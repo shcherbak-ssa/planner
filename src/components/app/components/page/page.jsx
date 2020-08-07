@@ -4,10 +4,7 @@
 import React, {useState} from 'react';
 import {useLocation, useHistory} from 'react-router-dom';
 import {faBars} from '@fortawesome/free-solid-svg-icons';
-import {
-  servicesEventEmitter,
-  DROPDOWN_SERVICE_SAVE_ACTIVE_DROPDOWN,
-} from '@module/events/services';
+import DropdownService from '@service/dropdown';
 import {
   DROPDOWN_TYPE_PROFILE,
   DROPDOWN_TYPE_SETTINGS,
@@ -49,10 +46,7 @@ export default function Page(props) {
     if (currentIsDropdownOpen) saveDropdownToService(target);
   }
   function saveDropdownToService(target) {
-    servicesEventEmitter.emit(
-      DROPDOWN_SERVICE_SAVE_ACTIVE_DROPDOWN,
-      target, closeDropdown
-    )
+    DropdownService.saveActiveDropdown(target, closeDropdown);
   }
   function closeDropdown() {
     setIsDropdownOpen(false);
