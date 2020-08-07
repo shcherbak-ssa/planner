@@ -12,9 +12,15 @@ class UserDataUpdater {
   }
 
   /** public methods */
-  updateName(name: string) {}
-  updateUsername(username: string) {}
-  updateEmail(email: string) {}
+  updateName(name: string) {
+    this.storage.updateName(name);
+  }
+  updateUsername(username: string) {
+    this.storage.updateUsername(username);
+  }
+  updateEmail(email: string) {
+    this.storage.updateEmail(email);
+  }
 }
 
 /** exports */
