@@ -2,7 +2,8 @@
 
 /** imports */
 import React, {useState, useEffect, useRef} from 'react';
-import {useHistory} from 'react-router-dom';
+// import {useHistory} from 'react-router-dom';
+import PopupService from '@service/popup';
 import './popup.scss';
 
 // components
@@ -15,7 +16,7 @@ const POPUP_CONTAINER_TOP_POSITION = 120;
 /** Popup component */
 export default function Popup(props) {
   /** states */
-  const history = useHistory();
+  // const history = useHistory();
   const popupContainer = useRef(null);
   const [popupContainerStyle, setPopupContainerStyle] = useState({});
 
@@ -30,7 +31,8 @@ export default function Popup(props) {
   /** methods */
   function closePopupHandler(e) {
     e.preventDefault();
-    history.goBack();
+    // history.goBack();
+    PopupService.closePopup();
   }
   function popupClickHandler(e) {
     if (e.target.classList.contains('popup')) {

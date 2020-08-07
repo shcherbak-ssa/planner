@@ -2,9 +2,10 @@
 
 /** imports */
 import React, {useState, useEffect} from 'react';
-import {useLocation} from 'react-router-dom';
+import {useHistory, useLocation} from 'react-router-dom';
 import classnames from 'classnames';
 import DropdownService from '@service/dropdown';
+import PopupService from '@service/popup';
 
 // assets
 import './app.scss';
@@ -21,6 +22,7 @@ DropdownService.init();
 /** App component */
 export default function App(props) {
   /** states */
+  const history = useHistory();
   const location = useLocation();
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
@@ -31,6 +33,10 @@ export default function App(props) {
   });
 
   /** effects */
+  useEffect(() => {
+    PopupService.init(history, location);
+  }, []);
+
   useEffect(() => {
     location.state && location.state.background
       ? setIsPopupOpen(true)
