@@ -14,7 +14,7 @@ import Frame from './components/frame';
 import GoogleAuth from './components/google-auth';
 import InputPassword from './components/input-password';
 import Form from '@lib/form';
-import Button from '@lib/buttons/button';
+import Buttons from '@lib/buttons';
 
 /** constants */
 const CURRENT_MODE = 'login';
@@ -89,7 +89,7 @@ export default function Login(props) {
     <Frame heading="Login" currentMode={CURRENT_MODE} framebar={setFramebar()}>
       <Form.Input {...inputEmailProps}/>
       <InputPassword {...inputPasswordProps}/>
-      <Button {...buttonProps}/>
+      <Buttons.Default {...buttonProps}/>
     </Frame>
   )
 }
