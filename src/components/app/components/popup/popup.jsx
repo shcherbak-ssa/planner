@@ -27,7 +27,7 @@ export default function Popup(props) {
         <FrameTitle/>
         <ClosePopupButton clickHandler={closePopupButtonClickHandler}/>
       </div>
-      <div className="popup-content">
+      <div className="popup-container" data-class="bs mbr white">
         {props.children}
       </div>
     </div>
