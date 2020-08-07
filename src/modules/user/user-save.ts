@@ -6,7 +6,7 @@ import UserStorageState from './user-storage-state';
 import Storage from '../storage/user';
 
 /** init */
-const userStorageState: UserStorageState = new Storage.UserState();
+const userStorageState: UserStorageState = new Storage();
 
 /** UserSave */
 class UserSave {

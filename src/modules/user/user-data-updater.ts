@@ -8,7 +8,7 @@ import Storage from '../storage/user';
 class UserDataUpdater {
   private storage: UserStorage;
   constructor() {
-    this.storage = new Storage.User();
+    this.storage = new Storage();
   }
 
   /** public methods */
