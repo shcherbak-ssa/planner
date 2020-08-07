@@ -2,14 +2,15 @@
 
 /** imports */
 import {createStore} from 'redux';
-
-// reducers
-import userStorageReducer from './user/reducer';
+import combineStorageReducers from './reducers';
 
 /** Storage */
 const Storage = {
-  
-  init(callback: Function) {}
+  states: null,
+  init(callback: Function) {
+    this.states = createStore(combineStorageReducers());
+    callback(this.states);
+  },
 };
 
 /** export */
