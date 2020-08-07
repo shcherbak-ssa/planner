@@ -15,17 +15,22 @@ export default function Popup(props) {
   const history = useHistory();
 
   /** methods */
-  function closePopupButtonClickHandler(e) {
+  function closePopupHandler(e) {
     e.preventDefault();
     history.goBack();
+  }
+  function popupClickHandler(e) {
+    if (e.target.classList.contains('popup')) {
+      closePopupHandler(e);
+    }
   }
 
   /** render */
   return (
-    <div className="popup" data-class="bs full">
+    <div className="popup" data-class="bs full" onClick={popupClickHandler}>
       <div className="popup-header" data-class="fsb">
         <FrameTitle/>
-        <ClosePopupButton clickHandler={closePopupButtonClickHandler}/>
+        <ClosePopupButton clickHandler={closePopupHandler}/>
       </div>
       <div className="popup-container" data-class="bs mbr white">
         {props.children}
