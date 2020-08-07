@@ -11,6 +11,9 @@ const PopupService = {
     appRouterHistory = history;
     appRouterLocation = location;
   },
+  isPopupOpen() {
+    return isPopupOpen
+  },
   openPopup(popupName: string) {
     isPopupOpen = true;
     appRouterHistory.push({
