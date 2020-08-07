@@ -31,11 +31,15 @@ export default function FrameTitle(props) {
     return location.pathname === '/';
   }
   function getPathnameForPage() {
-    return location.state && location.state.background
+    return isPopupOpen()
       ? PLANNER_TITLE + location.state.background.pathname
       : getLocationPathname();
   }
+  function isPopupOpen() {
+    return location.state && location.state.background;
+  }
   function setTitleForPopup() {
+    if (!isPopupOpen()) return '';
     const pathname = getPathnameForPopup();
     return transformPathname(pathname);
   }
