@@ -39,8 +39,7 @@ export default function EntryEmail(props) {
     iconRight: true,
     icon: faAngleRight,
     label: 'Continue',
-    clickHandler(e) {
-      e.preventDefault();
+    clickHandler() {
       if (props.email === '') return setInputError('Required to entry e-mail');
       authEventEmitter.emit(VALIDATE_ENTRY_EMAIL, props.email, validateEmailCallback);
     }

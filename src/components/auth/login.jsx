@@ -50,8 +50,7 @@ export default function Login(props) {
   };
   const buttonProps = {
     label: 'Login',
-    clickHandler(e) {
-      e.preventDefault();
+    clickHandler() {
       const userData = userDataCreator.createUserData();
       authEventEmitter.emit(LOGIN_ACCOUNT, userData, loginAccountCallback);
     }

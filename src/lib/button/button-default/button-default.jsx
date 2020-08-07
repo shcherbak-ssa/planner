@@ -19,7 +19,10 @@ export default function ButtonDefault(props) {
     }),
     'data-class': 'mbr bs fc click',
     'data-button-type': props.type || 'primary',
-    onClick: props.clickHandler
+    onClick: (e) => {
+      e.preventDefault();
+      props.clickHandler();
+    }
   };
   const value = getValue();
 

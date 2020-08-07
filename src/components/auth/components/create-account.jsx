@@ -69,8 +69,7 @@ export default function CreateAccount(props) {
   };
   const buttonProps = {
     label: 'Create account',
-    clickHandler(e) {
-      e.preventDefault();
+    clickHandler() {
       userDataCreator.setEmail(props.email);
       const userData = userDataCreator.createUserData();
       authEventEmitter.emit(CREATE_ACCOUNT, userData, createAccountCallback);
