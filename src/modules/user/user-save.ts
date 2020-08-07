@@ -4,7 +4,7 @@
 class UserSave {
   /** static methods */
   static saveCurrentState() {}
-  static async saveUpdatedData() {}
+  static async saveUpdatedDataOnServer() {}
 }
 
 /** export */

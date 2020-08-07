@@ -3,6 +3,7 @@
 /** imports */
 import EventEmitter from './emitter';
 import UserDataUpdater from '../user/user-data-updater';
+import UserSave from '../user/user-save';
 
 /** constants */
 const USER_EDIT_INIT: string = 'user-edit-init';
@@ -16,6 +17,7 @@ const userEventEmitter: EventEmitter = new EventEmitter();
 userEventEmitter.on(USER_EDIT_INIT, userEditInitHandler);
 
 function userEditInitHandler() {
+  UserSave.saveCurrentState();
   const userDataUpdater: UserDataUpdater = new UserDataUpdater();
   userEventEmitter
     .on(USER_NAME_UPDATE, userDataUpdater.updateName)
@@ -24,6 +26,7 @@ function userEditInitHandler() {
     .on(USER_UPDATED_DATA_SAVE, userUpdatedDataSave);
 
   function userUpdatedDataSave() {
+    UserSave.saveUpdatedDataOnServer();
     userEventEmitter
       .off(USER_NAME_UPDATE, userDataUpdater.updateName)
       .off(USER_USERNAME_UPDATE, userDataUpdater.updateUsername)
