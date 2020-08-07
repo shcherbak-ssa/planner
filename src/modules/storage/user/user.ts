@@ -1,9 +1,9 @@
 'use strict';
 
 /** imports */
-import UserData from '../user/data';
-import UserStorage from '../user/storage';
-import UserStorageState from '../user/storage-state';
+import UserData from '../../user/data';
+import UserStorage from '../../user/storage';
+import UserStorageState from '../../user/storage-state';
 
 /** User */
 class User implements UserStorage, UserStorageState {
