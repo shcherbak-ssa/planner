@@ -4,10 +4,16 @@
 
 /** styles */
 .profile {
+  padding-top: 152px;
   position: relative;
   height: 460px;
 
   .button-circle {
     -x-position: absolute 16px 16px x x;
+  }
+
+  &-container {
+    margin: 0 auto;
+    width: 480px;
   }
 }

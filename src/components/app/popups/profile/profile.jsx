@@ -21,21 +21,21 @@ export default function Profile(props) {
     value: '',
     error: '',
     placeholder: 'Your name',
-    changeHandler: () => {}
+    changeHandler: (e) => {}
   };
   const inputUsernameProps = {
     readOnly: !isEditMode,
     value: '',
     error: '',
     placeholder: 'Your username',
-    changeHandler: () => {}
+    changeHandler: (e) => {}
   };
   const inputEmailProps = {
     readOnly: !isEditMode,
     value: '',
     error: '',
     placeholder: 'Your e-mail',
-    changeHandler: () => {}
+    changeHandler: (e) => {}
   };
   const buttonProps = {
     icon: buttonIcon,
@@ -52,8 +52,13 @@ export default function Profile(props) {
 
   /** render */
   return (
-    <div className="profile">
+    <div className="profile" data-class="bs">
       <Button.Circle {...buttonProps}/>
+      <div className="profile-container">
+        <Form.Input {...inputNameProps}/>
+        <Form.Input {...inputUsernameProps}/>
+        <Form.Input {...inputEmailProps}/>
+      </div>
     </div>
   )
 }
