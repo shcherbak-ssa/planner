@@ -1,11 +1,11 @@
 'use strict';
 
 /** imports */
-import Button from './button';
+import ButtonDefault from './button-default';
 
 /** Buttons components */
 const Buttons = {
-  Button
+  Default: ButtonDefault
 };
 
 /** export */

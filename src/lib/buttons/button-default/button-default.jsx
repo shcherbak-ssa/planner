@@ -3,14 +3,14 @@
 /** imports */
 import React from 'react';
 import classnames from 'classnames';
-import './button.scss';
+import './button-default.scss';
 
 // components
 import Typography from '../../typography';
 import Icon from '../../icons/icon';
 
-/** Button component */
-export default function Button(props) {
+/** ButtonDefault component */
+export default function ButtonDefault(props) {
   /** data */  
   const attributes = {
     className: classnames({
