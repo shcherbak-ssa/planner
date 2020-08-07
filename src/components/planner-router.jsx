@@ -12,13 +12,17 @@ import {
 /** PlannerRouter component */
 export default function PlannerRouter(props) {
   /** data */
+  const {isUserLogged} = props;
   const AppComponent = lazy(() => import('./app'));
-  //const AuthComponent = lazy(() => import('./auth'));
+  // const AuthComponent = lazy(() => import('./auth'));
   const AuthComponent = () => <div>Auth</div>
 
   /** methods */
   function setInitialComponent() {
-    return props.isUserLogged ? <AppComponent/> : <Redirect to="/login"/>
+    return isUserLogged ? <AppComponent/> : <Redirect to="/login"/>
+  }
+  function useExactProp() {
+    return isUserLogged ? {} : {exact: true};
   }
 
   /** render */
@@ -26,7 +30,7 @@ export default function PlannerRouter(props) {
     <Router>
       <Suspense fallback={<div>Loading...</div>}>
         <Switch>
-          <Route path="/">
+          <Route path="/" {...useExactProp()}>
             {setInitialComponent()}
           </Route>
           <Route path="/registration">
