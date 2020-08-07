@@ -1,7 +1,7 @@
 'use strict';
 
 /** imports */
-import UserData from './user-data';
+import UserData from './data';
 
 /** UserStorageState */
 interface UserStorageState {

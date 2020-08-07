@@ -2,8 +2,8 @@
 
 /** imports */
 import EventEmitter from './emitter';
-import UserDataUpdater from '../user/user-data-updater';
-import UserSave from '../user/user-save';
+import UserDataUpdater from '../user/data-updater';
+import UserSave from '../user/save';
 
 /** constants */
 const USER_EDIT_INIT: string = 'user-edit-init';

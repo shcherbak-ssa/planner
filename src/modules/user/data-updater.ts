@@ -1,7 +1,7 @@
 'use strict';
 
 /** imports */
-import UserStorage from './user-storage';
+import UserStorage from './storage';
 import Storage from '../storage/user';
 
 /** UserDataUpdater */

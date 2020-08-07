@@ -1,8 +1,8 @@
 'use strict';
 
 /** imports */
-import UserData from './user-data';
-import UserStorageState from './user-storage-state';
+import UserData from './data';
+import UserStorageState from './storage-state';
 import Storage from '../storage/user';
 
 /** init */
