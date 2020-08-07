@@ -1,8 +1,11 @@
 'use strict';
 
+/** imports */
+import UserData from './user-data';
+
 /** UserStorageState */
 interface UserStorageState {
-  getCurrentStorageState(): void;
+  getCurrentStorageState(): UserData;
 }
 
 /** export */
