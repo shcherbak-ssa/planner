@@ -15,7 +15,7 @@ import {
 import RegistrationFrame from './registration-frame';
 import InputPassword from './input-password';
 import Form from '@lib/form';
-import Button from '@lib/buttons/button';
+import Button from '@lib/button';
 
 /** CreateAccount component */
 export default function CreateAccount(props) {
@@ -110,7 +110,7 @@ export default function CreateAccount(props) {
       <Form.Input {...inputEmailProps}/>
       <InputPassword {...inputPasswordProps}/>
       <Form.Checkbox {...checkboxProps}/>
-      <Button {...buttonProps}/>
+      <Button.Default {...buttonProps}/>
     </RegistrationFrame>
   )
 }

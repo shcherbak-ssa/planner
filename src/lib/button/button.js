@@ -3,10 +3,10 @@
 /** imports */
 import ButtonDefault from './button-default';
 
-/** Buttons components */
-const Buttons = {
+/** Button components */
+const Button = {
   Default: ButtonDefault
 };
 
 /** export */
-export default Buttons;
+export default Button;

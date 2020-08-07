@@ -5,7 +5,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 // components
-import Button from '@lib/buttons/button'
+import Button from '@lib/button'
 
 /** ChangeModeButton component */
 export default function ChangeModeButton(props) {
@@ -22,7 +22,7 @@ export default function ChangeModeButton(props) {
   /** render */
   return (
     <Link to={props.nextMode}>
-      <Button {...buttonProps}/>
+      <Button.Default {...buttonProps}/>
     </Link>
   )
 }

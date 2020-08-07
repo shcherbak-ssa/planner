@@ -17,7 +17,7 @@ import {
 // components
 import RegistrationFrame from './registration-frame';
 import Form from '@lib/form';
-import Button from '@lib/buttons/button';
+import Button from '@lib/button/';
 
 /** EntryEmail component */
 export default function EntryEmail(props) {
@@ -65,7 +65,7 @@ export default function EntryEmail(props) {
   return (
     <RegistrationFrame type="email">
       <Form.Input {...inputProps}/>
-      <Button {...buttonProps}/>
+      <Button.Default {...buttonProps}/>
     </RegistrationFrame>
   )
 }
