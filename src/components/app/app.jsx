@@ -4,7 +4,10 @@
 import React, {useState, useEffect} from 'react';
 import {useLocation} from 'react-router-dom';
 import classnames from 'classnames';
-import DropdownService from '@service/dropdown';
+import {
+  servicesEventEmitter,
+  DROPDOWN_SERVICE_INIT,
+} from '@module/events/services';
 
 // assets
 import './app.scss';
@@ -16,7 +19,7 @@ import PageRouter from './pages/page-router';
 import PopupRouter from './popups/popup-router';
 
 /** init */
-DropdownService.init();
+servicesEventEmitter.emit(DROPDOWN_SERVICE_INIT);
 
 /** App component */
 export default function App(props) {
