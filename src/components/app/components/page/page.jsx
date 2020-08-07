@@ -2,10 +2,10 @@
 
 /** imports */
 import React, {useState} from 'react';
-// import {useLocation, useHistory} from 'react-router-dom';
 import {faBars} from '@fortawesome/free-solid-svg-icons';
 import DropdownService from '@service/dropdown';
 import PopupService from '@service/popup';
+
 import {
   DROPDOWN_TYPE_PROFILE,
   DROPDOWN_TYPE_SETTINGS,
@@ -26,8 +26,6 @@ import Dropdown from '@lib/dropdown';
 /** Page component */
 export default function Page(props) {
   /** states */
-  // const location = useLocation();
-  // const history = useHistory();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   /** data */
@@ -61,12 +59,6 @@ export default function Page(props) {
   }
   function openPopup(popupName) {
     PopupService.openPopup(popupName);
-    // history.push({
-    //   pathname: `/${popupName}`,
-    //   state: {
-    //     background: location
-    //   }
-    // })
   }
 
   /** render */
