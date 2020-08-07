@@ -1,7 +1,7 @@
 'use strict';
 
 /** imports */
-import UserLocalStorage from './modules/user-local-storage';
+import UserLocalStorageService from './services/user-local-storage';
 
 /** init */
 window.onbeforeunload = () => {
@@ -11,7 +11,7 @@ window.onbeforeunload = () => {
 /** initPlanner */
 async function initPlanner() {
   let isUserLogged = false;
-  if (UserLocalStorage.isUserExist()) {
+  if (UserLocalStorageService.isUserExist()) {
     isUserLogged = true;
   }
   return isUserLogged;

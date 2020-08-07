@@ -3,8 +3,8 @@
 /** constants */
 const USER_DATA_STORAGE_KEY: string = 'user';
 
-/** UserLocalStorage */
-const UserLocalStorage = {
+/** UserLocalStorageService */
+const UserLocalStorageService = {
   isUserExist() {
     return !!getUserDataItem();
   },
@@ -26,4 +26,4 @@ function transformToJSON(email: string, password: string) {
 }
 
 /** export */
-export default UserLocalStorage;
+export default UserLocalStorageService;
