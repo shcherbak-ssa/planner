@@ -40,7 +40,7 @@ export default function Popup(props) {
 
   /** effects */
   useEffect(() => {
-    const containerHeight = popupContainer.offsetHeight;
+    const containerHeight = popupContainer.current.offsetHeight;
     const validContainerHeight = getValidContainerHeight();
     if (containerHeight >= validContainerHeight) {
       setPopupContainerStyle({
