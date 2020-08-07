@@ -3,4 +3,11 @@
 @import '@style-assets';
 
 /** styles */
-.profile {}
+.profile {
+  position: relative;
+  height: 460px;
+
+  .button-circle {
+    -x-position: absolute 16px 16px x x;
+  }
+}

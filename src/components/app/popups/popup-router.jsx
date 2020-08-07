@@ -13,12 +13,17 @@ import {
   POPUP_PROJECT_TASK_PATH
 } from '../constants';
 
+// components
+import Profile from './profile';
+
 /** PopupRouter component */
 export default function PopupRouter(props) {
   /** render */
   return (
     <Switch>
-      <Route path={POPUP_PROFILE_PATH}></Route>
+      <Route path={POPUP_PROFILE_PATH}>
+        <Profile/>
+      </Route>
       <Route path={POPUP_SETTINGS_PATH}></Route>
       <Route path={POPUP_CREATE_PROJECT_PATH}></Route>
       <Route path={POPUP_DELETE_PROJECT_PATH}></Route>
