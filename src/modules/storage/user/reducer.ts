@@ -6,9 +6,9 @@ import UserActionType from './action-type';
 
 /** init */
 const initialState: UserData = {
-  name: '',
-  username: '',
-  email: ''
+  name: 'Stanislav Shcherbakov',
+  username: 'shcherbak',
+  email: 'shcherbak.ssa@gmail.com'
 }
 
 /** userStorageReducer */

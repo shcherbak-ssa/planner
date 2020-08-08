@@ -10,7 +10,13 @@ class User implements UserStorage, UserStorageState {
   updateName(name: string): void {}
   updateUsername(username: string): void {}
   updateEmail(email: string): void {}
-  getCurrentStorageState(): UserData {}
+  getCurrentStorageState(): UserData {
+    return {
+      name: '',
+      username: '',
+      email: ''
+    }
+  }
 }
 
 /** export */

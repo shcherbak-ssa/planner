@@ -4,12 +4,14 @@
 import {createStore} from 'redux';
 import combineStorageReducers from './reducers';
 
+/** init */
+let storageStates = '';
+
 /** Storage */
 const Storage = {
-  states: null,
-  init(callback: Function) {
-    this.states = createStore(combineStorageReducers());
-    callback(this.states);
+  init() {
+    storageStates = createStore(combineStorageReducers());
+    return storageStates;
   },
 };
 
