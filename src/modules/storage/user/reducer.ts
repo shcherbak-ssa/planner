@@ -4,6 +4,7 @@
 import UserData from '../../user/data';
 import UserActionType from './action-type';
 import Constants from './constants';
+import createMerge from '../merge';
 
 /** init */
 const initialState: UserData = {
@@ -17,11 +18,20 @@ function userStorageReducer(
   state: UserData = initialState,
   action: UserActionType
 ): UserData {
+  const merge = createMerge(state);
   switch(action.type) {
-    case Constants.UPDATE_NAME: return state;
-    case Constants.UPDATE_USERNAME: return state;
-    case Constants.UPDATE_EMAIL: return state;
-    case Constants.GET_CURRENT_STORAGE_STATE: return state;
+    case Constants.UPDATE_NAME:
+      return merge({
+        name: action.name
+      });
+    case Constants.UPDATE_USERNAME:
+      return merge({
+        username: action.username
+      });
+    case Constants.UPDATE_EMAIL:
+      return merge({
+        email: action.email
+      });
     default: return state;
   }
 }
