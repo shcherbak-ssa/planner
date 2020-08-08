@@ -2,9 +2,15 @@
 
 /** UserDataSave */
 class UserDataSave {
-  saveName(name: string) {}
-  saveUsername(username: string) {}
-  saveEmail(email: string) {}
+  saveName(name: string) {
+    console.log(name);
+  }
+  saveUsername(username: string) {
+    console.log(username);
+  }
+  saveEmail(email: string) {
+    console.log(email);
+  }
 }
 
 /** export */
