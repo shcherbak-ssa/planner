@@ -16,16 +16,12 @@ interface UpdateEmailAction {
   type: typeof Constants.UPDATE_EMAIL;
   email: string;
 }
-interface GetCurrentStorageState {
-  type: typeof Constants.GET_CURRENT_STORAGE_STATE;
-}
 
 /** UserActionType */
 type UserActionType =
   | UpdateNameAction
   | UpdateUsernameAction
-  | UpdateEmailAction
-  | GetCurrentStorageState;
+  | UpdateEmailAction;
 
 /** export */
 export default UserActionType;
