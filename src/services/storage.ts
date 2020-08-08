@@ -9,7 +9,7 @@ const StorageService = {
     return Storage.init();
   },
   user(value?: string|Array<string>) {
-    if (!value) return 
+    if (!value) return (state: any) => state.user
   }
 };
 
