@@ -2,9 +2,7 @@
 
 /** imports */
 import Storage from '../storage';
-import UserData from '../../user/data';
 import UserStorage from '../../user/storage';
-import UserStorageState from '../../user/storage-state';
 import {
   updateName,
   updateUsername,
@@ -12,7 +10,7 @@ import {
 } from './actions';
 
 /** User */
-class User implements UserStorage, UserStorageState {
+class User implements UserStorage {
   updateName(name: string): void {
     Storage.doAction(updateName(name));
   }
@@ -21,13 +19,6 @@ class User implements UserStorage, UserStorageState {
   }
   updateEmail(email: string): void {
     Storage.doAction(updateEmail(email));
-  }
-  getCurrentStorageState(): UserData {
-    return {
-      name: '',
-      username: '',
-      email: ''
-    }
   }
 }
 
