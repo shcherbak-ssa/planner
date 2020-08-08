@@ -4,6 +4,14 @@
 import React, {useState} from 'react';
 import {useSelector} from 'react-redux';
 import StorageService from '@service/storage';
+import {
+  userEventEmitter,
+  USER_EDIT_INIT,
+  USER_NAME_UPDATE,
+  USER_USERNAME_UPDATE,
+  USER_EMAIL_UPDATE,
+  USER_UPDATED_DATA_SAVE,
+} from '@module/events/user';
 
 // assets
 import {faEdit, faSave} from '@fortawesome/free-solid-svg-icons';
@@ -26,31 +34,39 @@ export default function Profile(props) {
     value: name,
     error: '',
     placeholder: 'Your name',
-    changeHandler: (e) => {}
+    changeHandler: ({target: {value}}) => {
+      userEventEmitter.emit(USER_NAME_UPDATE, value);
+    }
   };
   const inputUsernameProps = {
     readOnly: !isEditMode,
     value: username,
     error: '',
     placeholder: 'Your username',
-    changeHandler: (e) => {}
+    changeHandler: ({target: {value}}) => {
+      userEventEmitter.emit(USER_USERNAME_UPDATE, value);
+    }
   };
   const inputEmailProps = {
     readOnly: !isEditMode,
     value: email,
     error: '',
     placeholder: 'Your e-mail',
-    changeHandler: (e) => {}
+    changeHandler: ({target: {value}}) => {
+      userEventEmitter.emit(USER_EMAIL_UPDATE, value);
+    }
   };
   const buttonProps = {
     icon: buttonIcon,
     clickHandler: () => {
       if (isEditMode) {
         setButtonIcon(faEdit);
-        setIsEditMode(false)
+        setIsEditMode(false);
+        userEventEmitter.emit(USER_UPDATED_DATA_SAVE);
       } else {
         setButtonIcon(faSave);
         setIsEditMode(true);
+        userEventEmitter.emit(USER_EDIT_INIT);
       }
     }
   }
