@@ -7,10 +7,13 @@ import StorageService from '@service/storage';
 import {
   userEventEmitter,
   USER_EDIT_INIT,
+  USER_EDIT_SAVE,
   USER_NAME_UPDATE,
+  USER_NAME_SAVE,
   USER_USERNAME_UPDATE,
+  USER_USERNAME_SAVE,
   USER_EMAIL_UPDATE,
-  USER_UPDATED_DATA_SAVE,
+  USER_EMAIL_SAVE,
 } from '@module/events/user';
 
 // assets
@@ -36,7 +39,10 @@ export default function Profile(props) {
     placeholder: 'Your name',
     changeHandler: ({target: {value}}) => {
       userEventEmitter.emit(USER_NAME_UPDATE, value);
-    }
+    },
+    blurHandler: ({target: {value}}) => {
+      userEventEmitter.emit(USER_NAME_SAVE, value);
+    } 
   };
   const inputUsernameProps = {
     readOnly: !isEditMode,
@@ -45,7 +51,10 @@ export default function Profile(props) {
     placeholder: 'Your username',
     changeHandler: ({target: {value}}) => {
       userEventEmitter.emit(USER_USERNAME_UPDATE, value);
-    }
+    },
+    blurHandler: ({target: {value}}) => {
+      userEventEmitter.emit(USER_USERNAME_SAVE, value);
+    } 
   };
   const inputEmailProps = {
     readOnly: !isEditMode,
@@ -54,7 +63,10 @@ export default function Profile(props) {
     placeholder: 'Your e-mail',
     changeHandler: ({target: {value}}) => {
       userEventEmitter.emit(USER_EMAIL_UPDATE, value);
-    }
+    },
+    blurHandler: ({target: {value}}) => {
+      userEventEmitter.emit(USER_EMAIL_SAVE, value);
+    } 
   };
   const buttonProps = {
     icon: buttonIcon,
@@ -62,7 +74,7 @@ export default function Profile(props) {
       if (isEditMode) {
         setButtonIcon(faEdit);
         setIsEditMode(false);
-        userEventEmitter.emit(USER_UPDATED_DATA_SAVE);
+        userEventEmitter.emit(USER_EDIT_SAVE);
       } else {
         setButtonIcon(faSave);
         setIsEditMode(true);

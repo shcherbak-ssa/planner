@@ -29,7 +29,7 @@ function userEditInitHandler() {
   const saveName = userDataSave.saveName.bind(userDataSave);
   const saveUsername = userDataSave.saveUsername.bind(userDataSave);
   const saveEmail = userDataSave.saveEmail.bind(userDataSave);
-  
+
   userEventEmitter
     .on(USER_NAME_UPDATE, updateName)
     .on(USER_NAME_SAVE, saveName)
@@ -38,6 +38,8 @@ function userEditInitHandler() {
     .on(USER_EMAIL_UPDATE, updateEmail)
     .on(USER_EMAIL_SAVE, saveEmail)
     .on(USER_EDIT_SAVE, userEditSaveHandler);
+
+  console.log(userEventEmitter);
 
   function userEditSaveHandler() {
     userEventEmitter
@@ -48,6 +50,8 @@ function userEditInitHandler() {
       .off(USER_EMAIL_UPDATE, updateEmail)
       .off(USER_EMAIL_SAVE, saveEmail)
       .off(USER_EDIT_SAVE, userEditSaveHandler);
+
+    console.log(userEventEmitter);
   }
 }
 

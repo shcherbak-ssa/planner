@@ -56,6 +56,7 @@ export default function Input(props) {
   function blurHandler(e) {
     e.preventDefault();
     if (e.target.value === '') setIsFilled(false);
+    if (props.blurHandler) props.blurHandler(e);
   }
   function focusOnInput() {
     inputField.current.focus();
