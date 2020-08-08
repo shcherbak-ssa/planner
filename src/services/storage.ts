@@ -8,7 +8,9 @@ const StorageService = {
   init() {
     return Storage.init();
   },
-  
+  user(value?: string|Array<string>) {
+    if (!value) return 
+  }
 };
 
 /** export */
