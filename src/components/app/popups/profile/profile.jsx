@@ -2,6 +2,10 @@
 
 /** imports */
 import React, {useState} from 'react';
+import {useSelector} from 'react-redux';
+import StorageService from '@service/storage';
+
+// assets
 import {faEdit, faSave} from '@fortawesome/free-solid-svg-icons';
 import './profile.scss';
 
@@ -12,27 +16,28 @@ import Form from '@lib/form';
 /** Profile component */
 export default function Profile(props) {
   /** states */
+  const {name, username, email} = useSelector(StorageService.user());
   const [isEditMode, setIsEditMode] = useState(false);
   const [buttonIcon, setButtonIcon] = useState(faEdit);
 
   /** data */
   const inputNameProps = {
     readOnly: !isEditMode,
-    value: '',
+    value: name,
     error: '',
     placeholder: 'Your name',
     changeHandler: (e) => {}
   };
   const inputUsernameProps = {
     readOnly: !isEditMode,
-    value: '',
+    value: username,
     error: '',
     placeholder: 'Your username',
     changeHandler: (e) => {}
   };
   const inputEmailProps = {
     readOnly: !isEditMode,
-    value: '',
+    value: email,
     error: '',
     placeholder: 'Your e-mail',
     changeHandler: (e) => {}

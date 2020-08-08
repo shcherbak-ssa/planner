@@ -19,12 +19,14 @@ import Popup from './components/popup';
 import PageRouter from './pages/page-router';
 import PopupRouter from './popups/popup-router';
 
+/** init */
+const storage = StorageService.init();
+
 /** App component */
 export default function App(props) {
   /** states */
   const history = useHistory();
   const location = useLocation();
-  const [store, setStore] = useState(null);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   /** data */
@@ -35,9 +37,6 @@ export default function App(props) {
 
   /** effects */
   useEffect(() => {
-    const storage = StorageService.init();
-    setStore(storage);
-    
     DropdownService.init();
     PopupService.init(history, location);
   }, []);
@@ -50,7 +49,7 @@ export default function App(props) {
 
   /** render */
   return (
-    <Provider store={store}>
+    <Provider store={storage}>
       <div className="app" data-class="full">
         <div className="app-page" data-class="full">
           <Page>

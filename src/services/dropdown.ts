@@ -35,7 +35,12 @@ const DropdownService = {
 /** src */
 function closeActiveDropdown(e: Event) {
   const dropdown = activeDropdown.pop();
-  if (dropdown && dropdown.getParentElement() !== e.target) {
+  if (!dropdown) return;
+
+  const parentElement = dropdown.getParentElement();
+  if (parentElement === e.target) return activeDropdown.push(dropdown);
+  
+  if (parentElement !== e.target) {
     const closeDropdown: Function = dropdown.getCloseDropdownFunction();
     closeDropdown();
   };
