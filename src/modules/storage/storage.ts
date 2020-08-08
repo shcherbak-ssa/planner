@@ -1,11 +1,12 @@
 'use strict';
 
 /** imports */
-import {createStore} from 'redux';
+import {createStore, Store} from 'redux';
 import combineStorageReducers from './reducers';
+import ActionType from './action-type';
 
 /** init */
-let storageStates = '';
+let storageStates: Store;
 
 /** Storage */
 const Storage = {
@@ -13,6 +14,9 @@ const Storage = {
     storageStates = createStore(combineStorageReducers());
     return storageStates;
   },
+  doAction(action: ActionType) {
+    storageStates.dispatch(action);
+  }
 };
 
 /** export */
