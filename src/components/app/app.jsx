@@ -6,7 +6,7 @@ import {useHistory, useLocation} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import classnames from 'classnames';
 
-import Storage from '@module/storage';
+import StorageService from '@service/storage';
 import DropdownService from '@service/dropdown';
 import PopupService from '@service/popup';
 
@@ -19,14 +19,12 @@ import Popup from './components/popup';
 import PageRouter from './pages/page-router';
 import PopupRouter from './popups/popup-router';
 
-/** init */
-const storage = Storage.init();
-
 /** App component */
 export default function App(props) {
   /** states */
   const history = useHistory();
   const location = useLocation();
+  const [store, setStore] = useState(null);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   /** data */
@@ -37,6 +35,9 @@ export default function App(props) {
 
   /** effects */
   useEffect(() => {
+    const storage = StorageService.init();
+    setStore(storage);
+    
     DropdownService.init();
     PopupService.init(history, location);
   }, []);
@@ -49,7 +50,7 @@ export default function App(props) {
 
   /** render */
   return (
-    <Provider store={storage}>
+    <Provider store={store}>
       <div className="app" data-class="full">
         <div className="app-page" data-class="full">
           <Page>
