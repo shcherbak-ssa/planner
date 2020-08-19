@@ -8,5 +8,5 @@ export interface RegistrationNetwork {
   createAccount(user: NewUserData): any;
 }
 export interface LoginNetwork {
-  loginAccount(user: string): any;
+  loginAccount(email: string, password: string): any;
 }
