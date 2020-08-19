@@ -1,7 +1,7 @@
 'use strict';
 
 /** imports */
-import { AuthError } from './auth-errors';
+import { AuthError } from './errors';
 
 /** constants */
 const CONFIRM_CODE_LENGTH: number = 6;
