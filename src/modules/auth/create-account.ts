@@ -1,7 +1,7 @@
 'use strict';
 
 /** imports */
-import AuthError from './auth-error';
+import { AuthError } from './auth-error';
 import { IUserData } from './user-data';
 import Validate from './validate';
 import finishAuthMode from './finish-auth-mode';
