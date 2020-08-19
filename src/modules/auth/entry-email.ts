@@ -1,7 +1,7 @@
 'use strict';
 
 /** imports */
-import {validateEmail} from './rules';
+import { validateEmail } from './rules';
 
 /** EntryEmail */
 class EntryEmail {

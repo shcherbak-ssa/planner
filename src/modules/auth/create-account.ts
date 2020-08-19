@@ -1,13 +1,13 @@
 'use strict';
 
 /** imports */
-import { AuthError } from './errors';
+import { parseError } from './errors';
 import { IUserData } from './user-data';
 import Validate from './validate';
 import finishAuthMode from './finish-auth-mode';
 import { NewUserData, NewUserDataCreator } from './new-user-data';
-import { RegistrationNetwork } from './network';
-import { RegistrationNetworkImpl } from '../network/auth';
+import { CreateAccountNetwork } from './network';
+import { CreateAccountNetworkImpl } from '../network/auth';
 
 /** CreateAccount */
 class CreateAccount {
@@ -17,7 +17,7 @@ class CreateAccount {
       const createAccount: CreateAccount = new CreateAccount();
       await createAccount.createAccount(userData);
     } catch (error) {
-      await AuthError.parseError(error, callback);
+      await parseError(error, callback);
     }
   }
 
@@ -38,7 +38,7 @@ class CreateAccount {
   }
   private async createUserOnServer(userData: IUserData) {
     const newUserData: NewUserData = await this.createNewUserData(userData);
-    const network: RegistrationNetwork = new RegistrationNetworkImpl();
+    const network: CreateAccountNetwork = new CreateAccountNetworkImpl();
     await network.createAccount(newUserData);
   }
   private async createNewUserData(userData: IUserData) {

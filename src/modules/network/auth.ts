@@ -1,7 +1,7 @@
 'use strict';
 
 /** imports */
-import { RegistrationNetwork, LoginNetwork } from '../auth/network';
+import { CreateAccountNetwork, LoginNetwork, CheckEmailNetwork } from '../auth/network';
 import { NewUserData } from '../auth/new-user-data';
 import { NetworkAPI } from './api';
 import { LoginError } from '../auth/errors';
@@ -11,7 +11,12 @@ const USER_NETWORK_PATH: string = 'user';
 const LOGIN_ERROR_MESSAGE: string = 'Invalid email or password';
 
 /** auth network module */
-export class RegistrationNetworkImpl implements RegistrationNetwork {
+export class CheckEmailNetworkImpl implements CheckEmailNetwork {
+  async isUserExist(email: string) {
+    const user: NewUserData = await NetworkAPI.get(USER_NETWORK_PATH);
+  }
+}
+export class CreateAccountNetworkImpl implements CreateAccountNetwork {
   async createAccount(user: NewUserData) {
     await NetworkAPI.create(USER_NETWORK_PATH, user);
   }
