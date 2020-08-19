@@ -1,11 +1,12 @@
 'use strict';
 
-/** auth network interfaces */
-interface EntryEmailNetwork {
-  checkForUniqueness(email: string): Promise<Response>;
-}
+/** imports */
+import { NewUserData } from "./new-user-data";
 
-/** export */
-export {
-  EntryEmailNetwork,
-};
+/** auth network interfaces */
+export interface RegistrationNetwork {
+  createAccount(user: NewUserData): any;
+}
+export interface LoginNetwork {
+  loginAccount(user: string): any;
+}
