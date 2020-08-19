@@ -1,10 +1,12 @@
 'use strict';
 
 /** imports */
-import AuthError from './auth-error';
-import {IUserData} from './user-data';
+import { AuthError } from './auth-error';
+import { IUserData } from './user-data';
 import Validate from './validate';
 import finishAuthMode from './finish-auth-mode';
+import { LoginNetwork } from './network';
+import { LoginNetworkImpl } from '../network/auth';
 
 /** Login */
 class Login {
@@ -21,7 +23,7 @@ class Login {
   /** public methods */
   async loginUser(userData: IUserData) {
     await this.validateUserData(userData);
-    // @todo: server request logic
+    await this.loginUserOnServer(userData);
     await finishAuthMode(userData);
   }
 
@@ -30,6 +32,12 @@ class Login {
     const validate: Validate = new Validate();
     await validate.validateEmail(userData);
     await validate.validatePassword(userData);
+  }
+  private async loginUserOnServer(userData: IUserData) {
+    const email: string = userData.getEmail();
+    const password: string = userData.getPassword();
+    const network: LoginNetwork = new LoginNetworkImpl();
+    await network.loginAccount(email, password);
   }
 }
 
