@@ -1,7 +1,7 @@
 'use strict';
 
 /** constants */
-const USER_DATA_STORAGE_KEY: string = 'user';
+const USER_DATA_STORAGE_KEY: string = 'user-local';
 
 /** UserLocalStorageService */
 const UserLocalStorageService = {

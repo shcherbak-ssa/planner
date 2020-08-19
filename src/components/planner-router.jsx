@@ -10,12 +10,11 @@ import {
 } from 'react-router-dom';
 
 /** PlannerRouter component */
-export default function PlannerRouter(props) {
+export default function PlannerRouter({isUserLogged}) {
   /** data */
-  const {isUserLogged} = props;
   const AppComponent = lazy(() => import('./app'));
-  // const AuthComponent = lazy(() => import('./auth'));
-  const AuthComponent = () => <div>Auth</div>
+  const AuthComponent = lazy(() => import('./auth'));
+  // const AuthComponent = () => <div>Auth</div>
 
   /** methods */
   function setInitialComponent() {
