@@ -4,7 +4,7 @@
 import { RegistrationNetwork, LoginNetwork } from '../auth/network';
 import { NewUserData } from '../auth/new-user-data';
 import NetworkAPI from './api';
-import { LoginError } from '../auth/auth-error';
+import { LoginError } from '../auth/auth-errors';
 
 /** constants */
 const USER_NETWORK_PATH: string = 'user';
