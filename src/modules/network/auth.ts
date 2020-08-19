@@ -3,7 +3,7 @@
 /** imports */
 import { RegistrationNetwork, LoginNetwork } from '../auth/network';
 import { NewUserData } from '../auth/new-user-data';
-import NetworkAPI from './api';
+import { NetworkAPI } from './api';
 import { LoginError } from '../auth/errors';
 
 /** constants */
