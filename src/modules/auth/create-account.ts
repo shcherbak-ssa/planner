@@ -7,6 +7,7 @@ import Validate from './validate';
 import finishAuthMode from './finish-auth-mode';
 import { NewUserData, NewUserDataCreator } from './new-user-data';
 import { RegistrationNetwork } from './network';
+import { RegistrationNetworkImpl } from '../network/auth';
 
 /** CreateAccount */
 class CreateAccount {
@@ -37,7 +38,8 @@ class CreateAccount {
   }
   private async createUserOnServer(userData: IUserData) {
     const newUserData: NewUserData = await this.createNewUserData(userData);
-    //const network: RegistrationNetwork = ''
+    const network: RegistrationNetwork = new RegistrationNetworkImpl();
+    await network.createAccount(newUserData);
   }
   private async createNewUserData(userData: IUserData) {
     const newUserDataCreator: NewUserDataCreator = new NewUserDataCreator();
