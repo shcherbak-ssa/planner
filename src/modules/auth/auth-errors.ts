@@ -12,13 +12,6 @@ export class AuthError extends Error {
     this.type = type;
     this.name = AUTH_ERROR_NAME;
   }
-
-  /** static methods */
-  static async parseError(error: Error, callback: Function) {
-    if (error.name === AUTH_ERROR_NAME) return callback(error);
-    console.log(error);
-    callback();
-  }
 }
 
 /** LoginError */
@@ -27,10 +20,13 @@ export class LoginError extends Error {
     super(message);
     this.name = LOGIN_ERROR_NAME
   }
+}
 
-  /** static methods */
-  static async parseError(error: Error, callback: Function) {
-    if (error.name === LOGIN_ERROR_NAME) return callback(error.message);
-    console.log(error);
+/** parseError */
+export async function parseError(error: Error, callback: Function) {
+  switch(error.name) {
+    case AUTH_ERROR_NAME: return callback(error);
+    case LOGIN_ERROR_NAME: return callback(error.message);
+    default: console.log(error);
   }
 }

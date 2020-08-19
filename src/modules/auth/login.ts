@@ -1,7 +1,7 @@
 'use strict';
 
 /** imports */
-import { AuthError } from './auth-errors';
+import { parseError } from './auth-errors';
 import { IUserData } from './user-data';
 import Validate from './validate';
 import finishAuthMode from './finish-auth-mode';
@@ -16,7 +16,7 @@ class Login {
       const login: Login = new Login();
       await login.loginUser(userData);
     } catch (error) {
-      await AuthError.parseError(error, callback);
+      await parseError(error, callback);
     }
   }
 
